@@ -19,13 +19,13 @@ public class DrinksMapper {
 
         try {
             connection = connectionPool.getConnection();
-            String query = "SELECT name FROM drinks WHERE ingredients LIKE ?"; //change name accoring to db
+            String query = "SELECT drinkname FROM drinks WHERE ingredients LIKE ?"; //change name accoring to db
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, "%" + input + "%");
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                matchingDrinks.add(resultSet.getString("name"));
+                matchingDrinks.add(resultSet.getString("drinkname"));
             }
         } catch (SQLException e) {
             throw new DatabaseException("Database error occurred", e.getMessage());

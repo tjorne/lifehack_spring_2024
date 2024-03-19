@@ -2,7 +2,7 @@ package app;
 
 import app.gruppe1Controller.Gruppe1Controller;
 
-import static app.Main.connectionPool;
+//import static app.Main.connectionPool;
 
 public class Gruppe1Main
 {
