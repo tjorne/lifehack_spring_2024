@@ -4,6 +4,7 @@ import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
 import app.persistence.UserMapper;
+import app.persistence.BookingMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
@@ -11,14 +12,44 @@ public class BookiBoisController
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
-        app.get("/BookiBois", ctx -> index(ctx, connectionPool));
+        app.get("/bookibois", ctx -> index(ctx, connectionPool));
 
-        app.get("/bookingsite", ctx -> ctx.render("/bookiBois/BookingSite.html"));
+        app.get("/bookingsite", ctx -> ctx.render("/bookibois/bookingsite.html"));
+        app.post("/createbooking", ctx -> createBooking(ctx, connectionPool));
+        app.get("/createbooking", ctx -> ctx.render("/bookibois/bookingsite.html"));
+
+
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
-        ctx.render("/BookiBois/index.html");
+        ctx.render("/bookibois/bookingsite.html");
+    }
+
+
+    public static void createBooking(Context ctx, ConnectionPool connectionPool) {
+        // Hent form parametre
+        //String username = ctx.formParam("titel");
+        String behandling = ctx.formParam("behandling");
+        String date = ctx.formParam("date");
+        String time = ctx.formParam("time");
+        String behandler = ctx.formParam("behandler");
+        String navn = ctx.formParam("name");
+        String tlfnummer = ctx.formParam("tlf");
+
+        // Check om bruger findes i DB med de angivne username + password
+        try {
+            BookingMapper.createBooking(behandling, date, time, behandler, navn, tlfnummer, connectionPool);
+            //ctx.sessionAttribute("currentUser", user);
+            // Hvis ja, send videre til forsiden med login besked
+            ctx.attribute("message", "Din booking er bekræftet");
+            //ctx.render("index.html");
+        } catch (DatabaseException e) {
+            // Hvis nej, send tilbage til login side med fejl besked
+            ctx.attribute("message", e.getMessage());
+            //ctx.render("index.html");
+        }
+
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {
@@ -71,30 +102,7 @@ public class BookiBoisController
     }
 
 
-    public static void createBooking(Context ctx, ConnectionPool connectionPool) {
-        // Hent form parametre
-        String username = ctx.formParam("titel");
-        String behandling = ctx.formParam("behandling");
-        String dato = ctx.formParam("date");
-        String time = ctx.formParam("time");
-        String behandler = ctx.formParam("behandler");
-        String navn = ctx.formParam("name");
-        String tlfnummer = ctx.formParam("tlf");
 
-        // Check om bruger findes i DB med de angivne username + password
-        try {
-            BookingMapper.create(username, behandling, dato, time, behandler, navn, tlfnummer, connectionPool);
-            //ctx.sessionAttribute("currentUser", user);
-            // Hvis ja, send videre til forsiden med login besked
-            ctx.attribute("message", "Din booking er bekræftet");
-            //ctx.render("index.html");
-        } catch (DatabaseException e) {
-            // Hvis nej, send tilbage til login side med fejl besked
-            ctx.attribute("message", e.getMessage());
-            //ctx.render("index.html");
-        }
-
-    }
 
 }
 
