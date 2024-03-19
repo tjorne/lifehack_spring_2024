@@ -4,9 +4,16 @@ import app.config.ThymeleafConfig;
 import app.controllers.RestaurantFinderController;
 import app.controllers.TimeZonesController;
 import app.controllers.UserController;
+import app.entities.Restaurant;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
+// nye import
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 public class Main
 {
@@ -17,14 +24,32 @@ public class Main
 
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance(USER, PASSWORD, URL, DB);
 
+
+
     public static void main(String[] args)
     {
         // Initializing Javalin and Jetty webserver
-
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add("/public");
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
         }).start(7070);
+
+        /*
+        // Create a URL object
+        URL websiteLink = null;
+        try {
+            websiteLink = new URL("https://izumi.dk/");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        // Create a Path object
+        Path imagePath = Paths.get("public/images/restaurantFinder/restaurantFinderLogo.png");
+
+        // Create a new Restaurant object using the constructor
+        Restaurant restaurant = new Restaurant("Restaurant Name", "Address", "Description", "Cuisine", websiteLink, imagePath);
+        System.out.println("Her er restauranten: " + restaurant + "\nHer er linket til restaurantens hjemmeside: " +websiteLink + "\nBilleder?:" + imagePath);
+        */
 
         // Routing
 
@@ -32,7 +57,7 @@ public class Main
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
 
-
         RestaurantFinderController.addRoutes(app, connectionPool);
+
     }
 }
