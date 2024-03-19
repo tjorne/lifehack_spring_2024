@@ -13,10 +13,11 @@
 
 <div class="page">
     <header>
-        <h1>Vælg titel</h1>
+        <h1 id="titel">Vælg titel<button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button></h1>
+
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-            <button class="edit-buttons" >⚙️</button>
+            <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         </a>
     </header>
 
@@ -35,23 +36,22 @@
         <option value="eksempel">eksempel</option>
         <option value="eksempel">eksempel</option>
     </select>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
     <br><br>
 
     <label for="date">Dato:</label>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
     <br>
     <input type="date" id="date" name="date">
     <br><br>
 
     <label for="time">Tidspunkt:</label>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
     <br>
     <input type="time" id="time" name="time">
     <br><br>
-
     <label for="behandler">Vælg en behandler:</label>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
     <br>
 
     <select name="behandler" id="behandler">
@@ -64,21 +64,21 @@
         <option value="eksempel">eksempel</option>
         <option value="eksempel">eksempel</option>
     </select>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
 
     <br><br>
         <label for="name">Navn:</label>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
     <br>
         <input type="text" id="name" name="name">
     <br><br>
         <label for="tlf">Telefon nummer:</label>
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
     <br>
         <input type="text" id="tlf" name="tlf">
     <br><br>
         <input type="submit" value="Book" formaction="/createuser">
-    <button class="edit-buttons" >⚙️</button>
+    <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
 
 </form>
 
