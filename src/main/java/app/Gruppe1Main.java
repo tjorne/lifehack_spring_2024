@@ -10,6 +10,6 @@ public class Gruppe1Main
     {
         // ...........
         // Add routing
-        Gruppe1Controller.addRoutes(app, connectionPool);
+      //  Gruppe1Controller.addRoutes(app, connectionPool);
     }
 }
