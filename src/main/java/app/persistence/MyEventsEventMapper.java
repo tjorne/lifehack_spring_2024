@@ -13,11 +13,11 @@ public class MyEventsEventMapper {
         return null;
     }
 
-    public static List<MyEventsEvent> getAllEventsByZip(int zip, ConnectionPool connectionPool) {
+    public static List<MyEventsEvent> getAllEventsByZip(int zip, ConnectionPool connectionPool) throws DatabaseException {
         return getAllEventsByZip(zip, Collections.emptyList(), connectionPool);
     }
 
-    public static List<MyEventsEvent> getAllEventsByZip(int zip, List<MyEventsCategory> categories, ConnectionPool connectionPool) {
+    public static List<MyEventsEvent> getAllEventsByZip(int zip, List<MyEventsCategory> categories, ConnectionPool connectionPool) throws DatabaseException {
         return null;
     }
 
