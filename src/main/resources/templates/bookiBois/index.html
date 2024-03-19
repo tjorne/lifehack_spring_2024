@@ -29,8 +29,10 @@
     </header>
 
     <section class="hero">
-        <button class="book-button">Book</button>
-        <button class="edit-button" formaction="/bookingsite" >⚙️</button>
+        <a th:href="@{/bookingsite}">
+            <button class="book-button">Book</button>
+        </a>
+        <button class="edit-button" >⚙️</button>
     </section>
 
     <section class="description">

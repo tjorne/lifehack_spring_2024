@@ -10,7 +10,7 @@ public class BookiBoisController
     {
         app.get("/BookiBois", ctx -> index(ctx, connectionPool));
 
-        app.get("/bookingsite", ctx -> ctx.render("/bookingsite"));
+        app.get("/bookingsite", ctx -> ctx.render("/bookiBois/BookingSite.html"));
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool)
