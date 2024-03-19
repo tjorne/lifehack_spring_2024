@@ -1,7 +1,6 @@
 package app;
 
 import app.config.ThymeleafConfig;
-import app.controllers.QuotesGeneratorController;
 import app.controllers.TimeZonesController;
 import app.controllers.UserController;
 import app.persistence.ConnectionPool;
@@ -19,8 +18,6 @@ public class Main
 
     public static void main(String[] args)
     {
-
-
         // Initializing Javalin and Jetty webserver
 
         Javalin app = Javalin.create(config -> {
@@ -33,9 +30,5 @@ public class Main
         app.get("/", ctx -> ctx.render("index.html"));
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
-
-        // ...........
-        // Add routing
-        QuotesGeneratorController.addRoutes(app, connectionPool);
     }
 }
