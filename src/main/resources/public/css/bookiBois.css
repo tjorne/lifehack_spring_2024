@@ -1,3 +1,166 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff; /* Default white background */
+}
+
+/* Page structure */
+.page {
+    text-align: center;
+    padding: 20px; /* Added padding for better spacing */
+}
+
+/* Header and Titles */
+h2 {
+    color: #333;
+    font-size: 1.5rem; /* Larger font size for visibility */
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5rem; /* Even larger font size for main title */
+    margin: 20px 0; /* Added margin for spacing */
+}
+
+/* Navigation and login */
+.admin-login {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+
+.admin-login a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Logo styles */
+img {
+    max-width: 100%; /* Ensures the image is responsive and doesn't overflow */
+    height: auto;
+    margin-top: 20px; /* Added margin for spacing */
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+    margin: 20px 0; /* Added margin for spacing */
+}
+
+.book-button {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+    background-color: #555;
+}
+
+.edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Position the button closer to the top of its section */
+    right: 240px; /* Position the button closer to the right of its section */
+    font-size: 24px;
+    z-index: 2; /* Adjust z-index if needed */
+}
+.edit-button-img{
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 300px; /* Position the button closer to the top of its section */
+    right: 55px; /* Position the button closer to the right of its section */
+    font-size: 24px;
+    z-index: 2; /* Adjust z-index if needed */
+}
+.edit-button-title{
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 72px; /* Position the button closer to the top of its section */
+    right: 259px; /* Position the button closer to the right of its section */
+    font-size: 24px;
+    z-index: 2; /* Adjust z-index if needed */
+}
+
+/* Description section */
+.description {
+    position: relative;
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 20px; /* Added margin for spacing */
+    border-radius: 8px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Adjust the padding and text size for smaller screens like iPhones */
+    .page {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem; /* Smaller font size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Smaller font size for smaller screens */
+    }
+
+    .book-button, .edit-button {
+        padding: 10px 20px; /* Smaller padding for smaller screens */
+        font-size: 1rem; /* Smaller font size for smaller screens */
+    }
+
+    .edit-button {
+        font-size: 20px; /* Smaller edit button for smaller screens */
+    }
+
+    /* Make sure images don't exceed the width of the screen */
+    img {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens like older iPhones */
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .book-button, .edit-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .edit-button {
+        top: 5px; /* Position even closer on small screens */
+        right: 5px;
+        font-size: 18px;
+    }
+}
 header{
     text-align: center;
 }

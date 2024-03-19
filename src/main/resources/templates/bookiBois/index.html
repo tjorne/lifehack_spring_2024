@@ -2,10 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Projectname</title>
+    <title>DitBookingSite</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link href="../../public/css/bookiBois.css" th:href="@{/css/bookiBois.css}" rel="stylesheet"/>
 </head>
 
@@ -13,14 +12,41 @@
 
 <div class="page">
     <header>
-        <a href="../index.html" th:href="@{/}">
+        <h2>www.DitBookingSite.com</h2>
+
+        <section>
+            <h1>Vælg Titel</h1>
+            <button class="edit-button-title" >⚙️</button>
+        </section>
+
+        <div class="admin-login">
+            <a href="#" th:href="@{/admin/login}">Admin login</a>
+        </div>
+        <section>
             <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-        </a>
+            <button class="edit-button-img" >⚙️</button>
+        </section>
     </header>
 
-    <h1>Project name</h1>
 
-    <p>Make your splash page here</p>
+
+
+    <section class="hero">
+        <button class="book-button">Book</button>
+        <button class="edit-button" >⚙️</button>
+    </section>
+
+    <section class="description">
+        <h2>Beskrivelse</h2>
+        <p>
+            Her er beskrivelsen
+        </p>
+        <button class="edit-button" >⚙️</button>
+    </section>
 </div>
+
+<!-- th:if="${session.bookiBoysUser != null}" style="display: none;" -->
+
+
 </body>
 </html>
