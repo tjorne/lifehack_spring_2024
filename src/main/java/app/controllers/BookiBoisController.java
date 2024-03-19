@@ -9,10 +9,16 @@ public class BookiBoisController
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
         app.get("/BookiBois", ctx -> index(ctx, connectionPool));
+
+        app.get("/bookingsite", ctx -> ctx.render("/bookingsite"));
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
         ctx.render("/BookiBois/index.html");
     }
+
+
+
+
 }
