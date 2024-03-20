@@ -9,25 +9,43 @@ body {
     margin-bottom: 20px;
 }
 
-.task-table td, .task-table th {
+.task-table td, .task-table th, .task-table tr {
     border: 1px solid #000000;
     padding: 10px;
 }
+
 
 .task-table tr:nth-child(even) {
     background-color: silver;
 }
 
-.toggle {
+.toggle{
     display: none;
+}
+
+.toggle:hover{
+    background-color: darkgreen;
 }
 
 .answer {
     display: none;
 }
 
+
+.answer::-ms-clear {
+    display: none;
+}
+
+.checkbox:hover{
+    background-color: darkgreen;
+}
+
 .question {
     display: none;
+}
+
+.question:hover {
+    background-color: darkgreen;
 }
 
 .toggle:checked + label + .question {
@@ -57,12 +75,16 @@ body {
     width: 200px;
     margin: 10px;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: silver;
     border-radius: 5px;
 }
 
 .team input[type="text"],
-.team input[type="number"] {
+.team input[type="number" ] {
     width: 100%;
     margin-bottom: 10px;
+}
+
+.team:hover {
+    background-color: darkgreen;
 }
