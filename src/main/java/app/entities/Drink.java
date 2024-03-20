@@ -1,13 +1,13 @@
 package app.entities;
 
-public class Drinks {
+public class Drink {
 
     private String drinkname;
     private String typeofdrink;
     private String ingredients;
     private String instructions;
 
-    public Drinks(String drinkname, String typeofdrink, String ingredients, String instructions) {
+    public Drink(String drinkname, String typeofdrink, String ingredients, String instructions) {
         this.drinkname = drinkname;
         this.typeofdrink = typeofdrink;
         this.ingredients = ingredients;

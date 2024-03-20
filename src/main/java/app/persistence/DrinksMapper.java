@@ -1,13 +1,12 @@
 package app.persistence;
 
+import app.entities.Drink;
 import app.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 //CHECK PATHS
 public class DrinksMapper {
@@ -40,4 +39,38 @@ public class DrinksMapper {
         }
         return matchingDrinks;
     }
+
+  /* public static Drink addDrink(String drinkname, String drinkcategory, String ingredients, String instructions) throws DatabaseException {
+        Drink newDrink = null;
+        //Connection connection;
+        //PreparedStatement ps;
+        String sql = "insert into drink (drinkname, typeofdrink, ingredients, instructions) values (?, ?, ?, ?)";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+                ){
+            //connection = connectionPool.getConnection();
+
+            //ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setString(1, drinkname);
+            ps.setString(2, drinkcategory);
+            ps.setString(3, ingredients);
+            ps.setString(4, instructions);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected == 1) {
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                newDrink = new Drink(drinkname, drinkcategory, ingredients, instructions);
+            } else {
+                throw new DatabaseException("Fejl under indsætning af drink: " + drinkname);
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl i DB connection", e.getMessage());
+        }
+        return newDrink;
+
+    }*/
 }
