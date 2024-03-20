@@ -14,8 +14,8 @@ public class MyEventsEvent {
     public MyEventsEvent(int id, String name, LocalDateTime date, String place, String resume, String details, String link) {
         this.id = id;
         this.name = name;
-        this.date = date;
         this.place = place;
+        this.date = date;
         this.resume = resume;
         this.details = details;
         this.link = link;
