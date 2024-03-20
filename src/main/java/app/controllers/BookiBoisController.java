@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.entities.Timeslot;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
@@ -7,6 +8,8 @@ import app.persistence.UserMapper;
 import app.persistence.BookingMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
+import java.util.ArrayList;
 
 public class BookiBoisController
 {
@@ -18,12 +21,39 @@ public class BookiBoisController
         app.post("/createbooking", ctx -> createBooking(ctx, connectionPool));
         app.get("/createbooking", ctx -> ctx.render("/bookibois/bookingsite.html"));
 
-
+        app.post("/gettimeslots", ctx -> checkTimeslot(ctx, connectionPool));
+        app.post("/selectTimeslot", ctx -> selectTimeslot(ctx));
     }
 
+    private static void selectTimeslot(Context ctx){
+        String timeslot = ctx.formParam("timeslot");
+        ctx.sessionAttribute("timeslot",timeslot);
+        //ctx.render("/bookibois/bookingsite.html");
+    }
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
         ctx.render("/bookibois/bookingsite.html");
+    }
+
+    private static void checkTimeslot(Context ctx, ConnectionPool connectionPool) {
+        //User user = ctx.sessionAttribute("currentUser");
+        try {
+            String dato = ctx.formParam("dato");
+            System.out.println(dato);
+            String behandling = ctx.formParam("behandling");
+            //BookingMapper.checkTime(dato, behandling, connectionPool);
+            ArrayList<Timeslot> taskList = BookingMapper.checkTime(dato, behandling, connectionPool);
+
+            ctx.attribute("taskList", taskList);
+            ctx.sessionAttribute("dato", dato);
+            ctx.render("/bookibois/bookingsite.html");
+
+        } catch (NumberFormatException e) {
+            ctx.attribute("message", e.getMessage());
+            ctx.render("index.html");
+        } catch (DatabaseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -31,8 +61,9 @@ public class BookiBoisController
         // Hent form parametre
         //String username = ctx.formParam("titel");
         String behandling = ctx.formParam("behandling");
-        String date = ctx.formParam("date");
-        String time = ctx.formParam("time");
+        String date = ctx.sessionAttribute("dato");
+        //String time = ctx.formParam("timeslot");
+        String time = ctx.sessionAttribute("timeslot");
         String behandler = ctx.formParam("behandler");
         String navn = ctx.formParam("name");
         String tlfnummer = ctx.formParam("tlf");

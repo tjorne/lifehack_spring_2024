@@ -1,12 +1,18 @@
 package app.persistence;
 
+import app.entities.Timeslot;
 import app.exceptions.DatabaseException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingMapper {
+
+
 
 
 
@@ -44,5 +50,37 @@ public class BookingMapper {
             }
             throw new DatabaseException(msg, e.getMessage());
         }
+    }
+
+    public static ArrayList<Timeslot> checkTime(String dato, String behandling, ConnectionPool connectionPool) throws DatabaseException {
+        {
+            ArrayList<Timeslot> taskList = new ArrayList<>();
+            String sql = "select * from timeslot where date=?";
+
+            try (
+                    Connection connection = connectionPool.getConnection();
+                    PreparedStatement ps = connection.prepareStatement(sql)
+            )
+            {
+                System.out.println(dato);
+                ps.setString(1, dato);
+                //ps.setString(2, behandling);
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next())
+                {
+                    String time = rs.getString("timeslot");
+                    String date = rs.getString("date");
+                    Boolean booked = rs.getBoolean("booked");
+                    taskList.add(new Timeslot(time, date, booked));
+                }
+            }
+            catch (SQLException e)
+            {
+                throw new DatabaseException("Fejl!!!!", e.getMessage());
+            }
+            return taskList;
+        }
+        //return new ArrayList<Timeslot>();
     }
 }
