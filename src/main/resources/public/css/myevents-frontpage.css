@@ -15,11 +15,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px;
-    background-color: white;
-    opacity: .5;
+    width: 50%;
+    background: rgba(255, 255, 255, 50%);
     padding: 8px;
-    min-height: 600px;
+    height: 98vh;
 }
 
 .button {
@@ -30,7 +29,7 @@ body {
 .center {
     display: flex;
     justify-content: center;
-    margin-top: 720px;
+    margin-top: 40px;
     height: 100%;
 }
 
@@ -39,14 +38,13 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 200px;
-
+    margin-top: 420px;
 }
 
 .search-button {
     content: url("../images/myeventsimages/searchicon.png");
     width: 20px;
     height: 20px;
-
 }
+
 
