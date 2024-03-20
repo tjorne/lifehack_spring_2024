@@ -7,15 +7,17 @@ public class MyEventsEvent {
     private String name;
     private LocalDateTime date;
     private String place;
+    private int zip;
     private String resume;
     private String details;
     private String link;
 
-    public MyEventsEvent(int id, String name, LocalDateTime date, String place, String resume, String details, String link) {
+    public MyEventsEvent(int id, String name, LocalDateTime date, String place, int zip, String resume, String details, String link) {
         this.id = id;
         this.name = name;
-        this.place = place;
         this.date = date;
+        this.place = place;
+        this.zip = zip;
         this.resume = resume;
         this.details = details;
         this.link = link;
@@ -35,6 +37,10 @@ public class MyEventsEvent {
 
     public String getPlace() {
         return place;
+    }
+
+    public int getZip() {
+        return zip;
     }
 
     public String getResume() {
@@ -65,6 +71,10 @@ public class MyEventsEvent {
         this.place = place;
     }
 
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
     public void setResume(String resume) {
         this.resume = resume;
     }
@@ -84,6 +94,7 @@ public class MyEventsEvent {
                 ", name='" + name + '\'' +
                 ", date=" + date +
                 ", place='" + place + '\'' +
+                ", zip=" + zip +
                 ", resume='" + resume + '\'' +
                 ", details='" + details + '\'' +
                 ", link='" + link + '\'' +
