@@ -34,23 +34,6 @@ public class Main
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
         }).start(7070);
 
-        /*
-        // Create a URL object
-        URL websiteLink = null;
-        try {
-            websiteLink = new URL("https://izumi.dk/");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        // Create a Path object
-        Path imagePath = Paths.get("public/images/restaurantFinder/restaurantFinderLogo.png");
-
-        // Create a new Restaurant object using the constructor
-        Restaurant restaurant = new Restaurant("Restaurant Name", "Address", "Description", "Cuisine", websiteLink, imagePath);
-        System.out.println("Her er restauranten: " + restaurant + "\nHer er linket til restaurantens hjemmeside: " +websiteLink + "\nBilleder?:" + imagePath);
-        */
-
         // Routing
 
         app.get("/", ctx -> ctx.render("index.html"));
