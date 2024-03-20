@@ -1,0 +1,52 @@
+html *{
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../images/myeventsimages/Forside.jpeg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    background-color: white;
+    opacity: .5;
+    padding: 8px;
+    min-height: 600px;
+}
+
+.button {
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 720px;
+    height: 100%;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 200px;
+
+}
+
+.search-button {
+    content: url("../images/myeventsimages/searchicon.png");
+    width: 20px;
+    height: 20px;
+
+}
+
