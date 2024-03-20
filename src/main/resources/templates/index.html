@@ -19,14 +19,27 @@
 
     <div class="projects">
         <h2>Projects to check out</h2>
+
         <div class="cards">
-                <div class="card">
-                    <img class="card-image" alt="timezones" src="../public/images/timezones/timezone_icon.jpg" th:src="@{/images/timezones/timezone_icon.jpg}"/>
-                    <div class="card-copy">Check the clock, everywhere</div>
-                    <a class="card-link" href="timezones/index.html" th:href="@{/timezones/}"/>Timezones</a>
-                </div>
+            <div class="card">
+                <img class="card-image" alt="timezones" src="../public/images/timezones/timezone_icon.jpg" th:src="@{/images/timezones/timezone_icon.jpg}"/>
+                <div class="card-copy">Check the clock, everywhere</div>
+                <a class="card-link" href="timezones/index.html" th:href="@{/timezones/}">Timezones</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="cards">
+            <div class="card">
+                <img class="card-image" alt="jeopardy" src="../public/images/Jeopardy/steveharvey.jpg" th:src="@{/images/Jeopardy/steveharvey.jpg}"/>
+                <div class="card-copy">Play Jeopardy.</div>
+                <a class="card-link" href="jeopardy/index.html" th:href="@{/jeopardy/}">Play Jeopardy.</a>
+            </div>
         </div>
     </div>
+
+
     <h3>If you need to log in - do it here</h3>
     <form class="generic-form" method="post">
         <input type="text" name="username" placeholder="Enter your username"/>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<title>Projectname</title>
+<title>Jeopardy.com</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../public/css/projectname.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../../public/css/jeopardy.css" th:href="@{/css/jeopardy.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -13,13 +13,22 @@
 <div class="page">
     <header>
         <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+            <img alt="logo" src="../../public/images/Jeopardy/steveharvey.jpg" th:src="@{/images/Jeopardy/steveharvey.jpg}"/>
         </a>
     </header>
 
-    <h1>Project name</h1>
+    <h1>Velkommen til Jeopardy!</h1>
 
-    <p>Make your splash page here</p>
+    <tr>
+    <td>
+    <button type="submit" name="create"  th:href="@{/}" formaction="create">Create your own Jeopardy.</button>
+    <br> <br>
+        <a href ="/templates/jeopardy/join.html" th:href="@{/}">
+        <button type="submit" name="join" formaction="join">Join an existing one.</button>
+        </a>
+    </td>
+    </tr>
+
 </div>
 </body>
 </html>
