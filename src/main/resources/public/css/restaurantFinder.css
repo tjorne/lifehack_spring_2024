@@ -1,0 +1,110 @@
+.headerlogo{
+    width: 200px;
+    margin: 10px;
+    border-radius: 50%;
+    position: absolute; /* Position the logo absolutely */
+    top: 10px; /* Adjust as needed */
+    left: 50px; /* Adjust as needed */
+}
+.headerText{
+    position: absolute;
+    left:500px;
+}
+
+.flexbox-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.flexbox-item{
+
+    width: 1443px;
+    border: 2px solid black;
+    background-color: thistle;
+
+
+}
+/**************************************** FLEXBOX 1 ****************************************/
+
+
+.flebox-item1, form button{
+    height: 165px;
+    flex-shrink: 0;
+    flex-grow: 1;
+    align-items: center;
+
+}
+.search-form{
+    display: flex;
+    align-items: center;
+
+}
+.search-form input[type =text]{
+    height: 50px;
+    margin-right: 30px;
+    padding: 50px 200px;
+    font-size: 1.2rem;
+}
+.search-form button{
+    height: 50px;
+    padding: 50px 30px;
+    font-size: 1.2rem;
+
+}
+/**************************************** FLEXBOX 2 ****************************************/
+
+.flebox-item2{
+
+    height: 573px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/**************************************** FLEXBOX 3 ****************************************/
+
+
+.flebox-item3{
+
+    height: 290px;
+
+ }
+.direct-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.direct-buttons button {
+    margin: 10px; /* Adjust margin as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 15px;
+}
+
+
+.direct-buttons button:nth-child(2n) {
+    align-self: flex-end;
+}
+
+.direct-buttons button:nth-child(3n) {
+    align-self: center;
+}
+
+.direct-buttons button:nth-child(5n) {
+    align-self: flex-end;
+}
+
+.direct-buttons button:nth-child(7n) {
+    align-self: flex-start;
+}
+
+
+
+
+
+

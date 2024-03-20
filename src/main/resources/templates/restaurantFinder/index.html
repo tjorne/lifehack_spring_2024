@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>RestaurantFinder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../../public/css/restaurantFinder.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<!--<div class="page">
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
+
+    <h1>Project name</h1>
+
+    <p>Make your splash page here</p>
+
+</div> -->
+
+<!------------- NEW HTML-------------- -->
+
+<div class="flexbox-container">
+    <div class="flexbox-item flebox-item1 ">
+        <h1 class="headerText">
+            Velkommen til Restaurant Finder!
+        </h1>
+    </div>
+    <div class="flexbox-item flebox-item2 ">
+        <form  class="search-form" method="post">
+            <input type="text" name="seach" placeholder="Seach for a cusine"/>
+            <button type="submit">Søg</button>
+        </form>
+    </div>
+    <div class="flexbox-item flebox-item3 ">
+        <form method="post">
+            <div class="direct-buttons">
+            <button type="submit" formaction="/Indisk">Indisk</button>
+            <button type="submit" formaction="/Koreansk">Koreansk</button>
+            <button type="submit"  formaction="/Thai">Thai</button>
+            <button type="submit" formaction="/Japansk">Japansk</button>
+            <button type="submit"  formaction="/Italiensk">Italiensk</button>
+            <button type="submit" formaction="/Mexicansk">Mexicansk</button>
+            <button type="submit" formaction="/Vietnamesisk">Vietnamesisk</button>
+            <button type="submit" formaction="/Amerikansk">Amerikansk</button>
+            </div>
+        </form>
+    </div>
+</div>
+<a href="../index.html" th:href="@{/}">
+    <img class="headerlogo" alt="logo" src="../../public/images/restaurantFinder/restaurantFinderLogo.png"
+         th:src="@{/images/lifehacklogo.png}"/>
+</a>
+
+</body>
+</html>
