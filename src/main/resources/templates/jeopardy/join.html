@@ -7,16 +7,14 @@
 <link href="../../public/css/jeopardy.css" th:href="@{/css/jeopardy.css}" rel="stylesheet"/>
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 
-
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <h1 class="body">SHALOM!</h1>
 </head>
 <body>
+
 <div class="page">
-
-
     <table class="task-table">
         <thead>
         <tr>
@@ -324,7 +322,18 @@
         </tr>
         </tbody>
     </table>
-</div>
+
+    <div class="team-container">
+        <!-- Teams will be dynamically generated here -->
+        <div class="team">
+            <input type="text" placeholder="Team 1 Name">
+            <input type="number" placeholder="Points">
+        </div>
+        <div class="team">
+            <input type="text" placeholder="Team 2 Name">
+            <input type="number" placeholder="Points">
+        </div>
+
 </body>
 </html>
 
