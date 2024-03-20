@@ -10,13 +10,10 @@ public class RestaurantFinderController
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
         app.get("restaurantFinder", ctx -> ctx.render("restaurantFinder/startPage.html"));
-        //app.get("templates/restaurantFinder", ctx -> index(ctx, connectionPool));
-
 
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool)
-
     {
         ctx.render("templates/restaurantFinder/startPage.html");
     }

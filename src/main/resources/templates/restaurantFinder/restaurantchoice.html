@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="flexbox-header-choice">
+    <img id="img-choice-header" src="/public/images/restaurantFinder/madbilleder/Indisk2_HindIndiskRestaurant.png">
+</div>
+
+<div class="flexbox-body-choice">
+    <div>
+        <p id="flex1-choice-description">Her skal beskrivelse indsættes</p>
+        <p id="flex2-choice-address">Her skal adressen stå</p>
+        <p id="flex3-choice-openinghours">Her skal åbningstider stå</p>
+
+        <form method="GET">
+            <button type="submit" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside
+            </button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
