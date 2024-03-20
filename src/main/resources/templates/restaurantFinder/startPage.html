@@ -9,37 +9,55 @@
 </head>
 
 <body>
-<div class="flexbox-container">
-    <div class="flexbox-item flebox-item1 ">
-        <h1 class="headerText">
-            Velkommen til Restaurant Finder!
-        </h1>
-    </div>
-    <div class="flexbox-item flebox-item2 ">
-        <form  class="search-form" method="post">
-            <input type="text" name="seach" placeholder="Seach for a cusine"/>
-            <button type="submit">Søg</button>
-        </form>
-    </div>
-    <div class="flexbox-item flebox-item3 ">
-        <form method="post">
-            <div class="direct-buttons">
-            <button type="submit" formaction="/Indisk">Indisk</button>
-            <button type="submit" formaction="/Koreansk">Koreansk</button>
-            <button type="submit"  formaction="/Thai">Thai</button>
-            <button type="submit" formaction="/Japansk">Japansk</button>
-            <button type="submit"  formaction="/Italiensk">Italiensk</button>
-            <button type="submit" formaction="/Mexicansk">Mexicansk</button>
-            <button type="submit" formaction="/Vietnamesisk">Vietnamesisk</button>
-            <button type="submit" formaction="/Amerikansk">Amerikansk</button>
+
+<div class="page-body">
+    <div class="page-content">
+
+        <div class="page-header">
+            <div class="headerlogo">
             </div>
-        </form>
+
+
+        </div>
+        <div class="tags-content">
+            <form method="post">
+                <div class="welcomeText"> VELKOMMEN TIL RestaurantFinder</div>
+                <div class="direct-buttons">
+                    <div class="direct-buttons2">
+                        <button type="button" formaction="/Indisk">Indisk</button>
+                    </div>
+
+                    <div class="direct-buttons1">
+                        <button type="submit" formaction="/Koreansk">Koreansk</button>
+                    </div>
+
+                    <div class="direct-buttons1">
+                        <button type="submit" formaction="/Thai">Thai</button>
+                    </div>
+
+                    <div class="direct-buttons2">
+                        <button type="submit" formaction="/Japansk">Japansk</button>
+                    </div>
+                    <div class="direct-buttons2">
+                        <button type="submit" formaction="/Italiensk">Italiensk</button>
+                    </div>
+                    <div class="direct-buttons1">
+                        <button type="submit" formaction="/Mexicansk">Mexicansk</button>
+                    </div>
+                    <div class="direct-buttons1">
+                        <button type="submit" formaction="/Vietnamesisk">Vietnamesisk</button>
+                    </div>
+                    <div class="direct-buttons2">
+                        <button type="submit" formaction="/Amerikansk">Amerikansk</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- <a href="../index.html" th:href="@{/}">
+             <img class="headerlogo" alt="logo" src="/public/images/restaurantFinder/restaurantFinderLogo.png"
+                  th:src="@{/images/restaurantFinder/restaurantFinderLogo.png}"/>
+         </a> -->
     </div>
 </div>
-<a href="../index.html" th:href="@{/}">
-    <img class="headerlogo" alt="logo" src="/public/images/restaurantFinder/restaurantFinderLogo.png"
-         th:src="@{/images/restaurantFinder/restaurantFinderLogo.png}"/>
-</a>
-
 </body>
 </html>
