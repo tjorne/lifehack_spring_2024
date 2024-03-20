@@ -10,6 +10,8 @@ import io.javalin.rendering.template.JavalinThymeleaf;
 
 public class Main
 {
+
+
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
     private static final String URL = "jdbc:postgresql://localhost:5432/%s?currentSchema=public";
@@ -33,6 +35,10 @@ public class Main
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
         JeopardyController.addRoutes(app, connectionPool);
+
+
+
+
 
     }
 }
