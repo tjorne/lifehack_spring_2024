@@ -11,13 +11,11 @@ body {
 
 .task-table td, .task-table th {
 
-.task-table td, .task-table th, .task-table tr {
     border: 1px solid #000000;
     padding: 10px;
     text-align: center;
 
 }
-
 
 .task-table tr:nth-child(even) {
     background-color: silver;
@@ -26,7 +24,7 @@ td:hover {
     background-color: #D6EEEE;
 }
 
-.toggle{
+.toggle {
     display: none;
 }
 
