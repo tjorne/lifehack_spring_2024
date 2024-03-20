@@ -77,7 +77,8 @@
     <br>
         <input type="text" id="tlf" name="tlf">
     <br><br>
-        <input type="submit" value="Book" formaction="/createbooking">
+        <input type="submit" value="Book" formaction="/createbooking"><br><br>
+        <div><p th:text="${message}"></p></div>
     <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
 
 </form>

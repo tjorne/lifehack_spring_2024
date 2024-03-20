@@ -30,6 +30,9 @@ public class BookingMapper {
             if (rowsAffected != 1)
             {
                 throw new DatabaseException("Fejl ved oprettelse af ny booking");
+            } else
+            {
+
             }
         }
         catch (SQLException e)

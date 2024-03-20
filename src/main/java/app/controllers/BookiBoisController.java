@@ -42,8 +42,8 @@ public class BookiBoisController
             BookingMapper.createBooking(behandling, date, time, behandler, navn, tlfnummer, connectionPool);
             //ctx.sessionAttribute("currentUser", user);
             // Hvis ja, send videre til forsiden med login besked
-            ctx.attribute("message", "Din booking er bekræftet");
-            //ctx.render("index.html");
+            ctx.attribute("message", "Din booking er hermed bekræftet");
+            ctx.render("/bookibois/bookingsite.html");
         } catch (DatabaseException e) {
             // Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage());
