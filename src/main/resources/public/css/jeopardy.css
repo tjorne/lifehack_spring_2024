@@ -1,3 +1,39 @@
 body {
     background-color: #097a9d;
 }
+
+.task-table {
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.task-table td, .task-table th {
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+.task-table tr:nth-child(even) {
+    background-color: silver;
+}
+
+.toggle {
+    display: none;
+}
+
+.answer {
+    display: none;
+}
+
+.question {
+    display: none;
+}
+
+.toggle:checked + label + .question {
+    display: block;
+}
+
+.toggle:checked + label + .answer {
+    display: block;
+}
