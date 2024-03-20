@@ -24,10 +24,12 @@ public class Main
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add("/public");
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
+            config.staticFiles.add("/templates");
         }).start(7070);
 
         // Routing
         app.get("/", ctx -> ctx.render("index.html"));
+        app.get("/join", ctx -> ctx.render("jeopardy/join.html"));
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
         JeopardyController.addRoutes(app, connectionPool);

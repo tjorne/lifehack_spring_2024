@@ -12,8 +12,7 @@ public class JeopardyController {
     }
 
     private static void join(Context ctx, ConnectionPool connectionPool) {
-        ctx.attribute("join");
-        ctx.render("join.html");
+        ctx.render("/jeopardy/join.html");
     }
 
     private static void create(Context ctx, ConnectionPool connectionPool) {

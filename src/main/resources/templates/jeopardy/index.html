@@ -20,14 +20,17 @@
     <h1>Velkommen til Jeopardy!</h1>
 
     <tr>
-    <td>
-    <button type="submit" name="create"  th:href="@{/}" formaction="create">Create your own Jeopardy.</button>
-    <br> <br>
-        <a href ="/templates/jeopardy/join.html" th:href="@{/}">
-        <button type="submit" name="join" formaction="join">Join an existing one.</button>
-        </a>
-    </td>
+        <td>
+            <form action="/jeopardy/create" method="post">
+                <button type="submit" name="create">Create your own Jeopardy.</button>
+            </form>
+            <br><br>
+            <a href="/templates/jeopardy/join.html" th:href="@{/jeopardy/join.html}">
+                Join an existing one.
+            </a>
+        </td>
     </tr>
+
 
 </div>
 </body>
