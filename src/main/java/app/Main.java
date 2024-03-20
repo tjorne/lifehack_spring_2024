@@ -6,8 +6,7 @@ import app.controllers.UserController;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
-//Hej Med jer dette er en test.
-Hej med jer her burde der stå noget.
+
 public class Main
 {
     private static final String USER = "postgres";

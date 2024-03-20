@@ -1,15 +1,24 @@
 package app;
 
 import app.gruppe1Controller.Gruppe1Controller;
+import app.gruppe1Entities.Gruppe1CalculateWater;
 
-import static app.Main.connectionPool;
+import java.util.Scanner;
+
 
 public class Gruppe1Main
 {
     public static void main(String[] args)
     {
-        // ...........
-        // Add routing
-        Gruppe1Controller.addRoutes(app, connectionPool);
+        Gruppe1CalculateWater calculateWater = new Gruppe1CalculateWater();
+        Scanner UserInput = new Scanner(System.in);
+
+        System.out.println("Enter the amount of water you have been drinking.");
+
+        float waterConsumed = UserInput.nextFloat();
+
+        calculateWater.setWaterConsumed(waterConsumed);
+        calculateWater.calculateRemainingWater();
+        System.out.println(calculateWater.toString());
     }
 }
