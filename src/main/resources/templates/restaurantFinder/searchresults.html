@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results For Restaurants</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="page-body">
+<div class="page-content">
+
+  <div class="page-header">
+    <div class="logo">LOGO PICTURE</div>
+  </div>
+
+  <div class="display-all">
+    <div class="display-single">
+      <div class="restaurant-img"></div>
+      <div class="restaurant-name">Restaurant 1</div>
+    </div>
+    <!-- test< -->
+    <div class="display-single">
+      <div class="restaurant-img"></div>
+      <div class="restaurant-name">Restaurant 2</div>
+    </div>
+    <div class="display-single">
+      <div class="restaurant-img"></div>
+      <div class="restaurant-name">Restaurant 3</div>
+    </div>
+    <div class="display-single">
+      <div class="restaurant-img"></div>
+      <div class="restaurant-name">Restaurant 4</div>
+    </div>
+    <!-- test -->
+  </div>
+
+  <div class="page-footer">
+      <button class="return-button" type="submit">Go Back</button>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+<!-- instead of saving image path as String then name the images as the restaurant name
+with the same img ending (.png/.jpg etc) and call like th:src="@{/images/{name}.png(name=${restaurant.name})}"
+-->
