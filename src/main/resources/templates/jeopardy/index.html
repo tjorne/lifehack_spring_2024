@@ -21,12 +21,11 @@
 
     <tr>
         <td>
-            <form action="/jeopardy/create" method="post">
-                <button type="submit" name="create">Create your own Jeopardy.</button>
-            </form>
-            <br><br>
-            <a class = "card-link" href="/templates/jeopardy/join.html" th:href="@{/join}">
 
+            <a class = "card-link" href="/templates/jeopardy/create.html" th:href="@{/create}">
+               Create your own Jeopardy
+            </a>
+            <a class = "card-link" href="/templates/jeopardy/join.html" th:href="@{/join}">
                 Join an existing one.
             </a>
         </td>
