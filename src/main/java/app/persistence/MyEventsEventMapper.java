@@ -2,7 +2,6 @@ package app.persistence;
 
 import app.entities.MyEventsCategory;
 import app.entities.MyEventsEvent;
-import app.entities.Task;
 import app.exceptions.DatabaseException;
 
 import java.sql.Connection;
