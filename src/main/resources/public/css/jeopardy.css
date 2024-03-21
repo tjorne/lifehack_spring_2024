@@ -20,11 +20,9 @@ body {
 }
 
 .task-table td, .task-table th {
-
     border: 3px solid #000000;
     padding: 40px;
     text-align: center;
-
 }
 .task-table th{
     background-color: #efd69d;
@@ -49,6 +47,10 @@ td:hover {
 
 .answer {
     display: none;
+}
+
+.answer {
+    background-color: darkgreen;
 }
 
 
@@ -117,4 +119,8 @@ td:hover {
 
 .team:hover {
     background-color: #9a9a9a;
+}
+
+label:hover {
+    background-color: #c2b8b8;
 }
