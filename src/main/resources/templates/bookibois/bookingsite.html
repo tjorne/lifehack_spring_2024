@@ -5,7 +5,6 @@
     <title>BookingBois</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link href="../../public/css/bookiBois.css" th:href="@{/css/bookiBois.css}" rel="stylesheet"/>
 </head>
 
@@ -15,8 +14,6 @@
 
 <div class="page">
     <header>
-        <h1 id="titel">www.LifeHacks.dk</h1>
-
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
         </a>
@@ -50,24 +47,6 @@
             <input type="radio" th:name="timeslot" th:value="${timeslot.time}" th:id="${timeslot.time}" required/>
             <label th:for="${timeslot.time}" th:text="${timeslot.time}">Time</label>
         </div>
-
-        <!--
-        <label for="behandler">Vælg en behandler:</label>
-        <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
-        <br>
-
-        <select name="behandler" id="behandler">
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-        </select>
-
-    -->
 
         <br><br>
         <label for="name">Navn:</label>

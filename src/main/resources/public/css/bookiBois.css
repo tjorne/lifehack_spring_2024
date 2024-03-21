@@ -154,6 +154,10 @@ div {
     clear: both;
 }
 
+img {
+    max-width: 95%;
+}
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
