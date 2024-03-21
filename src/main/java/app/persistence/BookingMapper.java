@@ -45,7 +45,7 @@ public class BookingMapper {
             }
             throw new DatabaseException(msg, e.getMessage());
         }
-        updateTimeslotBoolean(date,time,connectionPool);
+        //updateTimeslotBoolean(date,time,behandling,connectionPool);
     }
 
     public static ArrayList<Timeslot> checkTime(String dato, String behandling, ConnectionPool connectionPool) throws DatabaseException {
@@ -55,7 +55,7 @@ public class BookingMapper {
             String[] timeslots = new String[]{"8.30-9.30", "9.30-10.30", "10.30-11.30", "11.30-12.30", "12.30-13.30", "13.30-14.30", "14.30-15.30"};
 
 
-            String sql = "select * from timeslot where date=? AND timeslot = ? AND booked = TRUE";
+            String sql = "select * from booking where date=? AND time = ? AND booking_type = ?";
 
             try (
                     Connection connection = connectionPool.getConnection();
@@ -65,9 +65,10 @@ public class BookingMapper {
                 for(String timeslot : timeslots) {
                     ps.setString(1, dato);
                     ps.setString(2, timeslot);
+                    ps.setString(3, behandling);
                     ResultSet rs = ps.executeQuery();
                     if(!rs.next()){
-                        taskList.add(new Timeslot(timeslot,dato,false));
+                        taskList.add(new Timeslot(timeslot,dato,false, behandling));
                     }
                 }
 
@@ -80,8 +81,9 @@ public class BookingMapper {
         }
         //return new ArrayList<Timeslot>();
     }
-    public static void updateTimeslotBoolean(String date, String time, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO timeslot(date,timeslot,booked) VALUES(?, ?, TRUE)";
+    /*
+    public static void updateTimeslotBoolean(String date, String time, String behandling,ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO timeslot(date,timeslot,booked,handling) VALUES(?, ?, TRUE, ?)";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -89,6 +91,8 @@ public class BookingMapper {
         ) {
             ps.setString(1, date);
             ps.setString(2, time);
+            ps.setString(3, behandling);
+
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
@@ -97,5 +101,5 @@ public class BookingMapper {
         } catch (SQLException e) {
             throw new DatabaseException("Database fejl: " + e.getMessage());
         }
-    }
+    }*/
 }
