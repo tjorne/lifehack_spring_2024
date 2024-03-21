@@ -4,7 +4,44 @@
     <meta charset="UTF-8">
     <title>My Favorites</title>
 </head>
-<body>
 
+<body>
+<div th:replace="~{fragments :: header('Header fragment')}"></div>
+
+<div class="page">
+    <div class="top-buttons">
+        <a class="left" th:href="@{/myevents}">Back to frontpage</a>
+        <a class="right" href="index.html">Log out</a>
+    </div>
+
+    <h1>Your favorite events:</h1>
+
+    <form method="post">
+        <table>
+            <tbody>
+            <tr class ="item-preview" th:each="item: ${favorites}" >
+                <td>
+                    <img class="item-img" th:src="${item.getLink()}">
+                </td>
+                <td class="item-info">
+                    <h4 th:text="${item.getName()}">Title</h4>
+                    <h2 th:text="${item.getFormattedDate()}">Date</h2>
+                    <p><span th:text="${item.getResume()}">Resume</span></p>
+                    <div>
+                        <div class="read-btn" >
+                            <button type="submit" name="id" th:value="${item.getId}" formaction="/myevents"><span>Read more</span></button>
+                        </div>
+                        <div class="heart-btn">
+                            <input type="checkbox">
+                            <button><span>Favorite</span></button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+</div>
 </body>
 </html>

@@ -20,7 +20,7 @@ public class MyEventsController {
         app.get("/myevents", ctx -> index(ctx, connectionPool));
         app.post("/myevents", ctx -> viewEvent(ctx, connectionPool));
 
-        app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
+        app.get("/myevents/favorites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
         app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
@@ -117,9 +117,9 @@ public class MyEventsController {
         User user = ctx.sessionAttribute("currentUser");
 
         try {
-            List<MyEventsEvent> favouriteEvents = MyEventsEventMapper.getAllUserFavoriteEvents(user.getUserId(), connectionPool);
-            ctx.attribute("favouriteList", favouriteEvents);
-            ctx.render("favourite.html");
+            List<MyEventsEvent> favoriteEvents = MyEventsEventMapper.getAllUserFavoriteEvents(user.getUserId(), connectionPool);
+            ctx.attribute("favorites", favoriteEvents);
+            ctx.render("/myevents/favorites.html");
 
         } catch (DatabaseException e) {
             throw new DatabaseException("Error in trying to load user favourite list" + e.getMessage());

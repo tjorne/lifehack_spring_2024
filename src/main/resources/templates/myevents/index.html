@@ -36,7 +36,7 @@
     </div>
 
     <div class="center">
-        <a class="button" href="favorites.html" th:href="@{/myfavorites}">My favorites</a>
+        <a class="button" href="favorites.html" th:href="@{/myevents/favorites}"> My favorites</a>
         <span class="button" th:if="${session.currentUser != null}"> |  </span>
         <a class="button" th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Log out</a>
     </div>
