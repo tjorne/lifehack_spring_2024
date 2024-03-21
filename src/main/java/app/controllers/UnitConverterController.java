@@ -23,7 +23,7 @@ public class UnitConverterController
     private static void weightConverter(Context ctx)
         {
         WeightConverter weightConverter = new WeightConverter();
-        double input = Double.parseDouble(ctx.formParam("number"));
+        double input = Double.parseDouble(ctx.formParam("weightfrom"));
         weightConverter.kgToTon(input);
         }
 
@@ -36,15 +36,15 @@ public class UnitConverterController
 
     private static void timeConverter(Context ctx)
         {
-        TimeConverter timeConverter = new TimeConverter();
-        double input = Double.parseDouble(ctx.formParam("timefromuser"));
-        double output = timeConverter.daysToHours(input);
-        ctx.attribute("timetouser", output);
-        ctx.render("/Gruppe-B8-unit-converter/index.html");
+            TimeConverter timeConverter = new TimeConverter();
+            double input = Double.parseDouble(ctx.formParam("timefrom"));
+            double output = timeConverter.daysToHours(input);
 
+            // Preserving unit type and output for rendering
+            ctx.attribute("selectedUnit", "time");
+            ctx.attribute("timeto", output);
 
-
-
+            ctx.render("/Gruppe-B8-unit-converter/index.html");
         }
 
     private static void temperatureConverter(Context ctx)

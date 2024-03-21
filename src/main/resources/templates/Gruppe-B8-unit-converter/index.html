@@ -6,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 <link href="../../public/css/unitconverter.css" th:href="@{/css/unitconverter.css}" rel="stylesheet"/>
-
+<style>
+    .unit-group { display: none; }
+</style>
 </head>
 
 <body>
@@ -22,15 +24,17 @@
 
     Select a unit to convert
 
+
+
     <form class="select-forms" method="post">
             <select id="masterUnit" name="unit">
                 <option value="" disabled selected>Select a unit</option>
-                <option value="time">Time</option>
-                <option value="volume">Volume</option>
-                <option value="weight">Weight</option>
-                <option value="length">Length</option>
-                <option value="area">Area</option>
-                <option value="temperature">Temperature</option>
+                <option value="time" th:selected="${selectedUnit == 'time'}">Time</option>
+                <option value="volume" th:selected="${selectedUnit == 'volume'}">Volume</option>
+                <option value="weight" th:selected="${selectedUnit == 'weight'}">Weight</option>
+                <option value="length" th:selected="${selectedUnit == 'length'}">Length</option>
+                <option value="area" th:selected="${selectedUnit == 'area'}">Area</option>
+                <option value="temperature" th:selected="${selectedUnit == 'temperature'}">Temperature</option>
             </select>
     </form>
 
@@ -109,7 +113,7 @@
                 <option value="day">Day</option>
                 <option value="week">Week</option>
             </select>
-            <input type="number"formaction="/timeconverter" name="timefromuser" placeholder="Enter a number">
+            <input type="number"formaction="/timeconverter" name="timefrom" placeholder="Enter a number">
         </div>
 
 
@@ -122,9 +126,7 @@
                 <option value="day">Day</option>
                 <option value="week">Week</option>
             </select>
-
-
-            <input type="number" name="timetouser" readonly th:value="${timetouser}">
+            <input type="number" name="timeto" readonly th:value="${timeto}">
         </div>
 
 
@@ -175,21 +177,25 @@
 
 
     <script>
-        document.getElementById('masterUnit').addEventListener('change', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            var masterUnitSelect = document.getElementById('masterUnit');
+            displayUnitGroup(masterUnitSelect.value); // Display group on page load based on current selection
+
+            masterUnitSelect.addEventListener('change', function() {
+                displayUnitGroup(this.value);
+            });
+        });
+
+        function displayUnitGroup(selectedUnit) {
             var unitGroups = document.getElementsByClassName('unit-group');
+            Array.from(unitGroups).forEach(group => group.style.display = 'none'); // Hide all groups
 
-
-            var selectedUnit = this.value;
             // Show both 'from' and 'to' groups for the selected unit
             var selectedGroupFrom = document.getElementById(selectedUnit + 'From');
-            if (selectedGroupFrom) {
-                selectedGroupFrom.style.display = 'block';
-            }
             var selectedGroupTo = document.getElementById(selectedUnit + 'To');
-            if (selectedGroupTo) {
-                selectedGroupTo.style.display = 'block';
-            }
-        });
+            if (selectedGroupFrom) selectedGroupFrom.style.display = 'block';
+            if (selectedGroupTo) selectedGroupTo.style.display = 'block';
+        }
     </script>
 
 </div>
