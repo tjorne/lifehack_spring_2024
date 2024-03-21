@@ -111,11 +111,6 @@ public class MyEventsController {
         }
     }
 
-    private static void viewEvent(Context ctx, ConnectionPool connectionPool) {
-        int id = Integer.parseInt(ctx.formParam("id"));
-        ctx.render("/myevents/index.html");
-    }
-
     private static void index(Context ctx, ConnectionPool connectionPool) {
         ctx.render("/myevents/index.html");
     }
@@ -143,11 +138,16 @@ public class MyEventsController {
     private static void viewUserFavourites(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         User user = ctx.sessionAttribute("currentUser");
 
+        if (user == null) {
+            ctx.attribute("message", "You must be logged in to view your favorites.");
+            ctx.render("/myevents/index.html");
+            return;
+        }
+
         try {
             List<MyEventsEvent> favoriteEvents = MyEventsEventMapper.getAllUserFavoriteEvents(user.getUserId(), connectionPool);
             ctx.attribute("favorites", favoriteEvents);
             ctx.render("/myevents/favorites.html");
-
         } catch (DatabaseException e) {
             throw new DatabaseException("Error in trying to load user favourite list" + e.getMessage());
         }
