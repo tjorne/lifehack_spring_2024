@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.entities.MyEventsCategory;
 import app.entities.MyEventsEvent;
+import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
 import app.persistence.MyEventsEventMapper;
@@ -19,6 +20,7 @@ public class MyEventsController
         app.get("/myevents", ctx -> index(ctx, connectionPool));
         app.get("/myevents/event", ctx -> eventOverview(ctx, connectionPool));
         app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
+        app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
 
     }
 
@@ -63,6 +65,19 @@ public class MyEventsController
             System.out.println("Error: " + e.getMessage());
         } catch (DatabaseException e) {
             System.out.println("Database Error: " + e.getMessage());
+        }
+    }
+
+    private static void viewUserFavourites (Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+        User user = ctx.sessionAttribute("currentUser");
+
+        try {
+           List <MyEventsEvent> favouriteEvents = MyEventsEventMapper.getAllUserFavoriteEvents(user.getUserId(), connectionPool);
+           ctx.attribute("favouriteList", favouriteEvents);
+           ctx.render("favourite.html");
+
+        } catch (DatabaseException e){
+            throw new DatabaseException("Error in trying to load user favourite list" + e.getMessage());
         }
     }
 }
