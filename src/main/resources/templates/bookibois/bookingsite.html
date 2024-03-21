@@ -23,10 +23,10 @@
     </header>
 
 
-    <form action="" method="post">
+    <form id="myForm" action="" method="post">
         <label for="behandling">Vælg en behandling:</label>
         <br>
-        <select name="behandling" id="behandling">
+        <select name="behandling" id="behandling" required>
             <option th:text="${behandling}" th:value="${behandling}">Behandling</option>
             <option value="Psykolog" >Psykolog</option>
             <option value="Kiropraktor">Kiropraktor</option>
@@ -41,13 +41,13 @@
 
 
         <label for="dato">Dato:</label>
-        <input type="date" id="dato" name="dato" th:value="${dato}">
-            <button class="edit-buttons" th:if="${session.bookiBoysUser == null}" formaction="/gettimeslots">Se ledige tider⚙️</button>
-            <br>
+        <input type="date" id="dato" name="dato" th:value="${dato}" formaction="/gettimeslots" required>
+            <!--<button id="hiddenSubmit" class="edit-buttons" th:if="${session.bookiBoysUser == null}" formaction="/gettimeslots">Se ledige tider⚙️</button>
+            --><br>
             <br><br>
 
         <div th:each="timeslot : ${taskList}" th:if="${!timeslot.booked}">
-            <input type="radio" th:name="timeslot" th:value="${timeslot.time}" th:id="${timeslot.time}" />
+            <input type="radio" th:name="timeslot" th:value="${timeslot.time}" th:id="${timeslot.time}" required/>
             <label th:for="${timeslot.time}" th:text="${timeslot.time}">Time</label>
         </div>
 
@@ -72,11 +72,11 @@
         <br><br>
         <label for="name">Navn:</label>
         <br>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" required>
         <br><br>
         <label for="tlf">Telefon nummer:</label>
         <br>
-        <input type="text" id="tlf" name="tlf">
+        <input type="text" id="tlf" name="tlf" required>
         <br><br>
         <input type="submit" value="Book" formaction="/createbooking"><br><br>
         <div><p th:text="${message}"></p></div>
@@ -100,7 +100,22 @@
     }
 
     today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("dato").setAttribute("min", today);
+    var dateInput = document.getElementById('dato');
+
+    dateInput.setAttribute("min", today);
+
+    // Get reference to the date input field
+
+    var form = document.getElementById('myForm');
+
+    // Add event listener for change event
+    dateInput.addEventListener('change', function () {
+        // Set the form action dynamically
+        form.action = "/gettimeslots";
+        // Submit the form
+        form.submit();
+    });
+
 </script>
 </body>
 
