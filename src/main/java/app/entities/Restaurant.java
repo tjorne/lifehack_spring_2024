@@ -17,7 +17,6 @@ public class Restaurant {
         this.description = description;
         this.typeOfCuisine = typeOfCuisine;
         this.websiteLink = websiteLink;
-
     }
 
     public String getName() {

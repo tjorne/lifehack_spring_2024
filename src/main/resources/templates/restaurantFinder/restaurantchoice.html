@@ -7,7 +7,6 @@
     <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
 </head>
 <body>
-
 <th:block th:object="${chosenRestaurant}">
     <div class="flexbox-header-choice">
         <img class="background-image"
@@ -32,8 +31,6 @@
                 <p class="subheading">Åbningstider</p>
                 <p th:text="${chosenRestaurant.getOpeningHours()}"></p>
             </div>
-
-
 
             <a th:href="${chosenRestaurant.getWebsiteLink()}">
                 <button class="button button1" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens

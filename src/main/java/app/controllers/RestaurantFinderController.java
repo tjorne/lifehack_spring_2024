@@ -6,7 +6,6 @@ import app.persistence.ConnectionPool;
 import app.persistence.RestaurantMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
-
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +23,6 @@ public class RestaurantFinderController
         app.get("restaurantFinder/restaurantchoice/{id}", ctx -> {
             getChosenRestaurant(ctx);
         });
-
-
     }
 
     private static void getChosenRestaurant(Context ctx) {

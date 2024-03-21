@@ -1,12 +1,11 @@
 package app.persistence;
 
 import app.entities.Restaurant;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantMapper {
-    private static List<Restaurant> allRestaurants = new ArrayList<Restaurant>();
+    private static List<Restaurant> allRestaurants = new ArrayList<>();
 
     public static void createRestaurants() {
         Restaurant thai1 = new Restaurant(1,"Ayut Taya","Griffenfeldsgade 39, 2200 København N" ,
@@ -47,9 +46,8 @@ public class RestaurantMapper {
         allRestaurants.add(koreansk2);
     }
 
-
     public static List<Restaurant> getRestaurantsWithCertainCuisine(String cuisine) {
-        List<Restaurant> restaurantsWithCertainCuisine = new ArrayList<Restaurant>();
+        List<Restaurant> restaurantsWithCertainCuisine = new ArrayList<>();
         for (Restaurant r: allRestaurants) {
             if (r.getTypeOfCuisine().equals(cuisine)) {
                 restaurantsWithCertainCuisine.add(r);
