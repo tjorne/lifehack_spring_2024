@@ -22,7 +22,7 @@ body {
 }
 
 table {
-    
+
     border: 14px solid rgba(255, 180, 45, 0.5);
     margin-bottom: 20px;
 }
@@ -45,6 +45,11 @@ tbody {
 
 .right {
     padding-left: 50px;
+}
+
+.item-info-img {
+    width: 100%;
+    height: 300px;
 }
 
 .item-preview {
@@ -70,13 +75,13 @@ tbody {
 }
 
 .item-info h4 {
-    margin-top: -2%;
+    margin-top: -3%;
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .item-info h2 {
-    margin-top: -3%;
+
     font-size: 0.8rem;
     font-weight: lighter;
 }
@@ -85,6 +90,11 @@ tbody {
     font-size: 1rem;
     font-weight: lighter;
 
+}
+
+.small-info {
+    border: 1px solid #000000;
+    text-align: center;
 }
 
 
@@ -102,7 +112,6 @@ tbody {
     font-size: 0.7em;
     float: right;
     margin-right: 3%;
-    margin-top: 2%;
 }
 
 .read-btn {
@@ -112,7 +121,6 @@ tbody {
     font-size: 0.7em;
     float: right;
     margin-right: 3%;
-    margin-top: 2%;
 }
 
 .read-btn button {
