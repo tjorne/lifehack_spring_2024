@@ -37,7 +37,7 @@ public class MyEventsEventMapper {
 
         StringBuilder sql = new StringBuilder("SELECT DISTINCT event_id, event_name, event_date, event_place, event_zip, event_resume, event_details, event_link FROM my_events.events " +
                 "INNER JOIN my_events.events_categories ON my_events.events.event_id = my_events.events_categories.events_event_id " +
-                "WHERE my_events.events.event_zip = ?");
+                "WHERE my_events.events.event_zip = ? and where my_events.categories.categories_category_id = ?");
 
         if (!categories.isEmpty()) {
             sql.append(" AND (");
@@ -69,6 +69,7 @@ public class MyEventsEventMapper {
             throw new DatabaseException("Error in getting the events with zip = " + zip, e.getMessage());
         }
     }
+
 
     public static List<MyEventsEvent> getAllUserFavoriteEvents(int userId, ConnectionPool connectionPool) throws DatabaseException {
 
