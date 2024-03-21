@@ -4,11 +4,13 @@
     justify-content: center;
     height: 200px;
     background-color: grey;
+    border-radius: 10px;
     text-align: center;
     width: 50%;
     padding-top: 50px;
     margin: 0 auto;
 }
+
 
 .direct-buttons {
     display: flex;
@@ -27,10 +29,12 @@
 .tags-content {
     flex-grow: 2;
    }
-.tags-content-image{
-    height: 100%;
+.background-image{
     width: 100%;
-    background-size: cover;
+    height: auto;
+    position: absolute;
+    z-index: -1;
+
 }
 
 /* SEARCH RESULTS CSS*/
@@ -38,7 +42,7 @@
     padding: 0;
     margin: 0;
     max-width: 100%;
-}
+    }
 
 .page-content {
     margin: 0 auto;
@@ -46,6 +50,7 @@
     min-height: 100vh;
     display: flex;
     flex-flow: column;
+
 }
 
 /*Header*/

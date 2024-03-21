@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <title>RestaurantFinder</title>
 <meta charset="UTF-8">
@@ -19,8 +19,8 @@
 
         </div>
         <div class="tags-content">
-            <div class="tags-content-image" style="background-image: url('/public/images/restaurantFinder/backgroundPicture.png')">
-            <form method="post" th:action="@{/restaurantFinder/chosenCuisine}">
+            <img class="background-image" src="/images/restaurantFinder/backgroundPicture.png">
+                <form method="post" th:action="@{/restaurantFinder/chosenCuisine}">
                 <div class="welcomeText"> VELKOMMEN TIL RestaurantFinder</div>
 
                 <div class="direct-buttons">
@@ -65,7 +65,6 @@
                     </div>
                 </div>
             </form>
-            </div>
         </div>
     </div>
 </div>
