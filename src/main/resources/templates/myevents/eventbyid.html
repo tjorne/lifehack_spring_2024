@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Eventlist</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../public/css/myevent_eventlist.css" th:href="@{/css/myevent_eventlist.css}" rel="stylesheet"/>
+</head>
+
+
+<body>
+<div th:replace="~{fragments :: header('Header fragment')}"></div>
+
+<div class="page">
+  <div class="top-buttons">
+    <a class="left" th:href="@{/createitem}">Go to favorites</a>
+    <a class="right" href="eventlist.html" th:href="@{/myevents}">Back to events</a>
+  </div>
+
+  <div class="item-info">
+      <img class="item-info-img" th:src="${eventItem.getLink()}">
+
+      <h1 th:text="${eventItem.getName()}">Title</h1>
+      <div class="small-info">
+        <h2 th:text="${eventItem.getFormattedDate()}">Date</h2>
+        <h2 th:text="${eventItem.getPlace()}">Place</h2>
+        <h2 th:text="${eventItem.getZip()}">Zip</h2>
+      </div>
+      <h3 th:text="${eventItem.getDetails()}">Details</h3>
+  </div>
+
+
+
+</div>
+</body>
+</html>
