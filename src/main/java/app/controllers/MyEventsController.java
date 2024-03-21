@@ -20,7 +20,6 @@ public class MyEventsController
         app.get("/myevents/event", ctx -> eventOverview(ctx, connectionPool));
         app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
 
-
     }
 
     private static void searchResults(Context ctx, ConnectionPool connectionPool) {
@@ -34,19 +33,16 @@ public class MyEventsController
 
         try {
             List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(Integer.parseInt(zipcode), categories, connectionPool);
+            ctx.attribute("events", events);
+            ctx.render("/myevents/eventlist.html");
 
-            ctx.render("/myevents/eventlist.html", Map.of("events", events));
-
-        } catch (NumberFormatException e) {
-            ctx.result("Invalid zipcode. Please enter a valid zipcode.");
         } catch (DatabaseException e) {
-            ctx.result("Database Error: " + e.getMessage());
+            ctx.attribute("message", "Something went wrong - try again");
         }
     }
 
 
-    private static void index(Context ctx, ConnectionPool connectionPool)
-    {
+    private static void index(Context ctx, ConnectionPool connectionPool){
         ctx.render("/myevents/index.html");
     }
 

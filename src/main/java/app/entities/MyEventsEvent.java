@@ -1,6 +1,9 @@
 package app.entities;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class MyEventsEvent {
     private int id;
@@ -33,6 +36,11 @@ public class MyEventsEvent {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public String getFormattedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd" + " || " + "HH:mm");
+        return date.format(formatter);
     }
 
     public String getPlace() {
@@ -86,6 +94,7 @@ public class MyEventsEvent {
     public void setLink(String link) {
         this.link = link;
     }
+
 
     @Override
     public String toString() {
