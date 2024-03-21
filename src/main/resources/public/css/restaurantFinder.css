@@ -5,16 +5,17 @@
     text-transform: uppercase;
     justify-content: center;
     height: 200px;
-    background-color: #ADE0FF;
-    border-radius: 7px;
-    border: 10px double #36FCEF;
+    background-color: #B3D0C4;
     text-align: center;
     color: black;
     width: 50%;
-    padding-top: 50px;
     margin: 10px auto;
-    font-size: 22px;
+    font-size: 4vh;
     font-weight: bold;
+    border: 2vh double #4C4C9D;
+    border-radius: 10vh;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 5vh 15vh;
+    padding: 2vh;
 }
 
 
@@ -166,9 +167,13 @@
     bottom: 0;
     display: flex;
     align-items: center;
+    margin-top: 2vh;
 }
 
 @media screen and (max-width: 1000px) {
+    .welcomeText {
+        font-size: 11px;
+    }
     .display-single {
         width: 100%;
     }
