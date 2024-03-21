@@ -10,14 +10,13 @@
     color: black;
     width: 50%;
     margin: 10px auto;
-    font-size: 4vh;
+    font-size: 17px;
     font-weight: bold;
     border: 2vh double #4C4C9D;
     border-radius: 10vh;
     box-shadow: rgba(0, 0, 0, 0.75) 0 5vh 15vh;
     padding: 2vh;
 }
-
 
 .direct-buttons {
     display: flex;
