@@ -148,7 +148,7 @@ public class MyEventsController {
 
         if (user == null) {
             ctx.attribute("message", "You must be logged in to view your favorites.");
-            ctx.render("/myevents/index.html");
+            index(ctx, connectionPool);
             return;
         }
 
