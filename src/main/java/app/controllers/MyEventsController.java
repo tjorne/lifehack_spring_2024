@@ -2,7 +2,6 @@ package app.controllers;
 
 import app.entities.MyEventsCategory;
 import app.entities.MyEventsEvent;
-import app.entities.Task;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
@@ -10,15 +9,17 @@ import app.persistence.MyEventsEventMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public class MyEventsController
-{
+public class MyEventsController {
+
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
-        app.get("/myevents", ctx -> index(ctx, connectionPool));
-        app.get("/myevents/event", ctx -> eventOverview(ctx, connectionPool));
+        app.get("/myevents", ctx -> eventlist(ctx, connectionPool));
+        app.post("/myevents", ctx -> viewEvent(ctx, connectionPool));
 
-        app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
+        app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
     }
@@ -65,7 +66,8 @@ public class MyEventsController
         List<MyEventsCategory> categories = new ArrayList<>();
         for (String categoryName : selectedCategories) {
             MyEventsCategory category = new MyEventsCategory(-1, categoryName);
-            categories.add(category);}
+            categories.add(category);
+        }
 
         try {
             List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(Integer.parseInt(zipcode), categories, connectionPool);
@@ -77,8 +79,12 @@ public class MyEventsController
         }
     }
 
+    private static void viewEvent(Context ctx, ConnectionPool connectionPool) {
+        int id = Integer.parseInt(ctx.formParam("id"));
+        ctx.render("/myevents/index.html");
+    }
 
-    private static void index(Context ctx, ConnectionPool connectionPool){
+    private static void index(Context ctx, ConnectionPool connectionPool) {
         ctx.render("/myevents/index.html");
     }
 
@@ -101,4 +107,16 @@ public class MyEventsController
             System.out.println("Database Error: " + e.getMessage());
         }
     }
+
+    private static void viewUserFavourites(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+        User user = ctx.sessionAttribute("currentUser");
+
+        try {
+            List<MyEventsEvent> favouriteEvents = MyEventsEventMapper.getAllUserFavoriteEvents(user.getUserId(), connectionPool);
+            ctx.attribute("favouriteList", favouriteEvents);
+            ctx.render("favourite.html");
+
+        } catch (DatabaseException e) {
+            throw new DatabaseException("Error in trying to load user favourite list" + e.getMessage());
+        }
 }
