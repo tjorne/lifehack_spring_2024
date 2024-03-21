@@ -34,6 +34,7 @@ public class Gruppe1Main
          */
 
         app.get("/", ctx -> ctx.render("gruppe1Templates/index.html"));
+        app.post("/waterIntakeMessage", ctx -> ctx.render("gruppe1Templates/waterIntakeMessage.html"));
 
     }
 }

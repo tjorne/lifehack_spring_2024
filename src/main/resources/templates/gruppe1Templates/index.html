@@ -29,8 +29,10 @@
 
 <br/>
 
-    <button class= "buttonstyle" type="submit">Are you on track?</button>
+    <form method="post">
+    <button formaction="/waterIntakeMessage">Are you on track?</button>
 
+    </form>
 <p th:text="${session.waterIntake}"></p>
 
 </div>
