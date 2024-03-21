@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/myevent_eventlist.css" th:href="@{/css/myevent_eventlist.css}" rel="stylesheet"/>
     <title>My Favorites</title>
 </head>
 
@@ -30,10 +32,6 @@
                     <div>
                         <div class="read-btn" >
                             <button type="submit" name="id" th:value="${item.getId}" formaction="/myevents"><span>Read more</span></button>
-                        </div>
-                        <div class="heart-btn">
-                            <input type="checkbox">
-                            <button><span>Favorite</span></button>
                         </div>
                     </div>
                 </td>
