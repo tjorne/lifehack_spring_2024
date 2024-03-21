@@ -16,14 +16,24 @@
     </div>
 
     <div class="flexbox-body-choice">
-        <div>
+        <div class="box-size">
             <h1 class="flex-header-text" th:text="${chosenRestaurant.getName()}"></h1>
+            <div id="flex1-choice-description">
+                <p class="subheading">Om restauranten</p>
+                <p th:text="${chosenRestaurant.getDescription()}"></p>
+            </div>
 
-            <p id="flex1-choice-description" th:text="${chosenRestaurant.getDescription()}"></p>
+            <div id="flex2-choice-address">
+                <p class="subheading">Addresse</p>
+                <p th:text="${chosenRestaurant.getAddress()}"></p>
+            </div>
 
-            <p id="flex2-choice-address" th:text="${chosenRestaurant.getAddress()}"></p>
+            <div id="flex3-choice-openinghours">
+                <p class="subheading">Åbningstider</p>
+                <p th:text="${chosenRestaurant.getOpeningHours()}"></p>
+            </div>
 
-            <p id="flex3-choice-openinghours" th:text="${chosenRestaurant.getOpeningHours()}"></p>
+
 
             <a th:href="${chosenRestaurant.getWebsiteLink()}">
                 <button class="button button1" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens

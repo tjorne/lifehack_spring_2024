@@ -211,7 +211,7 @@
     text-align: center;
     display: flex;
     height: 20vh;
-    width: 85vh;
+    width: 100%;
     margin-inline: auto;
     flex-direction: column;
     border: 4px solid #D78C47;
@@ -223,7 +223,7 @@
     text-align: center;
     display: flex;
     height: 15vh;
-    width: 85vh;
+    width: 100%;
     flex-direction: column;
     border: 4px solid #D78C47;
     background-color: #E2AC79;
@@ -234,10 +234,14 @@
     text-align: center;
     display: flex;
     height: 15vh;
-    width: 85vh;
+    width: 100%;
     flex-direction: column;
     border: 4px solid #D78C47;
     background-color: #E2AC79;
+}
+
+.box-size {
+    width: 100vh;
 }
 
 #rcorners1 {
@@ -283,6 +287,13 @@
 
 .button2:hover {
     background-color: #03B5AA;
+}
+
+.subheading {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-top: revert;
 }
 
 
