@@ -24,11 +24,9 @@ public class MyEventsController {
         app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
         app.post("/event", ctx -> eventOverview(ctx, connectionPool));
 
-
         app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
-        app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
     }
 
     private static void eventlist(Context ctx, ConnectionPool connectionPool)
