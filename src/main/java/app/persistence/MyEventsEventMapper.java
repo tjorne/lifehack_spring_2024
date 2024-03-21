@@ -72,7 +72,9 @@ public class MyEventsEventMapper {
 
     public static List<MyEventsEvent> getAllUserFavoriteEvents(int userId, ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "select * from my_events.event_favorites where user_id = ? ";
+        String sql = "SELECT * FROM my_events.event_favorites " +
+                " JOIN my_events.events ON my_events.events.event_id = my_events.event_favorites.event_id" +
+                " WHERE my_events.event_favorites.user_id = ?";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -83,7 +85,7 @@ public class MyEventsEventMapper {
             return getEventsFromResultSet(rs);
 
         } catch (SQLException e) {
-            throw new DatabaseException("SQL ERROR", e.getMessage());
+            throw new DatabaseException(" SQL ERROR", e.getMessage());
         }
     }
 
