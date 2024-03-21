@@ -13,13 +13,10 @@
 
 <div class="page">
     <header>
-        <h1 id="titel">Vælg titel
-            <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
-        </h1>
+        <h1 id="titel">www.LifeHacks.dk</h1>
 
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-            <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         </a>
     </header>
 
@@ -28,22 +25,21 @@
 
         <label for="behandling">Vælg en behandling:</label>
         <br>
-        <select name="behandling" id="behandling">
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
-            <option value="eksempel">eksempel</option>
+        <select name="behandling" id="behandling" th:selected="${behandling}">
+            <option value="Psykolog">Psykolog</option>
+            <option value="Kiropraktor">Kiropraktor</option>
+            <option value="Fysioterapeut">Fysioterapeut</option>
+            <option value="Life Coach">Life Coach</option>
+            <option value="En til en yoga">En Til En Yoga</option>
+            <option value="Osteopat">Osteopat</option>
+            <option value="Massør">Massør</option>
+            <option value="Ganja Meditation">Ganja Meditation</option>
         </select>
-        <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         <br><br>
 
 
-            <label for="dato">Dato:</label>
-            <input type="date" id="dato" name="dato">
+        <label for="dato">Dato:</label>
+        <input type="date" id="dato" name="dato" th:value="${dato}">
             <button class="edit-buttons" th:if="${session.bookiBoysUser == null}" formaction="/gettimeslots">Se ledige tider⚙️</button>
             <br>
             <br><br>
@@ -54,19 +50,6 @@
         </div>
 
         <!--
-        <select name="timeslot" id="timeslot">
-            <option value="08:30" th:if="${session.bookiBoysUser != null}">08:30</option>
-            <option value="09:30">09:30</option>
-            <option value="10:30">10:30</option>
-            <option value="11:30">11:30</option>
-            <option value="12:30">12:30</option>
-            <option value="13:30">13:30</option>
-            <option value="14:30">14:30</option>
-            <option value="15:30">15:30</option>
-            <option value="16:30">16:30</option>
-        </select>
-
-
         <label for="behandler">Vælg en behandler:</label>
         <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         <br>
@@ -81,22 +64,20 @@
             <option value="eksempel">eksempel</option>
             <option value="eksempel">eksempel</option>
         </select>
-        <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
+
     -->
+
         <br><br>
         <label for="name">Navn:</label>
-        <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         <br>
         <input type="text" id="name" name="name">
         <br><br>
         <label for="tlf">Telefon nummer:</label>
-        <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         <br>
         <input type="text" id="tlf" name="tlf">
         <br><br>
         <input type="submit" value="Book" formaction="/createbooking"><br><br>
         <div><p th:text="${message}"></p></div>
-        <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
 
     </form>
 

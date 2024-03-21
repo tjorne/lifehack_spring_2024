@@ -22,30 +22,21 @@ public class BookiBoisController
         app.get("/createbooking", ctx -> ctx.render("/bookibois/bookingsite.html"));
 
         app.post("/gettimeslots", ctx -> checkTimeslot(ctx, connectionPool));
-        app.post("/selectTimeslot", ctx -> selectTimeslot(ctx));
     }
 
-    private static void selectTimeslot(Context ctx){
-        String timeslot = ctx.formParam("timeslot");
-        ctx.sessionAttribute("timeslot",timeslot);
-        //ctx.render("/bookibois/bookingsite.html");
-    }
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
         ctx.render("/bookibois/bookingsite.html");
     }
 
     private static void checkTimeslot(Context ctx, ConnectionPool connectionPool) {
-        //User user = ctx.sessionAttribute("currentUser");
         try {
             String dato = ctx.formParam("dato");
-            System.out.println(dato);
             String behandling = ctx.formParam("behandling");
-            //BookingMapper.checkTime(dato, behandling, connectionPool);
+            ctx.attribute("behandling", behandling);
             ArrayList<Timeslot> taskList = BookingMapper.checkTime(dato, behandling, connectionPool);
-
             ctx.attribute("taskList", taskList);
-            ctx.sessionAttribute("dato", dato);
+            ctx.attribute("dato", dato);
             ctx.render("/bookibois/bookingsite.html");
 
         } catch (NumberFormatException e) {
@@ -61,7 +52,7 @@ public class BookiBoisController
         // Hent form parametre
         //String username = ctx.formParam("titel");
         String behandling = ctx.formParam("behandling");
-        String date = ctx.sessionAttribute("dato");
+        String date = ctx.attribute("dato");
         String time = ctx.formParam("timeslot");
         //String time = ctx.sessionAttribute("timeslot");
         String behandler = ctx.formParam("behandler");
@@ -71,16 +62,11 @@ public class BookiBoisController
         // Check om bruger findes i DB med de angivne username + password
         try {
             BookingMapper.createBooking(behandling, date, time, behandler, navn, tlfnummer, connectionPool);
-            //ctx.sessionAttribute("currentUser", user);
-            // Hvis ja, send videre til forsiden med login besked
             ctx.attribute("message", "Din booking er hermed bekræftet");
             ctx.render("/bookibois/bookingsite.html");
         } catch (DatabaseException e) {
-            // Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage());
-            //ctx.render("index.html");
         }
-
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {
