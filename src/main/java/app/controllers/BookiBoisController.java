@@ -62,8 +62,8 @@ public class BookiBoisController
         //String username = ctx.formParam("titel");
         String behandling = ctx.formParam("behandling");
         String date = ctx.sessionAttribute("dato");
-        //String time = ctx.formParam("timeslot");
-        String time = ctx.sessionAttribute("timeslot");
+        String time = ctx.formParam("timeslot");
+        //String time = ctx.sessionAttribute("timeslot");
         String behandler = ctx.formParam("behandler");
         String navn = ctx.formParam("name");
         String tlfnummer = ctx.formParam("tlf");

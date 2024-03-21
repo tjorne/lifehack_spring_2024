@@ -8,13 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BookingMapper {
-
-
-
-
 
     public static void createBooking(String behandling, String date, String time, String behandler, String navn, String tlfnummer, ConnectionPool connectionPool) throws DatabaseException
     {
@@ -50,12 +45,13 @@ public class BookingMapper {
             }
             throw new DatabaseException(msg, e.getMessage());
         }
+        updateTimeslotBoolean(date,time,connectionPool);
     }
 
     public static ArrayList<Timeslot> checkTime(String dato, String behandling, ConnectionPool connectionPool) throws DatabaseException {
         {
             ArrayList<Timeslot> taskList = new ArrayList<>();
-            String sql = "select * from timeslot where date=?";
+            String sql = "select * from timeslot where date=? AND booked = FALSE";
 
             try (
                     Connection connection = connectionPool.getConnection();
@@ -82,5 +78,23 @@ public class BookingMapper {
             return taskList;
         }
         //return new ArrayList<Timeslot>();
+    }
+    public static void updateTimeslotBoolean(String date, String time, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "UPDATE timeslot SET booked = TRUE WHERE date = ? AND timeslot = ?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setString(1, date);
+            ps.setString(2, time);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved opdatering af timeslot boolean");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Database fejl: " + e.getMessage());
+        }
     }
 }

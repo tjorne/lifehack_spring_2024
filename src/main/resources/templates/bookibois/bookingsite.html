@@ -22,12 +22,7 @@
             <button class="edit-buttons" th:if="${session.bookiBoysUser != null}">⚙️</button>
         </a>
     </header>
-    <script type="text/javascript">
-        function reply_click(clicked_id)
-        {
-            document.getElementById("timeslot").textContent = clicked_id;
-        }
-    </script>
+
 
     <form action="" method="post">
 
@@ -53,25 +48,10 @@
             <br>
             <br><br>
 
-        <table class="task-table">
-            <thead>
-            <tr>
-                <th>Dato</th>
-                <th>Tid</th>
-                <th>Knap</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="timeslot : ${taskList}" th:if="${!timeslot.booked}">
-
-                <td th:id="${timeslot.date}" th:text="${timeslot.date}"></td>
-                <td ></td>
-                <td><button type="button" onClick="reply_click(this.id)" th:id="${timeslot.time}" th:text="${timeslot.time}" formaction="/selectTimeslot">Vælg tid</button></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <p th:id="timeslot" id="timeslot" th:text="${timeslot}"></p>
+        <div th:each="timeslot : ${taskList}" th:if="${!timeslot.booked}">
+            <input type="radio" th:name="timeslot" th:value="${timeslot.time}" th:id="${timeslot.time}" />
+            <label th:for="${timeslot.time}" th:text="${timeslot.time}">Time</label>
+        </div>
 
         <!--
         <select name="timeslot" id="timeslot">
