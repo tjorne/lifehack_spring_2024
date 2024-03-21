@@ -44,10 +44,10 @@ public class MyEventsEventMapper {
     }
 
     public static List<MyEventsEvent> getAllEventsByZip(int zip, List<MyEventsCategory> categories, ConnectionPool connectionPool) throws DatabaseException {
-        StringBuilder sql = new StringBuilder("SELECT DISTINCT event_id, event_name, event_date, event_place, event_resume, event_details, event_link FROM ")
-                .append(mapperSchema).append(".events " +
-                        "INNER JOIN my_events.events_categories ON my_events.events.event_id = my_events.events_categories.events_event_id " +
-                        "WHERE my_events.events.event_zip = ?");
+        StringBuilder sql = new StringBuilder(("SELECT DISTINCT event_id, event_name, event_date, event_place, city, event_resume, event_details, event_link FROM {schema}.events " +
+                "INNER JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip " +
+                "INNER JOIN {schema}.events_categories ON events.event_id = events_categories.events_event_id " +
+                "WHERE events.event_zip = ?").replace("{schema}", mapperSchema));
 
         if (!categories.isEmpty()) {
             sql.append(" AND (");
@@ -82,7 +82,8 @@ public class MyEventsEventMapper {
 
     public static List<MyEventsEvent> getAllUserFavoriteEvents(int userId, ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "select * from my_events.event_favorites where user_id = ? ";
+        String sql = "select * from {schema}.event_favorites where user_id = ? ";
+        sql = sql.replace("{schema}", mapperSchema);
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -99,7 +100,8 @@ public class MyEventsEventMapper {
 
     public static void addEventToUserFavorites(int userId, int eventId, ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "insert into my_events.event_favorites (user_id, event_id) values (?,?)";
+        String sql = "insert into {schema}.event_favorites (user_id, event_id) values (?, ?)";
+        sql = sql.replace("{schema}", mapperSchema);
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -118,7 +120,8 @@ public class MyEventsEventMapper {
     }
 
     public static void removeEventFromUserFavorites(int userId, int eventId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM my_events.event_favorites where user_id = ? AND event_id = ?";
+        String sql = "DELETE FROM {schema}.event_favorites where user_id = ? AND event_id = ?";
+        sql = sql.replace("{schema}", mapperSchema);
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -136,9 +139,8 @@ public class MyEventsEventMapper {
     }
 
     public static MyEventsEvent getEventById(int eventId, ConnectionPool connectionPool) throws DatabaseException {
-        MyEventsEvent event = null;
-
-        String sql = "select * from my_events.events where event_id = ?";
+        String sql = "select * from {schema}.events where event_id = ?";
+        sql = sql.replace("{schema}", mapperSchema);
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -148,7 +150,7 @@ public class MyEventsEventMapper {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                event = getEventInfo(rs);
+                return getEventInfo(rs);
             } else {
                 throw new DatabaseException("Error, no event matching the id...");
             }
@@ -156,7 +158,6 @@ public class MyEventsEventMapper {
         } catch (SQLException e) {
             throw new DatabaseException("Error in getting the event id = " + eventId, e.getMessage());
         }
-        return event;
     }
 
     public static List<MyEventsEvent> getEventsFromResultSet(ResultSet rs) throws SQLException {
