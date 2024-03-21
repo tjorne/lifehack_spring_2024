@@ -83,7 +83,7 @@ public class MyEventsController {
             zipcode = Integer.parseInt(searchZip);
         } catch (NullPointerException | NumberFormatException e) {
             ctx.attribute("message", "You must provide a zip code to search.");
-            ctx.render("/myevents/index.html");
+            index(ctx, connectionPool);
             return;
         }
 
@@ -103,8 +103,8 @@ public class MyEventsController {
         try {
             List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(zipcode, searchCategories, connectionPool);
             ctx.attribute("events", events);
+            ctx.attribute("message", "");
             ctx.render("/myevents/eventlist.html");
-
         } catch (DatabaseException e) {
             ctx.attribute("message", "Failed to get events");
             ctx.render("/myevents/index.html");
@@ -117,7 +117,14 @@ public class MyEventsController {
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool) {
-        ctx.render("/myevents/index.html");
+        try {
+            List<MyEventsCategory> categories = MyEventsCategoryMapper.getAllCategories(connectionPool);
+            ctx.attribute("categories", categories);
+            ctx.render("/myevents/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", "Failed to get events");
+            ctx.render("/myevents/index.html");
+        }
     }
 
     private static void eventOverview(Context ctx, ConnectionPool connectionPool) {
@@ -132,6 +139,7 @@ public class MyEventsController {
             MyEventsEvent event = MyEventsEventMapper.getEventById(Integer.parseInt(eventId), connectionPool);
 
             ctx.attribute("eventItem", event);
+            ctx.attribute("message", "");
             ctx.render("/myevents/eventbyid.html");
         } catch (NumberFormatException e) {
             System.out.println("Error: " + e.getMessage());
