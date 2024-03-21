@@ -81,7 +81,7 @@ public class BookingMapper {
         //return new ArrayList<Timeslot>();
     }
     public static void updateTimeslotBoolean(String date, String time, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "UPDATE timeslot SET booked = TRUE WHERE date = ? AND timeslot = ?";
+        String sql = "INSERT INTO timeslot(date,timeslot,booked) VALUES(?, ?, TRUE)";
 
         try (
                 Connection connection = connectionPool.getConnection();
