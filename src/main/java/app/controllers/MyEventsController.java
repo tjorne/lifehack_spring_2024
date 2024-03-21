@@ -18,7 +18,8 @@ public class MyEventsController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/myevents", ctx -> index(ctx, connectionPool));
-        app.post("/myevents", ctx -> viewEvent(ctx, connectionPool));
+        app.post("/event", ctx -> eventOverview(ctx, connectionPool));
+
 
         app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
@@ -26,7 +27,18 @@ public class MyEventsController {
         app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
     }
 
-    private static void eventlist(Context ctx, ConnectionPool connectionPool) {
+    private static void eventlist(Context ctx, ConnectionPool connectionPool)
+    {
+        try{
+            List<MyEventsEvent> eventList = MyEventsEventMapper.getAllEvents(connectionPool);
+            ctx.attribute("eventList", eventList);
+            ctx.render("/myevents/eventlist.html");
+
+        } catch (DatabaseException e)  {
+            ctx.attribute("message", "Error in Task values, please try again");
+        }
+
+
     }
 
     private static void removeFromFavorite(Context ctx, ConnectionPool connectionPool) {
@@ -94,7 +106,7 @@ public class MyEventsController {
     }
 
     private static void eventOverview(Context ctx, ConnectionPool connectionPool) {
-        String eventId = ctx.queryParam("id");
+        String eventId = ctx.formParam("id");
 
         if (eventId == null) {
             System.out.println("Error: id query parameter is null.");
@@ -105,7 +117,7 @@ public class MyEventsController {
             MyEventsEvent event = MyEventsEventMapper.getEventById(Integer.parseInt(eventId), connectionPool);
 
             ctx.attribute("eventItem", event);
-            ctx.render("eventoverview.html");
+            ctx.render("/myevents/eventbyid.html");
         } catch (NumberFormatException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (DatabaseException e) {
