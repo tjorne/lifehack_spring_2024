@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<title>Projectname</title>
+<title>Unit Conversion</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../public/css/unitconverter.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<head> </head>
+<link href="../../public/css/unitconverter.css" th:href="@{/css/unitconverter.css}" rel="stylesheet"/>
+</head>
 
 <body>
 
@@ -17,36 +17,45 @@
         </a>
     </header>
 
-    <h1>Project name</h1>
+    <h1>Unit Conversion</h1>
 
     Select a unit to convert
-    <select name="unit">
-        <option value="Time">Time</option>
-        <option value="Volume">Volume</option>
-        <option value="Weight">Weight</option>
-        <option value="Distance">Distance</option>
-        <option value="Area">Area</option>
-    </select>
-    <br>
 
-    <select name="unit">
-        <option value="Time">Time</option>
-        <option value="Volume">Volume</option>
-        <option value="Weight">Weight</option>
-        <option value="Distance">Distance</option>
-        <option value="Area">Area</option>
-    </select>
-    <br>
+    <form class="select-forms" method="post">
 
-    <select name="unit">
-        <option value="Time">Time</option>
-        <option value="Volume">Volume</option>
-        <option value="Weight">Weight</option>
-        <option value="Distance">Distance</option>
-        <option value="Area">Area</option>
-    </select>
-    <br>
+            <select name="unit">
+                <option value="time">Time</option>
+                <option value="volume">Volume</option>
+                <option value="weight">Weight</option>
+                <option value="distance">Distance</option>
+                <option value="area">Area</option>
+            </select>
+    </form>
 
+    <div class="unit-types">
+        <div class="unit-group">
+            <select name="unit">
+                <option value="Time">Time</option>
+                <option value="Volume">Volume</option>
+                <option value="Weight">Weight</option>
+                <option value="Distance">Distance</option>
+                <option value="Area">Area</option>
+            </select>
+            <input type="text" name="number" placeholder="Enter a number">
+        </div>
+
+        <div class="unit-group">
+            <select name="unit">
+                <option value="Time">Time</option>
+                <option value="Volume">Volume</option>
+                <option value="Weight">Weight</option>
+                <option value="Distance">Distance</option>
+                <option value="Area">Area</option>
+            </select>
+            <input type="text" name="number" placeholder="Enter a number">
+        </div>
+    </div>
 </div>
+
 </body>
 </html>
