@@ -17,11 +17,16 @@ public class QuotesGeneratorController {
 
         app.post("/newQuote", ctx -> newQuote(ctx, connectionPool));
         app.post("/displayHappyQuotes", ctx -> happyQuotes(ctx, connectionPool));
+        app.post("/displaySadQuotes", ctx -> sadQuotes(ctx, connectionPool));
+        app.post("displayMotivationalQuotes", ctx -> motivationalQuotes(ctx, connectionPool));
+        app.post("displaySillyQuotes", ctx -> sillyQuotes(ctx, connectionPool));
+        app.post("displayLeagueQuotes", ctx -> leagueQuotes(ctx, connectionPool));
+        app.post("displayUserGeneratedQuotes", ctx -> userGeneratedQuotes(ctx, connectionPool));
     }
 
     public static void index(Context ctx, ConnectionPool connectionPool) {
         try {
-            String quote = ctx.attribute(QuotesMapper.getRandomQuote(QuotesMapper.loadQuotes(connectionPool)));
+            String quote = QuotesMapper.getRandomQuote(QuotesMapper.loadQuotes(connectionPool));
             ctx.attribute("quote", quote);
             ctx.render("/QuotesGenerator/index.html");
         } catch (DatabaseException e) {
@@ -35,7 +40,7 @@ public class QuotesGeneratorController {
             ctx.attribute("newRandomQuote", newRandomQuote);
             ctx.render("/QuotesGenerator/index.html");
         } catch (DatabaseException e) {
-            throw new RuntimeException(e);
+            ctx.attribute("message", e.getMessage());
         }
     }
 
@@ -45,7 +50,57 @@ public class QuotesGeneratorController {
             ctx.attribute("newRandomQuote", newRandomQuote);
             ctx.render("/QuotesGenerator/index.html");
         } catch (DatabaseException e) {
-            throw new RuntimeException(e);
+            ctx.attribute("message", e.getMessage());
+        }
+    }
+
+    private static void sadQuotes(Context ctx, ConnectionPool connectionPool) {
+        try {
+            String newRandomQuote = QuotesMapper.getRandomQuote(QuotesMapper.loadSadQuotes(connectionPool));
+            ctx.attribute("newRandomQuote", newRandomQuote);
+            ctx.render("/QuotesGenerator/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", e.getMessage());
+        }
+    }
+
+    private static void motivationalQuotes(Context ctx, ConnectionPool connectionPool) {
+        try {
+            String newRandomQuote = QuotesMapper.getRandomQuote(QuotesMapper.loadMotivationalQuotes(connectionPool));
+            ctx.attribute("newRandomQuote", newRandomQuote);
+            ctx.render("/QuotesGenerator/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", e.getMessage());
+        }
+    }
+
+    private static void sillyQuotes(Context ctx, ConnectionPool connectionPool) {
+        try {
+            String newRandomQuote = QuotesMapper.getRandomQuote(QuotesMapper.loadSillyQuotes(connectionPool));
+            ctx.attribute("newRandomQuote", newRandomQuote);
+            ctx.render("/QuotesGenerator/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", e.getMessage());
+        }
+    }
+
+    private static void leagueQuotes(Context ctx, ConnectionPool connectionPool) {
+        try {
+            String newRandomQuote = QuotesMapper.getRandomQuote(QuotesMapper.loadLeagueQuotes(connectionPool));
+            ctx.attribute("newRandomQuote", newRandomQuote);
+            ctx.render("/QuotesGenerator/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", e.getMessage());
+        }
+    }
+
+    private static void userGeneratedQuotes(Context ctx, ConnectionPool connectionPool) {
+        try {
+            String newRandomQuote = QuotesMapper.getRandomQuote(QuotesMapper.loadUserGeneratedQuotes(connectionPool));
+            ctx.attribute("newRandomQuote", newRandomQuote);
+            ctx.render("/QuotesGenerator/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", e.getMessage());
         }
     }
 
