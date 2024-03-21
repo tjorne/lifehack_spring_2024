@@ -20,7 +20,6 @@ public class MyEventsController
         app.get("/myevents/event", ctx -> eventOverview(ctx, connectionPool));
         app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
 
-
     }
 
     private static void searchResults(Context ctx, ConnectionPool connectionPool) {
@@ -34,7 +33,8 @@ public class MyEventsController
 
         try {
             List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(Integer.parseInt(zipcode), categories, connectionPool);
-            ctx.render("/myevents/eventlist.html", Map.of("events", events));
+            ctx.attribute("events", events);
+            ctx.render("/myevents/eventlist.html");
 
         } catch (DatabaseException e) {
             ctx.attribute("message", "Something went wrong - try again");
@@ -42,8 +42,7 @@ public class MyEventsController
     }
 
 
-    private static void index(Context ctx, ConnectionPool connectionPool)
-    {
+    private static void index(Context ctx, ConnectionPool connectionPool){
         ctx.render("/myevents/index.html");
     }
 
