@@ -4,7 +4,6 @@ import app.entities.MyEventsCategory;
 import app.entities.MyEventsEvent;
 import app.exceptions.DatabaseException;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class MyEventsEventMapper {
         List<MyEventsEvent> eventList = new ArrayList<>();
 
         String sql = "SELECT * FROM my_events.events " +
-                "INNER JOIN my_events.postal_codes ON my_events.events.event_zip = my_events_postal_codes.zip";
+                "INNER JOIN my_events.postal_codes ON my_events.events.event_zip = my_events.postal_codes.zip";
 
         try (
                 Connection connection = connectionPool.getConnection();
