@@ -23,8 +23,6 @@ public class MyEventsEventMapper {
     }
 
     public static List<MyEventsEvent> getAllEvents(ConnectionPool connectionPool) throws DatabaseException {
-        List<MyEventsEvent> eventList = new ArrayList<>();
-
         String sql = "SELECT * FROM {schema}.events " +
                 "INNER JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip";
         sql = sql.replace("{schema}", mapperSchema);
@@ -46,8 +44,6 @@ public class MyEventsEventMapper {
     }
 
     public static List<MyEventsEvent> getAllEventsByZip(int zip, List<MyEventsCategory> categories, ConnectionPool connectionPool) throws DatabaseException {
-        List<MyEventsEvent> eventList = new ArrayList<>();
-
         StringBuilder sql = new StringBuilder("SELECT DISTINCT event_id, event_name, event_date, event_place, event_resume, event_details, event_link FROM ")
                 .append(mapperSchema).append(".events " +
                         "INNER JOIN my_events.events_categories ON my_events.events.event_id = my_events.events_categories.events_event_id " +
@@ -122,28 +118,67 @@ public class MyEventsEventMapper {
     }
 
     public static void removeEventFromUserFavorites(int userId, int eventId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM my_events.event_favorites where user_id = ? AND event_id = ?";
 
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, userId);
+            ps.setInt(2, eventId);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Error in updating user favorite list");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Error in deleting event from favorite list", e.getMessage());
+        }
     }
 
     public static MyEventsEvent getEventById(int eventId, ConnectionPool connectionPool) throws DatabaseException {
-        return null;
+        MyEventsEvent event = null;
+
+        String sql = "select * from my_events.events where event_id = ?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, eventId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                event = getEventInfo(rs);
+            } else {
+                throw new DatabaseException("Error, no event matching the id...");
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Error in getting the event id = " + eventId, e.getMessage());
+        }
+        return event;
     }
 
     public static List<MyEventsEvent> getEventsFromResultSet(ResultSet rs) throws SQLException {
         List<MyEventsEvent> eventList = new ArrayList<>();
 
         while (rs.next()) {
-            int id = rs.getInt("event_id");
-            String name = rs.getString("event_name");
-            LocalDateTime date = rs.getTimestamp("event_date").toLocalDateTime();
-            String place = rs.getString("event_place");
-            int zip = rs.getInt("event_zip");
-            String city = rs.getString("city");
-            String resume = rs.getString("event_resume");
-            String details = rs.getString("event_details");
-            String link = rs.getString("event_link");
-            eventList.add(new MyEventsEvent(id, name, date, place, zip, city, resume, details, link));
+            eventList.add(getEventInfo(rs));
         }
         return eventList;
+    }
+
+    public static MyEventsEvent getEventInfo(ResultSet rs) throws SQLException {
+
+        int id = rs.getInt("event_id");
+        String name = rs.getString("event_name");
+        LocalDateTime date = rs.getTimestamp("event_date").toLocalDateTime();
+        String place = rs.getString("event_place");
+        int zip = rs.getInt("event_zip");
+        String city = rs.getString("city");
+        String resume = rs.getString("event_resume");
+        String details = rs.getString("event_details");
+        String link = rs.getString("event_link");
+        return new MyEventsEvent(id, name, date, place, zip, city, resume, details, link);
     }
 }
