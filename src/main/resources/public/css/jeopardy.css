@@ -1,10 +1,18 @@
 body {
     background-color: #097a9d;
 }
+.page2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    padding: 8px;
+    min-height: 600px;
+}
 
 .task-table {
-    font-family: "Helvetica Neue";
 
+    font-family: "Helvetica Neue";
     border-collapse: collapse;
     font-size: 1.2rem;
     margin-top: 20px;
