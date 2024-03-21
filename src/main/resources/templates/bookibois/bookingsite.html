@@ -11,6 +11,8 @@
 
 <body>
 
+
+
 <div class="page">
     <header>
         <h1 id="titel">www.LifeHacks.dk</h1>
@@ -22,11 +24,11 @@
 
 
     <form action="" method="post">
-
         <label for="behandling">Vælg en behandling:</label>
         <br>
-        <select name="behandling" id="behandling" th:selected="${behandling}">
-            <option value="Psykolog">Psykolog</option>
+        <select name="behandling" id="behandling">
+            <option th:text="${behandling}" th:value="${behandling}">Behandling</option>
+            <option value="Psykolog" >Psykolog</option>
             <option value="Kiropraktor">Kiropraktor</option>
             <option value="Fysioterapeut">Fysioterapeut</option>
             <option value="Life Coach">Life Coach</option>
@@ -82,5 +84,24 @@
     </form>
 
 </div>
+
+<script>
+    var today = new Date();
+    var dd = today.getDate() +1;
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("dato").setAttribute("min", today);
+</script>
 </body>
+
 </html>
