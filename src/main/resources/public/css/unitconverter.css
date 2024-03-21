@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     padding-right: 10%;
+
 }
 
 .unit-group select {
@@ -16,4 +17,14 @@
 
 .unit-group input {
     margin-bottom: 10px;
+    border-radius: 5px;
 }
+
+body {
+    /* Fallback for older browsers */
+    background-color: #f0f0f0;
+
+    /* Gradient background */
+    background: linear-gradient(to bottom, #3f3f3f, #e2ebf0);
+}
+
