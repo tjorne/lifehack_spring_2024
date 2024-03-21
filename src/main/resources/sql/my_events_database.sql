@@ -1,7 +1,6 @@
 BEGIN;
 
 CREATE schema IF NOT EXISTS my_events;
-CREATE schema IF NOT EXISTS my_events_tests;
 
 CREATE TABLE IF NOT EXISTS my_events.postal_codes
 (

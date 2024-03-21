@@ -1,5 +1,7 @@
 package app.entities;
 
+import java.util.Objects;
+
 public class MyEventsCategory {
 
     private int id;
@@ -16,6 +18,19 @@ public class MyEventsCategory {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyEventsCategory category = (MyEventsCategory) o;
+        return getId() == category.getId() && Objects.equals(getName(), category.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName());
     }
 
     @Override
