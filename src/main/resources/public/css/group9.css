@@ -1,0 +1,106 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid silver;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef); /* Gradientbaggrund */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Skyggeeffekt */
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+header a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+header a img {
+    width: 70%;
+    filter: invert(45%) sepia(100%) saturate(1000%) hue-rotate(120deg);
+}
+
+#Notes {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Skyggeeffekt */
+}
+
+.generic-form input[type="text"],
+.generic-form textarea {
+    width: calc(100% - 22px); /* Justér inputfelter til at fylde containeren */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease; /* Overgang til inputfelt */
+}
+
+.generic-form input[type="text"]:focus,
+.generic-form textarea:focus {
+    border-color: #00ffa6; /* Farveændring ved fokus */
+}
+
+.generic-form button[type="submit"] {
+    background-color: #003cff; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    border: none; /* Ingen kant */
+    padding: 10px 20px; /* Polstring */
+    cursor: pointer; /* Cursor-ikon */
+    border-radius: 5px; /* Afrundede hjørner */
+    transition: background-color 0.3s ease; /* /* Overgang til knappen */
+}
+
+.generic-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.saved-notes {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.saved-notes h2 {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.notes-table {
+    width: 100%;
+}
+
+.notes-table th {
+    text-align: center;
+}
+
+.note-title,
+.note-content,
+.note-date {
+    margin-bottom: 5px; /* Tilføjer plads mellem elementerne */
+}

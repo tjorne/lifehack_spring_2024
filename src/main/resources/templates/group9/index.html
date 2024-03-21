@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/group9.css" th:href="@{/css/group9.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
+
+    <h1>Welcome to the notebook</h1>
+    <h3>DAILY NOTES</h3>
+
+
+    <div id="Notes">
+        <form class="generic-form" method="post">
+            <input type="text" name="title" placeholder="Title"/>
+            <textarea name="content" placeholder="Content"></textarea>
+            <button type="submit" formaction="/addnote">Add note</button>
+            <div><p th:text="${message}"></p></div>
+        </form>
+    </div>
+
+
+
+    <div class="saved-notes">
+        <h2>Saved Notes</h2>
+
+        <table class="notes-table">
+            <tr>
+                <th>Title:</th>
+                <th>Content:</th>
+                <th>Date:</th>
+            </tr>
+            <tr th:each="note : ${session.notesList}">
+                <td>
+                    <span class="note-title" th:text="${note.getTitle()}"></span><br>
+                </td>
+
+                <td>
+            <span class="note-content" th:text="${note.getContent()}"></span><br>
+                </td>
+
+                <td>
+                <span class="note-date" th:text="${note.getDate()}"></span>
+                </td>
+            </tr>
+
+           </table>
+        </div>
+    </div>
+</body>
+</html>
