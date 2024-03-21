@@ -28,13 +28,13 @@
 
 .tags-content {
     flex-grow: 2;
-   }
+}
+
 .background-image{
     width: 100%;
     height: auto;
     position: absolute;
     z-index: -1;
-
 }
 
 /* SEARCH RESULTS CSS*/
@@ -64,10 +64,11 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2vh 5vh -1vh, rgba(0, 0, 0, 0.3) 0 1vh 3vh -1vh;
 }
 
-.logo {
-    background-color: grey;
+.logo-placement {
+    background-color: inherit;
     width: 27vh;
     height: auto; /* or 100% */
     max-width: 27vh;
@@ -76,11 +77,14 @@
     margin: 0 auto;
 }
 
+.logo-image {
+    width: 100%;
+}
+
 /*Content*/
 .display-all {
     padding-top: 2vh;
     padding-bottom: 2vh;
-    background-color: darkgreen;
     width: 100%;
     height: 100%;
     flex-grow: 3;
@@ -90,8 +94,7 @@
 }
 
 .display-single {
-    background-color: darkslategrey;
-    border: solid;
+    background-color: #B3D0C4;
     width: 60%;
     height: 40vh;
     min-height: 400px;
@@ -99,12 +102,19 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    border: 2vh double #4C4C9D;
+    border-radius: 10vh;
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 5vh 15vh;
 }
 
 .display-no-restaurants {
+    background-color: white;
+    padding: 7vh;
     text-align: center;
     font-size: 10vh;
-    background-color: purple;
+    border-radius: 5vh;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 5vh 10vh;
 }
 
 .display-img {
@@ -116,6 +126,7 @@
     min-height: 200px;
     min-width: 400px;
     margin-top: 50px;
+    border-radius: 5vh;
 }
 
 .restaurant-img {
@@ -123,22 +134,24 @@
     background-size: cover;
     width: 100%;
     height: 100%;
+    border-radius: 5vh;
 }
 
 .restaurant-name {
-    background-color: yellow;
-    font-size: max(6vh, 50px);
+    font-family: Helvetica Neue, sans-serif;
+    font-size: max(7vh, 50px);
     margin: auto;
+    color: black;
+    font-weight: bold;
 }
 
 .display-single:hover {
-    filter: brightness(200%);
+    background-color: #5D987E;
 }
 
 
 /*Footer*/
 .page-footer {
-    background-color: blue;
     flex-grow: 1;
     height: 5vh;
     max-height: 5vh;

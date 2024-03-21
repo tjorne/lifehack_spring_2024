@@ -7,6 +7,7 @@
     <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
 </head>
 <body>
+
 <th:block th:object="${chosenRestaurant}">
 <div class="flexbox-header-choice">
     <img id="img-choice-header" th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${chosenRestaurant.getPicName()})}"

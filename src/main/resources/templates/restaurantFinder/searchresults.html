@@ -10,12 +10,15 @@
 <div class="page-body">
   <div class="page-content">
     <div class="page-header">
-      <div class="logo">LOGO PICTURE</div>
+      <div class="logo-placement">
+        <img class="logo-image" src="/images/restaurantFinder/restaurantFinderLogoTransparent.png">
+      </div>
     </div>
+    <div class="tags-content">
+      <img class="background-image" src="/images/restaurantFinder/backgroundPicture.png">
     <div th:if="${!#lists.isEmpty(allMatchingRestaurants)}">
         <div class="display-all" th:each="restaurant: ${allMatchingRestaurants}" >
           <a th:href="@{/restaurantFinder/restaurantchoice/{id}(id=${restaurant.getId()})}" class="display-single">
-
               <div class="display-img">
                 <img class="restaurant-img"
                      th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${restaurant.getPicName()})}"
@@ -28,8 +31,9 @@
     </div>
     <div th:if="${#lists.isEmpty(allMatchingRestaurants)}">
       <div class="display-all">
-        <div class="display-no-restaurants">Ingen restauranter fundet</div>
+        <div class="display-no-restaurants">Ingen restauranter fundet!</div>
       </div>
+    </div>
     </div>
 
     <div class="page-footer">

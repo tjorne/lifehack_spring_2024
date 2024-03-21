@@ -35,7 +35,6 @@ public class Main
         }).start(7070);
 
         // Routing
-
         app.get("/", ctx -> ctx.render("index.html"));
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
