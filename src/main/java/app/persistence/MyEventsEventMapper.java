@@ -84,6 +84,7 @@ public class MyEventsEventMapper {
 
         String sql = "SELECT * FROM {schema}.event_favorites " +
                 " JOIN {schema}.events ON events.event_id = event_favorites.event_id" +
+                " JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip" +
                 " WHERE event_favorites.user_id = ?";
         sql = sql.replace("{schema}", mapperSchema);
 

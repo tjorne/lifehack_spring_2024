@@ -29,7 +29,7 @@
                 </td>
                 <td class="item-info">
                     <h4 th:text="${item.getName()}">Title</h4>
-                    <h2 th:text="${item.getFormattedDate()}">Date</h2>
+                    <h2 th:text="${#temporals.format(item.getDate(), 'dd-MM-yyyy HH:mm')}">Date</h2>
                     <p><span th:text="${item.getResume()}">Resume</span></p>
                     <div>
                         <div class="read-btn">
