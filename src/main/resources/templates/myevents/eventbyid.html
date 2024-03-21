@@ -23,7 +23,7 @@
 
     <h1 th:text="${eventItem.getName()}">Title</h1>
     <div class="small-info">
-      <h2 th:text="${eventItem.getFormattedDate()}">Date</h2>
+      <h2 th:text="${#temporals.format(eventItem.getDate(), 'dd-MM-yyyy HH:mm')}">Date</h2>
       <h2 th:text="${eventItem.getPlace()}">Place</h2>
       <h2 th:text="${eventItem.getZip()}">Zip</h2>
     </div>
