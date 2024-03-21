@@ -46,9 +46,9 @@
     flex-wrap: wrap;
     justify-content: center;
     border: 1px solid #ccc;
-    width: 90%; /* Adjust the width of the flex container */
-    max-width: 800px; /* Set a maximum width to prevent it from expanding too much */
-    margin: 0 auto; /* Center the flex container horizontally */
+    width: 90%; / Adjust the width of the flex container /
+    max-width: 800px; / Set a maximum width to prevent it from expanding too much /
+    margin: 0 auto; / Center the flex container horizontally */
 }
 
 .drink-item {
