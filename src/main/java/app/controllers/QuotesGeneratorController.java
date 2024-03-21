@@ -107,16 +107,17 @@ public class QuotesGeneratorController {
     private static void create(Context ctx, ConnectionPool connectionPool) {
         String quoteBody = ctx.formParam("quoteBody");
 
-        try {
-            QuotesMapper.createUserQuote("userGenerated", quoteBody, connectionPool);
-            ctx.attribute("message", "Dit quote er hermed oprettet ");
-
-            List<Quote> quotesList = QuotesMapper.loadQuotes(connectionPool);
-            ctx.attribute("quoteList", quotesList);
-
-            ctx.render("/QuotesGenerator/index.html");
-        } catch (DatabaseException e) {
-            ctx.attribute("message", "Quotet findes allerede. Prøv igen");
+        if (quoteBody.length() >= 3){
+            try {
+                QuotesMapper.createUserQuote("userGenerated", quoteBody, connectionPool);
+                ctx.attribute("message", "Dit quote er hermed oprettet ");
+                ctx.render("/QuotesGenerator/index.html");
+            } catch (DatabaseException e) {
+                ctx.attribute("message", "Dit quote findes allerede! Prøv igen");
+                ctx.render("/QuotesGenerator/createQuote.html");
+            }
+        } else {
+            ctx.attribute("message", "Dit quote kan ikke være tomt, og skal være mindst 3 karakterer langt! Prøv igen");
             ctx.render("/QuotesGenerator/createQuote.html");
         }
     }

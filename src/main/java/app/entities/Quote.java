@@ -10,7 +10,7 @@ public class Quote {
         this.quote_genre = quote_genre;
         this.quote_body = quote_body;
     }
-    public int getUserId() {
+    public int getQuoteId() {
         return quote_id;
     }
 
@@ -21,9 +21,6 @@ public class Quote {
     public String getQuote_body() {
         return quote_body;
     }
-
-
-
 
     @Override
     public String toString() {
