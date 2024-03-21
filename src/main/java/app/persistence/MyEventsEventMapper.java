@@ -12,11 +12,22 @@ import java.util.List;
 
 public class MyEventsEventMapper {
 
+    static {
+        mapperSchema = "public";
+    }
+
+    private static String mapperSchema;
+
+    public static void setMapperSchema(String schema) {
+        mapperSchema = schema;
+    }
+
     public static List<MyEventsEvent> getAllEvents(ConnectionPool connectionPool) throws DatabaseException {
         List<MyEventsEvent> eventList = new ArrayList<>();
 
-        String sql = "SELECT * FROM my_events.events " +
-                "INNER JOIN my_events.postal_codes ON my_events.events.event_zip = my_events.postal_codes.zip";
+        String sql = "SELECT * FROM {schema}.events " +
+                "INNER JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip";
+        sql = sql.replace("{schema}", mapperSchema);
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -37,9 +48,10 @@ public class MyEventsEventMapper {
     public static List<MyEventsEvent> getAllEventsByZip(int zip, List<MyEventsCategory> categories, ConnectionPool connectionPool) throws DatabaseException {
         List<MyEventsEvent> eventList = new ArrayList<>();
 
-        StringBuilder sql = new StringBuilder("SELECT DISTINCT event_id, event_name, event_date, event_place, event_resume, event_details, event_link FROM my_events.events " +
-                "INNER JOIN my_events.events_categories ON my_events.events.event_id = my_events.events_categories.events_event_id " +
-                "WHERE my_events.events.event_zip = ?");
+        StringBuilder sql = new StringBuilder("SELECT DISTINCT event_id, event_name, event_date, event_place, event_resume, event_details, event_link FROM ")
+                .append(mapperSchema).append(".events " +
+                        "INNER JOIN my_events.events_categories ON my_events.events.event_id = my_events.events_categories.events_event_id " +
+                        "WHERE my_events.events.event_zip = ?");
 
         if (!categories.isEmpty()) {
             sql.append(" AND (");
@@ -126,10 +138,11 @@ public class MyEventsEventMapper {
             LocalDateTime date = rs.getTimestamp("event_date").toLocalDateTime();
             String place = rs.getString("event_place");
             int zip = rs.getInt("event_zip");
+            String city = rs.getString("city");
             String resume = rs.getString("event_resume");
             String details = rs.getString("event_details");
             String link = rs.getString("event_link");
-            eventList.add(new MyEventsEvent(id, name, date, place, zip, resume, details, link));
+            eventList.add(new MyEventsEvent(id, name, date, place, zip, city, resume, details, link));
         }
         return eventList;
     }
