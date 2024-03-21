@@ -9,32 +9,35 @@
 </head>
 
 <body>
+    <div class="page">
+        <header>
+            <a href="../index.html" th:href="@{/}">
+                <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+            </a>
+        </header>
 
-<div class="page">
-  <header>
-    <a href="../index.html" th:href="@{/}">
-      <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-    </a>
-  </header>
+        <h1>QuotesGenerator</h1>
 
-  <h1>QuotesGenerator</h1>
+        <section>
+            <div><h2 th:text="${quote}"></h2></div>
+            <div><h2 th:text="${newRandomQuote}"></h2></div>
 
-  <section>
-    <div><h2 th:text="${quote}"></h2></div>
-    <div><h2 th:text="${newRandomQuote}"></h2></div>
+            <form method="post">
+                <button type="submit" formaction="/displayHappyQuotes">Happy Quotes 🤩</button>
+                <button type="submit" formaction="/displaySadQuotes">Sad Quotes 😔</button>
+                <button type="submit" formaction="/displaySillyQuotes">Silly Quotes 🤪</button>
+                <button type="submit" formaction="/displayMotivationalQuotes">Motivational Quotes 🤫🧏</button>
+                <button type="submit" formaction="/displayLeagueQuotes">League 👹</button>
+                <button type="submit" formaction="/displayUserGeneratedQuotes">User Generated 🌝</button>
+                <button type="submit" formaction="/newQuote">Random quote 🗿</button>
+            </form>
 
+            <button>
+                <a href="createQuote.html" th:href="@{/createQuote}">Create your own quote</a>
+            </button>
 
-    <form method="post">
-      <button type="submit" formaction="/displayHappyQuotes">Happy Quotes</button>
-      <button type="submit" formaction="/newQuote" >Give me a new quote motherfucker</button>
-    </form>
+        </section>
 
-
-    <a href="createQuote.html" th:href="@{/createQuote}">Create your own quote</a>
-
-  </section>
-
-  <h3></h3>
-</div>
+    </div>
 </body>
 </html>
