@@ -1,14 +1,20 @@
 .welcomeText {
     display: flex;
     flex-wrap: wrap;
+    font-family: Verdana, sans-serif;
+    text-transform: uppercase;
     justify-content: center;
     height: 200px;
-    background-color: grey;
-    border-radius: 10px;
+    background-color: #ADE0FF;
+    border-radius: 7px;
+    border: 10px double #36FCEF;
     text-align: center;
+    color: black;
     width: 50%;
     padding-top: 50px;
-    margin: 0 auto;
+    margin: 10px auto;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 
@@ -19,16 +25,16 @@
 }
 
 .direct-buttons1 {
-    margin: 10px 120px
+    margin: 20px 125px
 }
 
 .direct-buttons2 {
-    margin: 10px 170px;
+    margin: 10px 175px;
 }
 
 .tags-content {
     flex-grow: 2;
-   }
+}
 
 .background-image{
     width: 99.4%;
@@ -63,10 +69,11 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2vh 5vh -1vh, rgba(0, 0, 0, 0.3) 0 1vh 3vh -1vh;
 }
 
-.logo {
-    background-color: grey;
+.logo-placement {
+    background-color: inherit;
     width: 27vh;
     height: auto; /* or 100% */
     max-width: 27vh;
@@ -75,11 +82,14 @@
     margin: 0 auto;
 }
 
+.logo-image {
+    width: 100%;
+}
+
 /*Content*/
 .display-all {
     padding-top: 2vh;
     padding-bottom: 2vh;
-    background-color: darkgreen;
     width: 100%;
     height: 100%;
     flex-grow: 3;
@@ -89,8 +99,7 @@
 }
 
 .display-single {
-    background-color: darkslategrey;
-    border: solid;
+    background-color: #B3D0C4;
     width: 60%;
     height: 40vh;
     min-height: 400px;
@@ -98,12 +107,19 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    border: 2vh double #4C4C9D;
+    border-radius: 10vh;
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 5vh 15vh;
 }
 
 .display-no-restaurants {
+    background-color: white;
+    padding: 7vh;
     text-align: center;
     font-size: 10vh;
-    background-color: purple;
+    border-radius: 5vh;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 5vh 10vh;
 }
 
 .display-img {
@@ -115,6 +131,7 @@
     min-height: 200px;
     min-width: 400px;
     margin-top: 50px;
+    border-radius: 5vh;
 }
 
 .restaurant-img {
@@ -122,22 +139,24 @@
     background-size: cover;
     width: 100%;
     height: 100%;
+    border-radius: 5vh;
 }
 
 .restaurant-name {
-    background-color: yellow;
-    font-size: max(6vh, 50px);
+    font-family: Helvetica Neue, sans-serif;
+    font-size: max(7vh, 50px);
     margin: auto;
+    color: black;
+    font-weight: bold;
 }
 
 .display-single:hover {
-    filter: brightness(200%);
+    background-color: #5D987E;
 }
 
 
 /*Footer*/
 .page-footer {
-    background-color: blue;
     flex-grow: 1;
     height: 5vh;
     max-height: 5vh;
@@ -240,30 +259,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 16px;
+    font-size: 30px;
     margin: 0 auto;
     transition-duration: 0.4s;
     cursor: pointer;
 }
 
 .button1 {
-    background-color: #4B817D;
+    background-color: #0072BB;
     color: white;
-    border: none;
+    border: 10px double #03B5AA;
 }
 
 .button1:hover {
-    background-color: #65A4A0;
+    background-color: #03B5AA;
 }
 
-.button2 {
-    background-color: #D78C47;
-    color: white;
-    border: none;
-}
 
 .button2:hover {
-    background-color: #E2AC79;
+    background-color: #03B5AA;
 }
 
 
