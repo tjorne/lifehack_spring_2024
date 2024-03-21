@@ -34,7 +34,7 @@ public class MyEventsEventMapperTest {
 
         try (Connection connection = connectionPool.getConnection()) {
             try (Statement stmt = connection.createStatement()) {
-                stmt.execute("CREATE schema IF NOT EXISTS my_events_test");
+                stmt.execute("CREATE schema IF NOT EXISTS my_events_tests");
 
                 // The test schema is already created, so we only need to delete/create test tables
                 stmt.execute("DROP TABLE IF EXISTS my_events_tests.events_categories");
