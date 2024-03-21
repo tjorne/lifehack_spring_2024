@@ -1,63 +1,66 @@
-/* Base styles */
-* {
-    margin: 0;
-    padding: 0;
+html * {
     box-sizing: border-box;
+    margin: 5px;
+    padding: 0;
+    background-color: white;
 }
 
-html, body {
-    margin: 15px;
-    width: 100%;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: lightblue; /* Default white background */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+    padding-bottom: 30px;
+
 }
 
-/* Page structure */
 .page {
-    text-align: center;
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    border: 1px solid black;
+    min-height: 600px;
+    padding: 10px;
     box-shadow: 5px 5px 5px 5px rgba(0.5, 0.5, 0.5, 0.5);
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: white;
+    margin: 40px 20px 20px 20px;
 }
 
-/* Header and Titles */
-h2 {
-    color: #333;
-    font-size: 1.5rem; /* Larger font size for visibility */
+form {
+    margin: 30px 30px 75px 30px;
+    padding: 20px;
+    width: 85%;
+    max-width: 85%;
+    max-height: 80%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+header {
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+header a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header a img {
+    width: 70%;
 }
 
 h1 {
-    color: #333;
-    font-size: 2.5rem; /* Even larger font size for main title */
-    margin: 20px 0; /* Added margin for spacing */
-}
-
-/* Navigation and login */
-.admin-login {
-    position: absolute;
-    top: 30px;
-    right: 20px;
-}
-
-.admin-login a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Logo styles */
-img {
-    max-width: 100%; /* Ensures the image is responsive and doesn't overflow */
-    height: auto;
-    margin-top: 20px; /* Added margin for spacing */
-}
-
-/* Hero section */
-.hero {
-    position: relative;
-    margin: 20px 0; /* Added margin for spacing */
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
 }
 
 .book-button {
@@ -74,51 +77,89 @@ img {
     background-color: #555;
 }
 
-.edit-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 10px; /* Position the button closer to the top of its section */
-    right: 240px; /* Position the button closer to the right of its section */
-    font-size: 24px;
-    z-index: 2; /* Adjust z-index if needed */
-}
-.edit-button-img{
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 300px; /* Position the button closer to the top of its section */
-    right: 55px; /* Position the button closer to the right of its section */
-    font-size: 24px;
-    z-index: 2; /* Adjust z-index if needed */
-}
-.edit-button-title{
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 72px; /* Position the button closer to the top of its section */
-    right: 259px; /* Position the button closer to the right of its section */
-    font-size: 24px;
-    z-index: 2; /* Adjust z-index if needed */
+/* Style for labels */
+label {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    background-color: #f9f9f9;
 }
 
-/* Description section */
-.description {
-    position: relative;
-    background-color: #f8f8f8;
-    padding: 20px;
-    margin-top: 20px; /* Added margin for spacing */
-    border-radius: 8px;
+/* Style for input fields */
+input[type="text"],
+input[type="date"],
+select {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
+
+/* Style for checkboxes */
+input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+    background-color: #f9f9f9;
+}
+
+
+/* Style for buttons */
+button.edit-buttons {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Hover effect for buttons */
+button.edit-buttons:hover {
+    background-color: #45a049;
+}
+
+/* Style for submit button */
+input[type="submit"] {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+    background-color: #0077A3;
+}
+
+/* Style for messages */
+div p {
+    margin-top: 10px;
+    color: red;
+}
+
+div {
+    margin-top: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Clearfix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
     /* Adjust the padding and text size for smaller screens like iPhones */
     .page {
-        padding: 10px;
+        /* padding: 10px; */
     }
 
     h1 {
@@ -165,99 +206,3 @@ img {
         font-size: 18px;
     }
 }
-header{
-    text-align: center;
-}
-h1{
-    font-size: 50px;
-}
-
-body{
-    text-align: center;
-}
-
-.cogwheel{
-    width: 10px;
-}
-
-/* Style for form */
-form {
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
-
-}
-
-/* Style for labels */
-label {
-    font-size: 20px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-/* Style for input fields */
-input[type="text"],
-input[type="date"],
-select {
-    width: calc(100% - 10px);
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Style for checkboxes */
-input[type="checkbox"] {
-    margin-right: 5px;
-    vertical-align: middle;
-}
-
-
-/* Style for buttons */
-button.edit-buttons {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-/* Hover effect for buttons */
-button.edit-buttons:hover {
-    background-color: #45a049;
-}
-
-/* Style for submit button */
-input[type="submit"] {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Hover effect for submit button */
-input[type="submit"]:hover {
-    background-color: #0077A3;
-}
-
-/* Style for messages */
-div p {
-    margin-top: 10px;
-    color: red;
-}
-
-/* Clearfix */
-.clearfix::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
