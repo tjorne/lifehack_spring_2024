@@ -3,6 +3,8 @@ body {
 }
 
 .task-table {
+    font-family: "Helvetica Neue";
+
     border-collapse: collapse;
     font-size: 1.2rem;
     margin-top: 20px;
@@ -11,18 +13,24 @@ body {
 
 .task-table td, .task-table th {
 
-    border: 1px solid #000000;
-    padding: 10px;
+    border: 3px solid #000000;
+    padding: 20px;
+
     text-align: center;
 
 }
+.task-table th{
+    background-color: #efd69d;
+}
 
-.task-table tr:nth-child(even) {
+/*.task-table tr:nth-child(even) {
     background-color: silver;
-}
+}*/
+
 td:hover {
-    background-color: #D6EEEE;
+    background-color: #dae5e5;
 }
+
 
 .toggle {
     display: none;
@@ -42,7 +50,7 @@ td:hover {
 }
 
 .checkbox:hover{
-    background-color: darkgreen;
+    background-color: #94a294;
 }
 
 .question {
@@ -50,7 +58,7 @@ td:hover {
 }
 
 .question:hover {
-    background-color: darkgreen;
+    background-color: #c2b8b8;
 }
 
 .toggle:checked + label + .question {
@@ -101,5 +109,5 @@ td:hover {
 }
 
 .team:hover {
-    background-color: darkgreen;
+    background-color: #9a9a9a;
 }
