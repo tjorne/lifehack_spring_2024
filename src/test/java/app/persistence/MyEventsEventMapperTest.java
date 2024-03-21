@@ -202,6 +202,9 @@ public class MyEventsEventMapperTest {
 
                 stmt.execute("INSERT INTO my_events_tests.events_categories (events_event_id, categories_category_id) VALUES " +
                         "(1, 4), (2, 4), (3, 3), (3, 5)");
+
+                stmt.execute("INSERT INTO my_events_tests.event_favorites (user_id, event_id) VALUES " +
+                        "(1, 2), (1, 3)");
             } catch (SQLException e) {
                 fail("SQL Error: " + e.getMessage());
             }
@@ -239,6 +242,49 @@ public class MyEventsEventMapperTest {
     @Test
     void getAllEventsByZipAndCategoryTest() throws DatabaseException {
         List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEventsByZip(5000, List.of(expectedCategoryList.get(2)), connectionPool);
+
+        Assertions.assertEquals(1, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
+    }
+
+    @Test
+    void getAllUserFavoriteEventsTest() throws DatabaseException {
+        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllUserFavoriteEvents(1, connectionPool);
+
+        Assertions.assertEquals(2, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(1), actualEventList.get(0));
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(1));
+    }
+
+    @Test
+    void addEventToUserFavoritesTest() throws DatabaseException {
+        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllUserFavoriteEvents(1, connectionPool);
+
+        Assertions.assertEquals(2, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(1), actualEventList.get(0));
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(1));
+
+        MyEventsEventMapper.addEventToUserFavorites(1, 1, connectionPool);
+
+        actualEventList = MyEventsEventMapper.getAllUserFavoriteEvents(1, connectionPool);
+
+        Assertions.assertEquals(3, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(0), actualEventList.get(0));
+        Assertions.assertEquals(expectedEventList.get(1), actualEventList.get(1));
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(2));
+    }
+
+    @Test
+    void removeEventFromUserFavoritesTest() throws DatabaseException {
+        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllUserFavoriteEvents(1, connectionPool);
+
+        Assertions.assertEquals(2, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(1), actualEventList.get(0));
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(1));
+
+        MyEventsEventMapper.removeEventFromUserFavorites(1, 2, connectionPool);
+
+        actualEventList = MyEventsEventMapper.getAllUserFavoriteEvents(1, connectionPool);
 
         Assertions.assertEquals(1, actualEventList.size());
         Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
