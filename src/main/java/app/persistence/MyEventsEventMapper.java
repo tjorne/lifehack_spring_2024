@@ -23,7 +23,7 @@ public class MyEventsEventMapper {
     }
 
     public static List<MyEventsEvent> getAllEvents(ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT * FROM {schema}.events " +
+        String sql = "SELECT event_id, event_name, event_date, event_place, event_zip, city, event_resume, event_details, event_link FROM {schema}.events " +
                 "INNER JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip";
         sql = sql.replace("{schema}", mapperSchema);
 
@@ -44,7 +44,7 @@ public class MyEventsEventMapper {
     }
 
     public static List<MyEventsEvent> getAllEventsByZip(int zip, List<MyEventsCategory> categories, ConnectionPool connectionPool) throws DatabaseException {
-        StringBuilder sql = new StringBuilder(("SELECT DISTINCT event_id, event_name, event_date, event_place, city, event_resume, event_details, event_link FROM {schema}.events " +
+        StringBuilder sql = new StringBuilder(("SELECT DISTINCT event_id, event_name, event_date, event_place, event_zip, city, event_resume, event_details, event_link FROM {schema}.events " +
                 "INNER JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip " +
                 "INNER JOIN {schema}.events_categories ON events.event_id = events_categories.events_event_id " +
                 "WHERE events.event_zip = ?").replace("{schema}", mapperSchema));
@@ -139,7 +139,9 @@ public class MyEventsEventMapper {
     }
 
     public static MyEventsEvent getEventById(int eventId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "select * from {schema}.events where event_id = ?";
+        String sql = "SELECT event_id, event_name, event_date, event_place, event_zip, city, event_resume, event_details, event_link FROM {schema}.events " +
+                "INNER JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip " +
+                "WHERE event_id = ?";
         sql = sql.replace("{schema}", mapperSchema);
 
         try (
