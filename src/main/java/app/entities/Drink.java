@@ -7,11 +7,14 @@ public class Drink {
     private String ingredients;
     private String instructions;
 
-    public Drink(String drinkname, String typeofdrink, String ingredients, String instructions) {
+    private int drinkid;
+
+    public Drink(String drinkname, String typeofdrink, String ingredients, String instructions, int drinkid) {
         this.drinkname = drinkname;
         this.typeofdrink = typeofdrink;
         this.ingredients = ingredients;
         this.instructions = instructions;
+        this.drinkid = drinkid;
     }
 
     public String getDrinkname() {
@@ -44,6 +47,10 @@ public class Drink {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public int getDrinkid(){
+        return drinkid;
     }
 
     @Override
