@@ -51,25 +51,26 @@ public class BookingMapper {
     public static ArrayList<Timeslot> checkTime(String dato, String behandling, ConnectionPool connectionPool) throws DatabaseException {
         {
             ArrayList<Timeslot> taskList = new ArrayList<>();
-            String sql = "select * from timeslot where date=? AND booked = FALSE";
+
+            String[] timeslots = new String[]{"8.30-9.30", "9.30-10.30", "10.30-11.30", "11.30-12.30", "12.30-13.30", "13.30-14.30", "14.30-15.30"};
+
+
+            String sql = "select * from timeslot where date=? AND timeslot = ? AND booked = TRUE";
 
             try (
                     Connection connection = connectionPool.getConnection();
                     PreparedStatement ps = connection.prepareStatement(sql)
             )
             {
-                System.out.println(dato);
-                ps.setString(1, dato);
-                //ps.setString(2, behandling);
-                ResultSet rs = ps.executeQuery();
-
-                while (rs.next())
-                {
-                    String time = rs.getString("timeslot");
-                    String date = rs.getString("date");
-                    Boolean booked = rs.getBoolean("booked");
-                    taskList.add(new Timeslot(time, date, booked));
+                for(String timeslot : timeslots) {
+                    ps.setString(1, dato);
+                    ps.setString(2, timeslot);
+                    ResultSet rs = ps.executeQuery();
+                    if(!rs.next()){
+                        taskList.add(new Timeslot(timeslot,dato,false));
+                    }
                 }
+
             }
             catch (SQLException e)
             {
