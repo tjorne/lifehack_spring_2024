@@ -9,7 +9,7 @@ html *{
 }
 
 body {
-    background-image: url("../images/myeventsimages/Forside.jpeg");
+    background-image: url("../images/myevents/frontpage.jpeg");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -48,7 +48,7 @@ body {
 }
 
 .search-button {
-    content: url("../images/myeventsimages/searchicon.png");
+    content: url("../images/myevents/searchicon.png");
     width: 20px;
     height: 20px;
 }
