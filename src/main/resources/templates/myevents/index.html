@@ -6,6 +6,7 @@
     <title>My Events</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link href="../../public/css/myevents-frontpage.css" th:href="@{/css/myevents-frontpage.css}" rel="stylesheet"/>
 </head>
 
@@ -13,28 +14,34 @@
 
 <div class="main-box">
 
-    <img class="logo" alt="logo" src="/public/images/myeventsimages/myeventsLOGO.png" th:src="@{/images/myeventsimages/myeventsLOGO.png}"/>
+    <img class="logo" alt="logo" src="/public/images/myeventsimages/myeventsLOGO.png"
+         th:src="@{/images/myeventsimages/myeventsLOGO.png}"/>
 
     <form class="search-container" method="post">
-        <label>
-            <input type="text" name="zipcode" placeholder="Enter your zipcode">
-        </label>
-        <button type="submit" formaction="/myevents/search"><i class="search-button"></i></button>
+        <div class="search-bar">
+            <label>
+                <input type="text" name="zipcode" placeholder="Enter your zipcode">
+            </label>
+            <button type="submit" formaction="/myevents/search"><i class="search-button"></i></button>
+        </div>
+        <div class="category-box">
+            <p>Choose category: <br><br>
+                <input type="checkbox" id="cat1" name="category" value="Festival">
+                <label for="cat1"> Festival</label><br>
+                <input type="checkbox" id="cat2" name="category" value="Networking">
+                <label for="cat2"> Networking</label><br>
+                <input type="checkbox" id="cat3" name="category" value="Fundraising">
+                <label for="cat3"> Fundraising</label><br>
+                <input type="checkbox" id="cat4" name="category" value="Art & Culture">
+                <label for="cat4"> Art & Culture</label><br>
+                <input type="checkbox" id="cat5" name="category" value="Sport">
+                <label for="cat5"> Sport</label><br><br>
+            </p>
+        </div>
     </form>
 
-    <div class="category-box">
-        <p>Choose category: <br><br>
-            <input type="checkbox" id="cat1" name="category" value="Festival">
-            <label for="cat1"> Festival</label><br>
-            <input type="checkbox" id="cat2" name="category" value="Networking">
-            <label for="cat2"> Networking</label><br>
-            <input type="checkbox" id="cat3" name="category" value="Fundraising">
-            <label for="cat3"> Fundraising</label><br>
-            <input type="checkbox" id="cat4" name="category" value="Art & Culture">
-            <label for="cat4"> Art & Culture</label><br>
-            <input type="checkbox" id="cat5" name="category" value="Sport">
-            <label for="cat5"> Sport</label><br><br>
-        </p>
+    <div>
+        <p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p>
     </div>
 
     <div class="center">

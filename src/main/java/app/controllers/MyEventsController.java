@@ -29,18 +29,15 @@ public class MyEventsController {
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
     }
 
-    private static void eventlist(Context ctx, ConnectionPool connectionPool)
-    {
-        try{
+    private static void eventlist(Context ctx, ConnectionPool connectionPool) {
+        try {
             List<MyEventsEvent> eventList = MyEventsEventMapper.getAllEvents(connectionPool);
             ctx.attribute("eventList", eventList);
             ctx.render("/myevents/eventlist.html");
 
-        } catch (DatabaseException e)  {
+        } catch (DatabaseException e) {
             ctx.attribute("message", "Error in Task values, please try again");
         }
-
-
     }
 
     private static void removeFromFavorite(Context ctx, ConnectionPool connectionPool) {
@@ -78,22 +75,39 @@ public class MyEventsController {
     }
 
     private static void searchResults(Context ctx, ConnectionPool connectionPool) {
-        String zipcode = ctx.formParam("zipcode");
-        String[] selectedCategories = ctx.formParams("category").toArray(new String[0]);
+        String searchZip = ctx.formParam("zipcode");
+        List<String> selectedCategories = ctx.formParams("category");
+        int zipcode = -1;
 
-        List<MyEventsCategory> categories = new ArrayList<>();
-        for (String categoryName : selectedCategories) {
-            MyEventsCategory category = new MyEventsCategory(-1, categoryName);
-            categories.add(category);
+        try {
+            zipcode = Integer.parseInt(searchZip);
+        } catch (NullPointerException | NumberFormatException e) {
+            ctx.attribute("message", "You must provide a zip code to search.");
+            ctx.render("/myevents/index.html");
+            return;
+        }
+
+        List<MyEventsCategory> searchCategories = new ArrayList<>();
+
+        try {
+            for (MyEventsCategory category : MyEventsCategoryMapper.getAllCategories(connectionPool)) {
+                if (selectedCategories.contains(category.getName())) {
+                    searchCategories.add(category);
+                }
+            }
+        } catch (DatabaseException e) {
+            ctx.attribute("message", "Failed to obtain categories");
+            ctx.render("/myevents/index.html");
         }
 
         try {
-            List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(Integer.parseInt(zipcode), categories, connectionPool);
+            List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(zipcode, searchCategories, connectionPool);
             ctx.attribute("events", events);
             ctx.render("/myevents/eventlist.html");
 
         } catch (DatabaseException e) {
-            ctx.attribute("message", "Something went wrong - try again");
+            ctx.attribute("message", "Failed to get events");
+            ctx.render("/myevents/index.html");
         }
     }
 
