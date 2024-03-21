@@ -82,7 +82,7 @@ public class MyEventsEventMapper {
 
     public static List<MyEventsEvent> getAllUserFavoriteEvents(int userId, ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "SELECT * FROM {schema}.event_favorites " +
+        String sql = "SELECT event_id, event_name, event_date, event_place, event_zip, city, event_resume, event_details, event_link FROM {schema}.event_favorites " +
                 " JOIN {schema}.events ON events.event_id = event_favorites.event_id" +
                 " JOIN {schema}.postal_codes ON events.event_zip = postal_codes.zip" +
                 " WHERE event_favorites.user_id = ?";
@@ -165,7 +165,7 @@ public class MyEventsEventMapper {
         }
     }
 
-    public static List<MyEventsEvent> getEventsFromResultSet(ResultSet rs) throws SQLException {
+    private static List<MyEventsEvent> getEventsFromResultSet(ResultSet rs) throws SQLException {
         List<MyEventsEvent> eventList = new ArrayList<>();
 
         while (rs.next()) {
@@ -174,7 +174,7 @@ public class MyEventsEventMapper {
         return eventList;
     }
 
-    public static MyEventsEvent getEventInfo(ResultSet rs) throws SQLException {
+    private static MyEventsEvent getEventInfo(ResultSet rs) throws SQLException {
 
         int id = rs.getInt("event_id");
         String name = rs.getString("event_name");
