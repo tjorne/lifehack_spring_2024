@@ -21,9 +21,12 @@
     <h1>Future events:</h1>
 
     <form method="post">
-        <table>
+        <div th:if="${events.size() == 0}">
+            <p>No results found.</p>
+        </div>
+        <table th:unless="${events.size() == 0}">
             <tbody>
-            <tr class ="item-preview" th:each="item: ${events} " >
+            <tr class ="item-preview" th:each="item: ${events} ">
                 <td>
                     <img class="item-img" th:src="${item.getLink()}">
                 </td>
