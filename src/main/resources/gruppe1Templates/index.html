@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/gruppe1css/Gruppe1Styles.css" th:href="@{/css/Gruppe1Styles.css}" rel="stylesheet"/>
+<link rel="Stylesheet" href="../gruppe1Public/gruppe1css/Gruppe1Styles.css">
 <!--<link href="../../public/css/projectname.css" th:href="@{/css/styles.css}" rel="stylesheet"/>-->
 
 </head>
@@ -13,13 +14,22 @@
 
 <div class="page">
     <header>
+        <div class="flex-container">
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../gruppe1Public/gruppe1Images/DropOfWater.jpg" th:src="@{/gruppe1Public/gruppe1Images/DropOfWater.jpg}"/>
         </a>
+        </div>
     </header>
-</div>
 
     <h1>Drink Water</h1>
+
+
+    <p class="bodytext">Enter your water intake for today</p>
+<div class = "flex-container">
+    <input class="bodytext" type="text" name="water" placeholder="Enter water intake"/>
+<br/>
+    <button class= "buttonstyle" type="submit" formaction="/waterIntakeMessage">Water intake</button>
+</div></div>
 
     <p>Enter your water intake for today</p>
 
