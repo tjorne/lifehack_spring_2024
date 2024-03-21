@@ -7,24 +7,31 @@
     <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
 </head>
 <body>
-
+<th:block th:object="${chosenRestaurant}">
 <div class="flexbox-header-choice">
-    <img id="img-choice-header" src="/public/images/restaurantFinder/madbilleder/Indisk2_HindIndiskRestaurant.png">
+    <img id="img-choice-header" th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${chosenRestaurant.getPicName()})}"
+         th:alt="${chosenRestaurant.getName()}">
 </div>
 
 <div class="flexbox-body-choice">
     <div>
-        <p id="flex1-choice-description">Her skal beskrivelse indsættes</p>
-        <p id="flex2-choice-address">Her skal adressen stå</p>
-        <p id="flex3-choice-openinghours">Her skal åbningstider stå</p>
+        <p id="flex1-choice-description" th:text="${chosenRestaurant.getDescription()}"></p>
+        <p id="flex2-choice-address" th:text="${chosenRestaurant.getAddress()}"></p>
+        <p id="flex3-choice-openinghours" th:text="${chosenRestaurant.getOpeningHours()}"></p>
 
+        <!--
         <form method="GET">
-            <button type="submit" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside
+            <button type="submit" th:value="${chosenRestaurant.getWebsiteLink()}" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside
             </button>
         </form>
+        -->
+
+        <a th:href="${chosenRestaurant.getWebsiteLink()}">
+            <button class="link-to-website" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside</button>
+        </a>
 
     </div>
 </div>
-
+</th:block>
 </body>
 </html>

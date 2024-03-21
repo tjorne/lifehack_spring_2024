@@ -20,44 +20,47 @@
 
         </div>
         <div class="tags-content">
-            <form method="post">
+            <form method="post" th:action="@{/restaurantFinder/chosenCuisine}">
                 <div class="welcomeText"> VELKOMMEN TIL RestaurantFinder</div>
                 <div class="direct-buttons">
                     <div class="direct-buttons2">
-                        <button type="button" formaction="/Indisk">Indisk</button>
+                        <button type="submit" name="chosenCuisine" value="Indisk">Indisk</button>
                     </div>
 
                     <div class="direct-buttons1">
-                        <button type="submit" formaction="/Koreansk">Koreansk</button>
+                        <button type="submit" name="chosenCuisine" value="Koreansk">Koreansk</button>
                     </div>
 
                     <div class="direct-buttons1">
-                        <button type="submit" formaction="/Thai">Thai</button>
+                        <button type="submit" name="chosenCuisine" value="Thai">Thai</button>
                     </div>
 
                     <div class="direct-buttons2">
-                        <button type="submit" formaction="/Japansk">Japansk</button>
+                        <button type="submit" name="chosenCuisine" value="Japansk">Japansk</button>
                     </div>
                     <div class="direct-buttons2">
-                        <button type="submit" formaction="/Italiensk">Italiensk</button>
+                        <button type="submit" name="chosenCuisine" value="Italiensk">Italiensk</button>
                     </div>
                     <div class="direct-buttons1">
-                        <button type="submit" formaction="/Mexicansk">Mexicansk</button>
+                        <button type="submit" name="chosenCuisine" value="Mexicansk">Mexicansk</button>
                     </div>
                     <div class="direct-buttons1">
-                        <button type="submit" formaction="/Vietnamesisk">Vietnamesisk</button>
+                        <button type="submit" name="chosenCuisine" value="Vietnamesisk">Vietnamesisk</button>
                     </div>
                     <div class="direct-buttons2">
-                        <button type="submit" formaction="/Amerikansk">Amerikansk</button>
+                        <button type="submit" name="chosenCuisine" value="Amerikansk">Amerikansk</button>
                     </div>
                 </div>
             </form>
         </div>
-        <!-- <a href="../index.html" th:href="@{/}">
-             <img class="headerlogo" alt="logo" src="/public/images/restaurantFinder/restaurantFinderLogo.png"
-                  th:src="@{/images/restaurantFinder/restaurantFinderLogo.png}"/>
-         </a> -->
     </div>
 </div>
+<!--
+<a href="../index.html" th:href="@{/}">
+    <img class="headerlogo" alt="logo" src="/public/images/restaurantFinder/restaurantFinderLogo.png"
+         th:src="@{/images/restaurantFinder/restaurantFinderLogo.png}"/>
+</a>
+-->
+
 </body>
 </html>

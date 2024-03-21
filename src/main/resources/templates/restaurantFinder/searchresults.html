@@ -8,41 +8,34 @@
 </head>
 <body>
 <div class="page-body">
-<div class="page-content">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="logo">LOGO PICTURE</div>
+    </div>
+    <div th:if="${!#lists.isEmpty(allMatchingRestaurants)}">
+        <div class="display-all" th:each="restaurant: ${allMatchingRestaurants}" >
+          <a th:href="@{/restaurantFinder/restaurantchoice/{id}(id=${restaurant.getId()})}" class="display-single">
 
-  <div class="page-header">
-    <div class="logo">LOGO PICTURE</div>
-  </div>
+              <div class="display-img">
+                <img class="restaurant-img"
+                     th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${restaurant.getPicName()})}"
+                     th:alt="${restaurant.getName()}">
+              </div>
+              <div class="restaurant-name" th:text="${restaurant.getName()}"></div>
 
-  <div class="display-all">
-    <div class="display-single">
-      <div class="restaurant-img"></div>
-      <div class="restaurant-name">Restaurant 1</div>
+          </a>
+        </div>
     </div>
-    <!-- test< -->
-    <div class="display-single">
-      <div class="restaurant-img"></div>
-      <div class="restaurant-name">Restaurant 2</div>
+    <div th:if="${#lists.isEmpty(allMatchingRestaurants)}">
+      <div class="display-all">
+        <div class="display-no-restaurants">Ingen restauranter fundet</div>
+      </div>
     </div>
-    <div class="display-single">
-      <div class="restaurant-img"></div>
-      <div class="restaurant-name">Restaurant 3</div>
-    </div>
-    <div class="display-single">
-      <div class="restaurant-img"></div>
-      <div class="restaurant-name">Restaurant 4</div>
-    </div>
-    <!-- test -->
-  </div>
 
-  <div class="page-footer">
-      <button class="return-button" type="submit">Go Back</button>
+    <div class="page-footer">
+      <a class="return-button" th:href="@{/restaurantFinder}">Go Back</a>
+    </div>
   </div>
-</div>
 </div>
 </body>
 </html>
-
-<!-- instead of saving image path as String then name the images as the restaurant name
-with the same img ending (.png/.jpg etc) and call like th:src="@{/images/{name}.png(name=${restaurant.name})}"
--->
