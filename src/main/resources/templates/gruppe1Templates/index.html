@@ -4,8 +4,8 @@
 <title>Drink water</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../public/gruppe1css/Gruppe1Styles.css" th:href="@{/css/Gruppe1Styles.css}" rel="stylesheet"/>
-<link rel="Stylesheet" href="../gruppe1Public/gruppe1css/Gruppe1Styles.css">
+<link href="../../gruppe1Public/gruppe1css/Gruppe1Styles.css" th:href="@{/css/Gruppe1Styles.css}" rel="stylesheet"/>
+<link rel="Stylesheet" href="../../gruppe1Public/gruppe1css/Gruppe1Styles.css">
 
 </head>
 
@@ -14,8 +14,8 @@
 <div class="page">
     <header>
         <div class="flex-container">
-        <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../gruppe1Public/gruppe1Images/DropOfWater.jpg" th:src="@{/gruppe1Public/gruppe1Images/DropOfWater.jpg}"/>
+        <a href="../index.html" th:href="@{/public}">
+            <img alt="logo" src="../../gruppe1Public/gruppe1Images/DropOfWater.jpg" th:src="@{/gruppe1Public/gruppe1Images/DropOfWater.jpg}"/>
         </a>
         </div>
     </header>
@@ -31,18 +31,12 @@
 
 <br/>
 
-    <button class= "buttonstyle" type="submit" onclick="showMessage()">Are you on track?</button>
-
+    <button class= "buttonstyle" type="submit">Are you on track?</button>
+<p th:text="${session.waterIntake}"></p>
 
 </div>
     </form>
 </div>
-<script>
-    function showMessage()
-    {
-    }
-</script>
-
 
 </body>
 </html>
