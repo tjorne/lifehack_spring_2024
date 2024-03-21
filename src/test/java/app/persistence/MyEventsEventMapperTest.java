@@ -215,4 +215,13 @@ public class MyEventsEventMapperTest {
             Assertions.assertEquals(expectedEventList.get(i), actualEventList.get(i));
         }
     }
+
+
+    @Test
+    void getAllEventsByZipTest() throws DatabaseException {
+        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEventsByZip(5000, connectionPool);
+
+        Assertions.assertEquals(1, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
+    }
 }
