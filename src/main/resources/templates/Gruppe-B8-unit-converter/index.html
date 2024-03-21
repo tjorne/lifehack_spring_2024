@@ -6,9 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 <link href="../../public/css/unitconverter.css" th:href="@{/css/unitconverter.css}" rel="stylesheet"/>
-<style>
-    .unit-group { display: none; }
-</style>
+
 </head>
 
 <body>
@@ -36,6 +34,7 @@
             </select>
     </form>
 
+<form method="post">
     <div class="unit-types">
         <div class="unit-group" id="areaFrom">
             <p>Convert from:</p>
@@ -99,6 +98,8 @@
             <input type="number" name="temperatureto" readonly>
         </div>
 
+
+
         <div class="unit-group" id="timeFrom">
             <p>Convert from:</p>
             <select name="time">
@@ -108,8 +109,9 @@
                 <option value="day">Day</option>
                 <option value="week">Week</option>
             </select>
-            <input type="number" name="timefrom" placeholder="Enter a number">
+            <input type="number"formaction="/timeconverter" name="timefromuser" placeholder="Enter a number">
         </div>
+
 
         <div class="unit-group" id="timeTo">
             <p>convert to:</p>
@@ -120,8 +122,13 @@
                 <option value="day">Day</option>
                 <option value="week">Week</option>
             </select>
-            <input type="number" name="timeto" readonly>
+
+
+            <input type="number" name="timetouser" readonly th:value="${timetouser}">
         </div>
+
+
+
 
         <div class="unit-group" id="volumeFrom">
             <p>Convert from:</p>
@@ -160,13 +167,17 @@
             </select>
             <input type="number" name="weightto" readonly>
         </div>
+        <button type="submit" formaction="/timeconverter">execute</button>
     </div>
+
+
+</form>
+
+
     <script>
         document.getElementById('masterUnit').addEventListener('change', function() {
             var unitGroups = document.getElementsByClassName('unit-group');
-            for (var i = 0; i < unitGroups.length; i++) {
-                unitGroups[i].style.display = 'none'; // Hide all groups
-            }
+
 
             var selectedUnit = this.value;
             // Show both 'from' and 'to' groups for the selected unit

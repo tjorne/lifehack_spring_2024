@@ -37,8 +37,14 @@ public class UnitConverterController
     private static void timeConverter(Context ctx)
         {
         TimeConverter timeConverter = new TimeConverter();
-        double input = Double.parseDouble(ctx.formParam("number"));
-        timeConverter.daysToHours(input);
+        double input = Double.parseDouble(ctx.formParam("timefromuser"));
+        double output = timeConverter.daysToHours(input);
+        ctx.attribute("timetouser", output);
+        ctx.render("/Gruppe-B8-unit-converter/index.html");
+
+
+
+
         }
 
     private static void temperatureConverter(Context ctx)
