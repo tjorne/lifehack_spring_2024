@@ -158,6 +158,146 @@ public class QuotesMapper {
         }
         return happyQuotes;
     }
+
+    public static List<Quote> loadSadQuotes(ConnectionPool connectionPool) throws DatabaseException
+    {
+        List<Quote> happyQuotes = new ArrayList<>();
+
+        String sql = "select * from quotes where quote_genre = 'sadnpc'";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            //ps.setInt(1, quote_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("quote_id");
+                String genre = rs.getString("quote_genre");
+                String body = rs.getString("quote_body");
+                happyQuotes.add(new Quote(id, genre, body));
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
+        }
+        return happyQuotes;
+    }
+
+    public static List<Quote> loadMotivationalQuotes(ConnectionPool connectionPool) throws DatabaseException
+    {
+        List<Quote> happyQuotes = new ArrayList<>();
+
+        String sql = "select * from quotes where quote_genre = 'motivational'";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            //ps.setInt(1, quote_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("quote_id");
+                String genre = rs.getString("quote_genre");
+                String body = rs.getString("quote_body");
+                happyQuotes.add(new Quote(id, genre, body));
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
+        }
+        return happyQuotes;
+    }
+
+    public static List<Quote> loadSillyQuotes(ConnectionPool connectionPool) throws DatabaseException
+    {
+        List<Quote> happyQuotes = new ArrayList<>();
+
+        String sql = "select * from quotes where quote_genre = 'silly'";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            //ps.setInt(1, quote_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("quote_id");
+                String genre = rs.getString("quote_genre");
+                String body = rs.getString("quote_body");
+                happyQuotes.add(new Quote(id, genre, body));
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
+        }
+        return happyQuotes;
+    }
+
+    public static List<Quote> loadLeagueQuotes(ConnectionPool connectionPool) throws DatabaseException
+    {
+        List<Quote> happyQuotes = new ArrayList<>();
+
+        String sql = "select * from quotes where quote_genre = 'league'";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            //ps.setInt(1, quote_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("quote_id");
+                String genre = rs.getString("quote_genre");
+                String body = rs.getString("quote_body");
+                happyQuotes.add(new Quote(id, genre, body));
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
+        }
+        return happyQuotes;
+    }
+
+    public static List<Quote> loadUserGeneratedQuotes(ConnectionPool connectionPool) throws DatabaseException
+    {
+        List<Quote> happyQuotes = new ArrayList<>();
+
+        String sql = "select * from quotes where quote_genre = 'userGenerated'";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            //ps.setInt(1, quote_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("quote_id");
+                String genre = rs.getString("quote_genre");
+                String body = rs.getString("quote_body");
+                happyQuotes.add(new Quote(id, genre, body));
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
+        }
+        return happyQuotes;
+    }
 }
 
 
