@@ -34,6 +34,8 @@ public class MyEventsEventMapperTest {
 
         try (Connection connection = connectionPool.getConnection()) {
             try (Statement stmt = connection.createStatement()) {
+                stmt.execute("CREATE schema IF NOT EXISTS my_events_test");
+
                 // The test schema is already created, so we only need to delete/create test tables
                 stmt.execute("DROP TABLE IF EXISTS my_events_tests.events_categories");
                 stmt.execute("DROP TABLE IF EXISTS my_events_tests.event_favorites");
@@ -197,12 +199,22 @@ public class MyEventsEventMapperTest {
                 stmt.execute(categorySql.toString());
 
                 stmt.execute("SELECT setval('my_events_tests.my_events_categories_category_id_seq', COALESCE((SELECT MAX(category_id)+1 FROM my_events_tests.categories), 1), false)");
+
+                stmt.execute("INSERT INTO my_events_tests.events_categories (events_event_id, categories_category_id) VALUES " +
+                        "(1, 4), (2, 4), (3, 3), (3, 5)");
             } catch (SQLException e) {
                 fail("SQL Error: " + e.getMessage());
             }
         } catch (SQLException e) {
             fail("Database connection failed");
         }
+    }
+
+    @Test
+    void getEventByIdTest() throws DatabaseException {
+        MyEventsEvent actualEvent = MyEventsEventMapper.getEventById(2, connectionPool);
+
+        Assertions.assertEquals(expectedEventList.get(1), actualEvent);
     }
 
     @Test
@@ -216,10 +228,17 @@ public class MyEventsEventMapperTest {
         }
     }
 
-
     @Test
     void getAllEventsByZipTest() throws DatabaseException {
         List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEventsByZip(5000, connectionPool);
+
+        Assertions.assertEquals(1, actualEventList.size());
+        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
+    }
+
+    @Test
+    void getAllEventsByZipAndCategoryTest() throws DatabaseException {
+        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEventsByZip(5000, List.of(expectedCategoryList.get(2)), connectionPool);
 
         Assertions.assertEquals(1, actualEventList.size());
         Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
