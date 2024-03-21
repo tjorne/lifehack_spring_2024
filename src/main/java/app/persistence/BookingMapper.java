@@ -45,7 +45,6 @@ public class BookingMapper {
             }
             throw new DatabaseException(msg, e.getMessage());
         }
-        //updateTimeslotBoolean(date,time,behandling,connectionPool);
     }
 
     public static ArrayList<Timeslot> checkTime(String dato, String behandling, ConnectionPool connectionPool) throws DatabaseException {
@@ -79,27 +78,6 @@ public class BookingMapper {
             }
             return taskList;
         }
-        //return new ArrayList<Timeslot>();
     }
-    /*
-    public static void updateTimeslotBoolean(String date, String time, String behandling,ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO timeslot(date,timeslot,booked,handling) VALUES(?, ?, TRUE, ?)";
 
-        try (
-                Connection connection = connectionPool.getConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)
-        ) {
-            ps.setString(1, date);
-            ps.setString(2, time);
-            ps.setString(3, behandling);
-
-
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1) {
-                throw new DatabaseException("Fejl ved opdatering af timeslot boolean");
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException("Database fejl: " + e.getMessage());
-        }
-    }*/
 }
