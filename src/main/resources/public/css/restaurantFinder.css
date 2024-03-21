@@ -29,12 +29,12 @@
 .tags-content {
     flex-grow: 2;
    }
+
 .background-image{
-    width: 100%;
-    height: auto;
+    width: 99.4%;
+    height: 100%;
     position: absolute;
     z-index: -1;
-
 }
 
 /* SEARCH RESULTS CSS*/
@@ -50,7 +50,6 @@
     min-height: 100vh;
     display: flex;
     flex-flow: column;
-
 }
 
 /*Header*/
@@ -159,18 +158,13 @@
 /* ********************************** RESTAURANT CHOICE PAGE ****************************************/
 
 .flexbox-header-choice {
-    height: 50vh;
+    height: 10vh;
     width: 100%;
-}
-
-#img-choice-header {
-    background-size: contain;
-    width: 100%;
-    max-height: 100%
 }
 
 .flexbox-body-choice {
-    background: lightpink;
+    font-size: 2vh;
+    font-family: Verdana, sans-serif;
     justify-content: center;
     display: flex;
     height: 100%;
@@ -178,35 +172,48 @@
     margin-inline: auto;
 }
 
-#flex1-choice-description {
+.flex-header-text {
+    border-radius: 7px;
     text-align: center;
     display: flex;
-    height: 10vh;
-    width: 50vh;
     margin-inline: auto;
     flex-direction: column;
-    margin-left: 10px;
-    border: 2px solid #FF0000;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
+}
+
+#flex1-choice-description {
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    height: 20vh;
+    width: 85vh;
+    margin-inline: auto;
+    flex-direction: column;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
 }
 
 #flex2-choice-address {
+    border-radius: 7px;
     text-align: center;
     display: flex;
-    height: 10vh;
-    width: 50vh;
+    height: 15vh;
+    width: 85vh;
     flex-direction: column;
-    margin-left: 10px;
-    border: 2px solid #FF0000;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
 }
 
 #flex3-choice-openinghours {
+    border-radius: 7px;
     text-align: center;
     display: flex;
-    height: 10vh;
-    width: 50vh;
+    height: 15vh;
+    width: 85vh;
     flex-direction: column;
-    margin-left: 10px;
-    border: 2px solid #FF0000;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
 }
 
 #rcorners1 {

@@ -7,24 +7,31 @@
     <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
 </head>
 <body>
+
 <th:block th:object="${chosenRestaurant}">
-<div class="flexbox-header-choice">
-    <img id="img-choice-header" th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${chosenRestaurant.getPicName()})}"
-         th:alt="${chosenRestaurant.getName()}">
-</div>
-
-<div class="flexbox-body-choice">
-    <div>
-        <p id="flex1-choice-description" th:text="${chosenRestaurant.getDescription()}"></p>
-        <p id="flex2-choice-address" th:text="${chosenRestaurant.getAddress()}"></p>
-        <p id="flex3-choice-openinghours" th:text="${chosenRestaurant.getOpeningHours()}"></p>
-
-        <a th:href="${chosenRestaurant.getWebsiteLink()}">
-            <button class="button button1" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside</button>
-        </a>
-
+    <div class="flexbox-header-choice">
+        <img class="background-image"
+             th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${chosenRestaurant.getPicName()})}"
+             th:alt="${chosenRestaurant.getName()}">
     </div>
-</div>
+
+    <div class="flexbox-body-choice">
+        <div>
+            <h1 class="flex-header-text" th:text="${chosenRestaurant.getName()}"></h1>
+
+            <p id="flex1-choice-description" th:text="${chosenRestaurant.getDescription()}"></p>
+
+            <p id="flex2-choice-address" th:text="${chosenRestaurant.getAddress()}"></p>
+
+            <p id="flex3-choice-openinghours" th:text="${chosenRestaurant.getOpeningHours()}"></p>
+
+            <a th:href="${chosenRestaurant.getWebsiteLink()}">
+                <button class="button button1" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens
+                    hjemmeside
+                </button>
+            </a>
+        </div>
+    </div>
 </th:block>
 </body>
 </html>
