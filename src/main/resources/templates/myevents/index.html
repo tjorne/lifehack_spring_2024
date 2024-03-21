@@ -13,6 +13,8 @@
 
 <div class="main-box">
 
+    <img class="logo" alt="logo" src="/public/images/myeventsimages/myeventsLOGO.png" th:src="@{/images/myeventsimages/myeventsLOGO.png}"/>
+
     <form class="search-container" method="post">
         <label>
             <input type="text" name="zipcode" placeholder="Enter your zipcode">
@@ -21,7 +23,7 @@
     </form>
 
     <div class="category-box">
-        <p>Choose category:<br><br>
+        <p>Choose category: <br><br>
             <input type="checkbox" id="cat1" name="category" value="Festival">
             <label for="cat1"> Festival</label><br>
             <input type="checkbox" id="cat2" name="category" value="Networking">
@@ -36,7 +38,7 @@
     </div>
 
     <div class="center">
-        <a class="button" href="favorites.html" th:href="@{/myfavorites}">My favorites</a>
+        <a class="button" href="favorites.html" th:href="@{/myevents/favorites}"> My favorites</a>
         <span class="button" th:if="${session.currentUser != null}"> |  </span>
         <a class="button" th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Log out</a>
     </div>

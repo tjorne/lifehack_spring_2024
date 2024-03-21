@@ -19,15 +19,15 @@
   </div>
 
   <div class="item-info">
-      <img class="item-info-img" th:src="${eventItem.getLink()}">
+    <img class="item-info-img" th:src="${eventItem.getLink()}">
 
-      <h1 th:text="${eventItem.getName()}">Title</h1>
-      <div class="small-info">
-        <h2 th:text="${eventItem.getFormattedDate()}">Date</h2>
-        <h2 th:text="${eventItem.getPlace()}">Place</h2>
-        <h2 th:text="${eventItem.getZip()}">Zip</h2>
-      </div>
-      <h3 th:text="${eventItem.getDetails()}">Details</h3>
+    <h1 th:text="${eventItem.getName()}">Title</h1>
+    <div class="small-info">
+      <h2 th:text="${eventItem.getFormattedDate()}">Date</h2>
+      <h2 th:text="${eventItem.getPlace()}">Place</h2>
+      <h2 th:text="${eventItem.getZip()}">Zip</h2>
+    </div>
+    <h3 th:text="${eventItem.getDetails()}">Details</h3>
   </div>
 
 

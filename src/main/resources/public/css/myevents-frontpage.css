@@ -2,6 +2,12 @@ html *{
     box-sizing: border-box;
 }
 
+.logo{
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+}
+
 body {
     background-image: url("../images/myeventsimages/Forside.jpeg");
     background-position: center;
@@ -16,7 +22,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 50%;
-    background: rgba(255, 255, 255, 50%);
+    background: white;
     padding: 8px;
     height: 98vh;
 }
@@ -38,7 +44,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 420px;
+    margin-top: 50px;
 }
 
 .search-button {
