@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MyEventsController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
-        app.get("/myevents", ctx -> eventlist(ctx, connectionPool));
+        app.get("/myevents", ctx -> index(ctx, connectionPool));
         app.post("/myevents", ctx -> viewEvent(ctx, connectionPool));
         app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
     }
