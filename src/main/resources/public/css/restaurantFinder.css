@@ -215,13 +215,18 @@
 }
 
 .return-button {
+    text-decoration: none;
     background-color: grey;
     width: 15vh;
     max-width: 15vh;
     min-width: 200px;
     height: 100%;
     margin: 0 auto;
-    font-size: max(2.5vh, 25px);
+    font-size: max(3vh, 25px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .return-button:hover {

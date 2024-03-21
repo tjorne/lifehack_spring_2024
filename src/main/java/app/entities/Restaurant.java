@@ -1,6 +1,7 @@
 package app.entities;
 
 public class Restaurant {
+    private int id;
     private String name;
     private String address;
     private String openingHours;
@@ -8,7 +9,8 @@ public class Restaurant {
     private String typeOfCuisine;
     private String websiteLink;
 
-    public Restaurant(String name, String address, String openingHours, String description, String typeOfCuisine, String websiteLink) {
+    public Restaurant(int id, String name, String address, String openingHours, String description, String typeOfCuisine, String websiteLink) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.openingHours = openingHours;
@@ -65,6 +67,14 @@ public class Restaurant {
         this.websiteLink = websiteLink;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getPicName() {
         return name.replace(" ", "");
     }
@@ -72,7 +82,8 @@ public class Restaurant {
     @Override
     public String toString() {
         return "Restaurant{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", openingHours='" + openingHours + '\'' +
                 ", description='" + description + '\'' +

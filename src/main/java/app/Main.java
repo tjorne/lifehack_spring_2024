@@ -41,6 +41,5 @@ public class Main
         TimeZonesController.addRoutes(app, connectionPool);
 
         RestaurantFinderController.addRoutes(app, connectionPool);
-
     }
 }
