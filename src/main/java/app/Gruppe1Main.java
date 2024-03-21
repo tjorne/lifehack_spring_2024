@@ -10,7 +10,6 @@ public class Gruppe1Main
 {
     public static void main(String[] args)
     {
-        Gruppe1Vand-CalculateWater
         Gruppe1CalculateWater calculateWater = new Gruppe1CalculateWater();
         Scanner UserInput = new Scanner(System.in);
 
@@ -21,6 +20,5 @@ public class Gruppe1Main
         calculateWater.setWaterConsumed(waterConsumed);
         calculateWater.calculateRemainingWater();
         System.out.println(calculateWater.toString());
-        Gruppe1Vand
     }
 }
