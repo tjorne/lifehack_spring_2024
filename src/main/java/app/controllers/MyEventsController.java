@@ -5,6 +5,7 @@ import app.entities.MyEventsEvent;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
+import app.persistence.MyEventsCategoryMapper;
 import app.persistence.MyEventsEventMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
@@ -19,11 +20,11 @@ public class MyEventsController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/myevents", ctx -> index(ctx, connectionPool));
         app.post("/myevents", ctx -> viewEvent(ctx, connectionPool));
+        app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
 
         app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
-        app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
     }
 
     private static void eventlist(Context ctx, ConnectionPool connectionPool) {
@@ -53,7 +54,6 @@ public class MyEventsController {
                     eventsMap.put(event, false);
                 }
             }
-
             ctx.attribute("eventMap", eventsMap);
             //ctx.attribute("eventList", eventList);
             ctx.render("favorites.html");
@@ -83,6 +83,7 @@ public class MyEventsController {
             ctx.attribute("message", "Something went wrong - try again");
         }
     }
+
 
     private static void viewEvent(Context ctx, ConnectionPool connectionPool) {
         int id = Integer.parseInt(ctx.formParam("id"));
