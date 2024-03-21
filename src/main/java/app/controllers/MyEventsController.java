@@ -9,6 +9,7 @@ import app.persistence.MyEventsEventMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +17,15 @@ import java.util.Map;
 public class MyEventsController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
-        app.get("/myevents", ctx -> eventlist(ctx, connectionPool));
+        app.get("/myevents", ctx -> index(ctx, connectionPool));
         app.post("/myevents", ctx -> viewEvent(ctx, connectionPool));
 
         app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
+    }
+
+    private static void eventlist(Context ctx, ConnectionPool connectionPool) {
     }
 
     private static void removeFromFavorite(Context ctx, ConnectionPool connectionPool) {
@@ -119,4 +123,5 @@ public class MyEventsController {
         } catch (DatabaseException e) {
             throw new DatabaseException("Error in trying to load user favourite list" + e.getMessage());
         }
+    }
 }
