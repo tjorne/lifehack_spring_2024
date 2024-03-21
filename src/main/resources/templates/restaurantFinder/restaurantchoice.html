@@ -19,15 +19,8 @@
         <p id="flex2-choice-address" th:text="${chosenRestaurant.getAddress()}"></p>
         <p id="flex3-choice-openinghours" th:text="${chosenRestaurant.getOpeningHours()}"></p>
 
-        <!--
-        <form method="GET">
-            <button type="submit" th:value="${chosenRestaurant.getWebsiteLink()}" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside
-            </button>
-        </form>
-        -->
-
         <a th:href="${chosenRestaurant.getWebsiteLink()}">
-            <button class="link-to-website" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside</button>
+            <button class="button button1" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens hjemmeside</button>
         </a>
 
     </div>
