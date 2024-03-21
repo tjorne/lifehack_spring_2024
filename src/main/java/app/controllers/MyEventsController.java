@@ -17,6 +17,8 @@ import java.util.Map;
 public class MyEventsController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
+        MyEventsEventMapper.setMapperSchema("my_events");
+
         app.get("/myevents", ctx -> index(ctx, connectionPool));
         app.post("/event", ctx -> eventOverview(ctx, connectionPool));
 
