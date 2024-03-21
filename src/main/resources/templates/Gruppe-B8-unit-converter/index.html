@@ -38,7 +38,13 @@
             </select>
     </form>
 
-<form method="post">
+
+    <form id="conversionForm" method="post" action="/convert">
+        <input type="hidden" name="unit" id="unitType">
+        <input type="hidden" name="fromUnit" id="fromUnit">
+        <input type="hidden" name="toUnit" id="toUnit">
+
+
     <div class="unit-types">
         <div class="unit-group" id="areaFrom">
             <p>Convert from:</p>
@@ -48,7 +54,6 @@
                 <option value="squareyard">Square yard</option>
                 <option value="squaremile">Square mile</option>
             </select>
-            <input type="number" name="areafrom" placeholder="Enter a number">
         </div>
 
         <div class="unit-group" id="areaTo">
@@ -59,7 +64,6 @@
                 <option value="squareyard">Square yard</option>
                 <option value="squaremile">Square mile</option>
             </select>
-            <input type="number" name="areato" readonly>
         </div>
 
         <div class="unit-group" id="lengthFrom">
@@ -69,7 +73,6 @@
                 <option value="kilometer">Kilometer</option>
                 <option value="miles">Miles</option>
             </select>
-            <input type="number" name="lengthfrom" placeholder="Enter a number">
         </div>
 
         <div class="unit-group" id="lengthTo">
@@ -79,7 +82,6 @@
                 <option value="kilometer">Kilometer</option>
                 <option value="miles">Miles</option>
             </select>
-            <input type="number" name="lengthto" readonly>
         </div>
 
         <div class="unit-group" id="temperatureFrom">
@@ -89,7 +91,6 @@
                 <option value="fahrenheit">Fahrenheit</option>
                 <option value="kelvin">Kelvin</option>
             </select>
-            <input type="number" name="temperaturefrom" placeholder="Enter a number">
         </div>
 
         <div class="unit-group" id="temperatureTo">
@@ -99,21 +100,19 @@
                 <option value="fahrenheit">Fahrenheit</option>
                 <option value="kelvin">Kelvin</option>
             </select>
-            <input type="number" name="temperatureto" readonly>
         </div>
 
 
 
         <div class="unit-group" id="timeFrom">
             <p>Convert from:</p>
-            <select name="time">
+            <select id="fromTimeSelect">
                 <option value="second">Second</option>
                 <option value="minute">Minute</option>
                 <option value="hour">Hour</option>
                 <option value="day">Day</option>
                 <option value="week">Week</option>
             </select>
-            <input type="number"formaction="/timeconverter" name="timefrom" placeholder="Enter a number">
         </div>
 
 
@@ -126,7 +125,6 @@
                 <option value="day">Day</option>
                 <option value="week">Week</option>
             </select>
-            <input type="number" name="timeto" readonly th:value="${timeto}">
         </div>
 
 
@@ -139,8 +137,8 @@
                 <option value="liter">Liter</option>
                 <option value="milliliter">Milliliter</option>
             </select>
-            <input type="number" name="volumefrom" placeholder="Enter a number">
         </div>
+
         <div class="unit-group" id="volumeTo">
             <p>convert to:</p>
             <select name="volume">
@@ -148,7 +146,6 @@
                 <option value="liter">Liter</option>
                 <option value="milliliter">Milliliter</option>
             </select>
-            <input type="number" name="volumeto" readonly>
         </div>
 
         <div class="unit-group" id="weightFrom">
@@ -158,7 +155,7 @@
                 <option value="pound">Pound</option>
                 <option value="metricton">Metric ton</option>
             </select>
-            <input type="number" name="weightfrom" placeholder="Enter a number">
+
         </div>
         <div class="unit-group" id="weightTo">
             <p>convert to:</p>
@@ -167,9 +164,11 @@
                 <option value="pound">Pound</option>
                 <option value="metricton">Metric ton</option>
             </select>
-            <input type="number" name="weightto" readonly>
+
         </div>
-        <button type="submit" formaction="/timeconverter">execute</button>
+        <input type="number" name="value" id="conversionValue" placeholder="Enter value">
+        <input type="number" name="result" readonly th:value="${result}">
+        <button type="submit" formaction="/convert">execute</button>
     </div>
 
 
@@ -179,23 +178,46 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var masterUnitSelect = document.getElementById('masterUnit');
-            displayUnitGroup(masterUnitSelect.value); // Display group on page load based on current selection
+            // Assuming you have specific input fields for each unit group
+            var inputs = document.querySelectorAll('.unit-group input[type="number"]');
 
+            // Function to display the correct unit group and set hidden input values
+            function displayUnitGroup(selectedUnit) {
+                var unitGroups = document.getElementsByClassName('unit-group');
+                Array.from(unitGroups).forEach(group => group.style.display = 'none');
+
+                var selectedGroupFrom = document.getElementById(selectedUnit + 'From');
+                var selectedGroupTo = document.getElementById(selectedUnit + 'To');
+                if (selectedGroupFrom) selectedGroupFrom.style.display = 'block';
+                if (selectedGroupTo) selectedGroupTo.style.display = 'block';
+
+                // Set the unit type for conversion
+                document.getElementById('unitType').value = selectedUnit;
+
+                // Logic to set 'fromUnit' and 'toUnit' for specific unit types
+                if (selectedUnit === 'weight') {
+                    document.getElementById('fromUnit').value = 'kilogram';
+                    document.getElementById('toUnit').value = 'pound';
+                }
+                // Add more conditions for other unit types
+            }
+
+
+            // Initial display based on page load selection
+            displayUnitGroup(masterUnitSelect.value);
+
+            // Update display and form values on master unit selection change
             masterUnitSelect.addEventListener('change', function() {
                 displayUnitGroup(this.value);
             });
+
+            // Update conversion value based on input in any unit group
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    document.getElementById('conversionValue').value = this.value;
+                });
+            });
         });
-
-        function displayUnitGroup(selectedUnit) {
-            var unitGroups = document.getElementsByClassName('unit-group');
-            Array.from(unitGroups).forEach(group => group.style.display = 'none'); // Hide all groups
-
-            // Show both 'from' and 'to' groups for the selected unit
-            var selectedGroupFrom = document.getElementById(selectedUnit + 'From');
-            var selectedGroupTo = document.getElementById(selectedUnit + 'To');
-            if (selectedGroupFrom) selectedGroupFrom.style.display = 'block';
-            if (selectedGroupTo) selectedGroupTo.style.display = 'block';
-        }
     </script>
 
 </div>

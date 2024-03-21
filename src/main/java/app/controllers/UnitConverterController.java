@@ -8,72 +8,74 @@ import io.javalin.http.Context;
 public class UnitConverterController
 {
 
-
-    public static void addRoutes(Javalin app, ConnectionPool connectionPool)
-        {
+    public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/Gruppe-B8-unit-converter", ctx -> index(ctx, connectionPool));
-        app.post("/areaconverter", ctx -> areaConverter(ctx));
-        app.post("/lengthconverter", ctx -> lengthConverter(ctx));
-        app.post("/temperatureconverter", ctx -> temperatureConverter(ctx));
-        app.post("/timeconverter", ctx -> timeConverter(ctx));
-        app.post("/volumeconverter", ctx -> volumeConverter(ctx));
-        app.post("/Weightconverter", ctx -> weightConverter(ctx));
+        app.post("/convert", ctx -> convert(ctx));
+
+
+    }
+
+    private static void convert(Context ctx) {
+        double result = 0.0;
+        String unitType = ctx.formParam("unit");
+        String fromUnit = ctx.formParam("fromUnit");
+        String toUnit = ctx.formParam("toUnit"); // Not used in your initial methods, but added for completeness
+        double value = Double.parseDouble(ctx.formParam("value"));
+
+
+
+        switch (unitType) {
+            case "weight":
+                WeightConverter weightConverter = new WeightConverter();
+                // Assume 'value' is the input number to convert
+                if ("kilogram".equals(fromUnit) && "pound".equals(toUnit)) {
+                    result = weightConverter.kgToPounds(value);
+                    System.out.println(result);
+                } else if ("kilogram".equals(fromUnit) && "metricTon".equals(toUnit)) {
+                    result = weightConverter.kgToTon(value);
+                    System.out.println(result);
+                }
+                // Add more 'else if' branches for other conversions within 'weight'
+                break;
+/*
+            case "volume":
+                VolumeConverter volumeConverter = new VolumeConverter();
+                result = volumeConverter.milliliterToLiter(value);
+                break;
+            case "time":
+                TimeConverter timeConverter = new TimeConverter();
+                result = timeConverter.daysToHours(value);
+                break;
+            case "temperature":
+                TemperatureConverter temperatureConverter = new TemperatureConverter();
+                result = temperatureConverter.celsiusToFahrenheit(value);
+                break;
+            case "length":
+                LengthConverter lengthConverter = new LengthConverter();
+                result = lengthConverter.kilometerToMeter(value);
+                break;
+            case "area":
+                AreaConverter areaConverter = new AreaConverter();
+                result = areaConverter.squareMetersToSquareKilometers(value);
+                break;
+            // Add additional cases as necessary*/
+            default:
+                System.out.println("noget galt");
+               // throw new IllegalArgumentException("Unsupported unit type");
         }
 
-    private static void weightConverter(Context ctx)
-        {
-        WeightConverter weightConverter = new WeightConverter();
-        double input = Double.parseDouble(ctx.formParam("weightfrom"));
-        weightConverter.kgToTon(input);
-        }
-
-    private static void volumeConverter(Context ctx)
-        {
-        VolumeConverter volumeConverter = new VolumeConverter();
-        double input = Double.parseDouble(ctx.formParam("number"));
-        volumeConverter.milliliterToLiter(input);
-        }
-
-    private static void timeConverter(Context ctx)
-        {
-            TimeConverter timeConverter = new TimeConverter();
-            double input = Double.parseDouble(ctx.formParam("timefrom"));
-            double output = timeConverter.daysToHours(input);
-
-            // Preserving unit type and output for rendering
-            ctx.attribute("selectedUnit", "time");
-            ctx.attribute("timeto", output);
-
-            ctx.render("/Gruppe-B8-unit-converter/index.html");
-        }
-
-    private static void temperatureConverter(Context ctx)
-        {
-        TemperatureConverter temperatureConverter = new TemperatureConverter();
-        double input = Double.parseDouble(ctx.formParam("number"));
-        temperatureConverter.celsiusToFahrenheit(input);
-        }
-
-    private static void lengthConverter(Context ctx)
-        {
-        LengthConverter lengthConverter = new LengthConverter();
-        double input = Double.parseDouble(ctx.formParam("number"));
-        lengthConverter.kilometerToMeter(input);
-        }
-
-    public static void areaConverter(Context ctx)
-        {
-        AreaConverter areaConverter = new AreaConverter();
-        double input = Double.parseDouble(ctx.formParam("number"));
-        areaConverter.squareMetersToSquareKilometers(input);
-        }
-
-    private static void index(Context ctx, ConnectionPool connectionPool)
-        {
+        // Set the result in the context to be available in the response or view
+        ctx.attribute("selectedUnit", unitType); // Preserve the selected unit type for rendering
+        ctx.attribute("result", result); // Pass the result for rendering
         ctx.render("/Gruppe-B8-unit-converter/index.html");
-        }
+    }
 
+    private static void index(Context ctx, ConnectionPool connectionPool) {
+        ctx.render("/Gruppe-B8-unit-converter/index.html");
+    }
 
+    // Example conversion method (adjust or add methods as necessary)
+    // Assuming kgToTon is part of WeightConverter and returns double
 }
 
 
