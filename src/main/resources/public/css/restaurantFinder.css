@@ -8,7 +8,6 @@
     width: 50%;
     padding-top: 50px;
     margin: 0 auto;
-    margin-top: 20px;
 }
 
 .direct-buttons {
@@ -27,7 +26,11 @@
 
 .tags-content {
     flex-grow: 2;
-    background-color: blue;
+   }
+.tags-content-image{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
 }
 
 /* SEARCH RESULTS CSS*/
