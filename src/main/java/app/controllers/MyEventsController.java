@@ -34,13 +34,10 @@ public class MyEventsController
 
         try {
             List<MyEventsEvent> events = MyEventsEventMapper.getAllEventsByZip(Integer.parseInt(zipcode), categories, connectionPool);
-
             ctx.render("/myevents/eventlist.html", Map.of("events", events));
 
-        } catch (NumberFormatException e) {
-            ctx.result("Invalid zipcode. Please enter a valid zipcode.");
         } catch (DatabaseException e) {
-            ctx.result("Database Error: " + e.getMessage());
+            ctx.attribute("message", "Something went wrong - try again");
         }
     }
 
