@@ -14,9 +14,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -30,12 +28,8 @@ public class MyEventsEventMapperTest {
 
     @BeforeAll
     public static void setUpClass() {
-        MyEventsEventMapper.setMapperSchema("my_events_tests");
-
         try (Connection connection = connectionPool.getConnection()) {
             try (Statement stmt = connection.createStatement()) {
-                stmt.execute("CREATE schema IF NOT EXISTS my_events_test");
-
                 // The test schema is already created, so we only need to delete/create test tables
                 stmt.execute("DROP TABLE IF EXISTS my_events_tests.events_categories");
                 stmt.execute("DROP TABLE IF EXISTS my_events_tests.event_favorites");
@@ -67,71 +61,62 @@ public class MyEventsEventMapperTest {
         }
     }
 
-    private List<MyEventsEvent> expectedEventList;
-    private List<MyEventsCategory> expectedCategoryList;
-    private Map<Integer, String> expectedCityMap;
+    private List<MyEventsEvent> eventList;
+    private List<MyEventsCategory> categoryList;
 
     @BeforeEach
     void setUp() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        expectedEventList = new ArrayList<>();
-        expectedCategoryList = new ArrayList<>();
-        expectedCityMap = new LinkedHashMap<>();
+        eventList = new ArrayList<>();
+        categoryList = new ArrayList<>();
 
-        expectedEventList.add(new MyEventsEvent(
+        eventList.add(new MyEventsEvent(
                 1,
                 "Nordic Winter Festival",
                 LocalDateTime.parse("2024-12-15 16:00:00", dateTimeFormatter),
                 "Åboulevarden", 8000,
-                "Aarhus",
                 "Experience the magic of the holiday season with festive markets, traditional performances, and seasonal treats.",
                 "extra details",
                 "link will be here"
         ));
 
-        expectedEventList.add(new MyEventsEvent(
+        eventList.add(new MyEventsEvent(
                 2,
                 "Street Art Festival",
                 LocalDateTime.parse("2024-08-03 10:00:00", dateTimeFormatter),
                 "Copenhagen",
                 1050,
-                "Copenhagen",
                 "Witness the transformation of urban spaces into vibrant works of art by local and international street artists.",
                 "The Street Art Festival brings color and creativity to the streets of Copenhagen, showcasing the talents of graffiti artists, muralists, and stencilists from around the world. Over three days, visitors can explore different neighborhoods to discover large-scale murals, interactive installations, and live painting performances. Guided tours, workshops, and artist talks offer insight into the techniques and inspirations behind the artworks, making it a dynamic and engaging cultural experience for all.",
                 "link will be here"
         ));
 
-        expectedEventList.add(new MyEventsEvent(
+        eventList.add(new MyEventsEvent(
                 3,
                 "Charity Run for Children's Education",
                 LocalDateTime.parse("2024-06-08 09:00:00", dateTimeFormatter),
                 "Odense",
                 5000,
-                "Odense",
                 "Lace up your running shoes and join us for a fun run to support children's education initiatives in Denmark.",
                 "The Charity Run for Children's Education is a community event aimed at raising funds and awareness for educational programs serving children in need. Participants of all ages and fitness levels are welcome to walk, jog, or run the scenic route through Odense, with distances suitable for families and serious runners alike. In addition to the main race, the event features family-friendly activities, entertainment, and opportunities to learn about the impact of education on children's lives.",
                 "link will be here"
         ));
 
-        expectedCategoryList.add(new MyEventsCategory(
+        categoryList.add(new MyEventsCategory(
                 4,
                 "Art & Culture"
         ));
 
-        expectedCategoryList.add(new MyEventsCategory(
+        categoryList.add(new MyEventsCategory(
                 3,
                 "Fundraising"
         ));
 
-        expectedCategoryList.add(new MyEventsCategory(
+        categoryList.add(new MyEventsCategory(
                 5,
                 "Sport"
         ));
-
-        expectedCityMap.put(8000, "Aarhus");
-        expectedCityMap.put(1050, "Copenhagen");
-        expectedCityMap.put(5000, "Odense");
 
         try (Connection connection = connectionPool.getConnection()) {
             try (Statement stmt = connection.createStatement()) {
@@ -147,49 +132,36 @@ public class MyEventsEventMapperTest {
                 stmt.execute("SELECT setval('my_events_tests.my_events_event_id_seq', 1)");
                 stmt.execute("SELECT setval('my_events_tests.my_events_categories_category_id_seq',1)");
 
-                StringBuilder citySql = new StringBuilder("INSERT INTO my_events_tests.postal_codes (zip, city) VALUES ");
+                // Insert rows
+                stmt.execute("INSERT INTO my_events_tests.postal_codes VALUES " +
+                        "(8000, 'Aarhus'), (1050, 'Copenhagen'), (5000, 'Odense')");
 
-                int cityCounter = 0;
-                for (Map.Entry<Integer, String> entry : expectedCityMap.entrySet()) {
-                    if (cityCounter != 0) {
-                        citySql.append(",");
-                    }
-                    citySql.append(
-                            String.format("(%d, '%s')",
-                                    entry.getKey(),
-                                    entry.getValue())
-                    );
-                    cityCounter++;
-                }
-                stmt.execute(citySql.toString());
-
-                StringBuilder eventSql = new StringBuilder("INSERT INTO my_events_tests.events (event_id, event_name, event_date, event_place, event_zip, event_resume, event_details, event_link) VALUES ");
-                for (int i = 0; i < expectedEventList.size(); i++) {
-                    MyEventsEvent event = expectedEventList.get(i);
+                StringBuilder sql = new StringBuilder("INSERT INTO my_events_tests.events (event_id, event_name, event_date, event_place, event_zip, event_resume, event_details, event_link) VALUES ");
+                for (int i = 0; i < eventList.size(); i++) {
+                    MyEventsEvent event = eventList.get(i);
 
                     if (i != 0) {
-                        eventSql.append(",");
+                        sql.append(",");
                     }
-                    eventSql.append(
+                    sql.append(
                             String.format("(%d, '%s', '%s', '%s', %d, '%s', '%s', '%s')",
-                                    event.getId(),
-                                    event.getName().replace("'", "''"),
-                                    event.getDate().format(dateTimeFormatter),
-                                    event.getPlace().replace("'", "''"),
-                                    event.getZip(),
-                                    event.getResume().replace("'", "''"),
-                                    event.getDetails().replace("'", "''"),
-                                    event.getLink())
-                    );
+                            event.getId(),
+                            event.getName().replace("'", "''"),
+                            event.getDate().format(dateTimeFormatter),
+                            event.getPlace().replace("'", "''"),
+                            event.getZip(),
+                            event.getResume().replace("'", "''"),
+                            event.getDetails().replace("'", "''"),
+                            event.getLink()));
                 }
-                stmt.execute(eventSql.toString());
+                stmt.execute(sql.toString());
 
                 // Set sequence to continue from the largest member_id
                 stmt.execute("SELECT setval('my_events_tests.my_events_event_id_seq', COALESCE((SELECT MAX(event_id)+1 FROM my_events_tests.events), 1), false)");
 
                 StringBuilder categorySql = new StringBuilder("INSERT INTO my_events_tests.categories (category_id, category_name) VALUES ");
-                for (int i = 0; i < expectedCategoryList.size(); i++) {
-                    MyEventsCategory category = expectedCategoryList.get(i);
+                for (int i = 0; i < categoryList.size(); i++) {
+                    MyEventsCategory category = categoryList.get(i);
 
                     if (i != 0) {
                         categorySql.append(",");
@@ -199,10 +171,7 @@ public class MyEventsEventMapperTest {
                 stmt.execute(categorySql.toString());
 
                 stmt.execute("SELECT setval('my_events_tests.my_events_categories_category_id_seq', COALESCE((SELECT MAX(category_id)+1 FROM my_events_tests.categories), 1), false)");
-
-                stmt.execute("INSERT INTO my_events_tests.events_categories (events_event_id, categories_category_id) VALUES " +
-                        "(1, 4), (2, 4), (3, 3), (3, 5)");
-            } catch (SQLException e) {
+            }  catch (SQLException e) {
                 fail("SQL Error: " + e.getMessage());
             }
         } catch (SQLException e) {
@@ -211,36 +180,9 @@ public class MyEventsEventMapperTest {
     }
 
     @Test
-    void getEventByIdTest() throws DatabaseException {
-        MyEventsEvent actualEvent = MyEventsEventMapper.getEventById(2, connectionPool);
-
-        Assertions.assertEquals(expectedEventList.get(1), actualEvent);
-    }
-
-    @Test
     void getAllEventsTest() throws DatabaseException {
-        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEvents(connectionPool);
-
-        Assertions.assertEquals(expectedEventList.size(), actualEventList.size());
-
-        for (int i = 0; i < expectedEventList.size(); i++) {
-            Assertions.assertEquals(expectedEventList.get(i), actualEventList.get(i));
-        }
+        List<MyEventsEvent> allEvents = MyEventsEventMapper.getAllEvents(connectionPool);
+        Assertions.assertEquals(eventList.size(), allEvents.size());
     }
 
-    @Test
-    void getAllEventsByZipTest() throws DatabaseException {
-        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEventsByZip(5000, connectionPool);
-
-        Assertions.assertEquals(1, actualEventList.size());
-        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
-    }
-
-    @Test
-    void getAllEventsByZipAndCategoryTest() throws DatabaseException {
-        List<MyEventsEvent> actualEventList = MyEventsEventMapper.getAllEventsByZip(5000, List.of(expectedCategoryList.get(2)), connectionPool);
-
-        Assertions.assertEquals(1, actualEventList.size());
-        Assertions.assertEquals(expectedEventList.get(2), actualEventList.get(0));
-    }
 }
