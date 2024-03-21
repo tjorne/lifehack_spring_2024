@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/gruppe1css/Gruppe1Styles.css" th:href="@{/css/Gruppe1Styles.css}" rel="stylesheet"/>
 <link rel="Stylesheet" href="../gruppe1Public/gruppe1css/Gruppe1Styles.css">
-<!--<link href="../../public/css/projectname.css" th:href="@{/css/styles.css}" rel="stylesheet"/>-->
 
 </head>
 
@@ -25,23 +24,25 @@
 
 
     <p class="bodytext">Enter your water intake for today</p>
+    <form method="post">
 <div class = "flex-container">
+
     <input class="bodytext" type="text" name="water" placeholder="Enter water intake"/>
+
 <br/>
+
     <button class= "buttonstyle" type="submit" onclick="showMessage()">Are you on track?</button>
 
+
 </div>
+    </form>
 </div>
 <script>
     function showMessage()
     {
-
-
     }
 </script>
 
 
-
-<!--</div>-->
 </body>
 </html>
