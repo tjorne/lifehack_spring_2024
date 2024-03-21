@@ -3,8 +3,6 @@ package app.controllers;
 import app.entities.MyEventsCategory;
 import app.entities.MyEventsEvent;
 import app.exceptions.DatabaseException;
-import app.entities.MyEventsEvent;
-import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
 import app.persistence.MyEventsEventMapper;
 import io.javalin.Javalin;
