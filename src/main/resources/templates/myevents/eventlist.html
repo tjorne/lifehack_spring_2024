@@ -23,7 +23,7 @@
     <form method="post">
         <table>
             <tbody>
-            <tr class ="item-preview" th:each="item: ${eventList} " >
+            <tr class ="item-preview" th:each="item: ${events} " >
                 <td>
                     <img class="item-img" th:src="${item.getLink()}">
                 </td>

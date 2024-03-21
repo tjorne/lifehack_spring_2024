@@ -23,6 +23,7 @@ public class MyEventsController {
         app.get("/myevents/favourites", ctx -> viewUserFavourites(ctx, connectionPool));
         app.post("/myevents/addtofavorite", ctx -> addToFavorite(ctx, connectionPool));
         app.post("/myevents/removefromfavorite", ctx -> removeFromFavorite(ctx, connectionPool));
+        app.post("/myevents/search", ctx -> searchResults(ctx, connectionPool));
     }
 
     private static void eventlist(Context ctx, ConnectionPool connectionPool) {
@@ -38,7 +39,7 @@ public class MyEventsController {
 
         try {
             int event_id = Integer.parseInt(ctx.formParam("event_id"));
-            MyEventsEventMapper.addEventToUserFavorites(user.getUserId(), event_id,connectionPool);
+            MyEventsEventMapper.addEventToUserFavorites(user.getUserId(), event_id, connectionPool);
 
             List<MyEventsEvent> eventList = MyEventsEventMapper.getAllEvents(connectionPool);
             List<MyEventsEvent> userFavoriteEventList = MyEventsEventMapper.getAllUserFavoriteEvents(user.getUserId(), connectionPool);
@@ -58,7 +59,7 @@ public class MyEventsController {
             ctx.render("favorites.html");
 
         } catch (DatabaseException e) {
-            ctx.attribute("message",e.getMessage());
+            ctx.attribute("message", e.getMessage());
             ctx.render("/myevents/index.html");
         }
     }
