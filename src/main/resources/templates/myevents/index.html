@@ -1,26 +1,46 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-<title>My Events</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../public/css/myevents.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <title>My Events</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/myevents-frontpage.css" th:href="@{/css/myevents-frontpage.css}" rel="stylesheet"/>
 </head>
 
 <body>
 
-<div class="page">
-    <header>
-        <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-        </a>
-    </header>
+<div class="main-box">
 
-    <h1>My Events</h1>
+    <form class="search-container">
+        <label>
+            <input type="text" placeholder="Search" name="search">
+        </label>
+        <button type="submit" formaction="myevents/search"><i class="search-button"></i></button>
+    </form>
 
-    <p>Make your splash page here</p>
+    <div class="category-box">
+    <p>Choose category:<br><br>
+        <input type="checkbox" id="cat1" name="category" value="Festival">
+        <label for="cat1"> Festival</label><br>
+        <input type="checkbox" id="cat2" name="category" value="Networking">
+        <label for="cat2"> Networking</label><br>
+        <input type="checkbox" id="cat3" name="category" value="Fundraising">
+        <label for="cat3"> Fundraising</label><br>
+        <input type="checkbox" id="cat4" name="category" value="Art & Culture">
+        <label for="cat4"> Art & Culture</label><br>
+        <input type="checkbox" id="cat5" name="category" value="Sport">
+        <label for="cat5"> Sport</label><br><br>
+    </p>
+    </div>
+
+    <div class="center">
+        <a class="button" href="favorites.html" th:href="@{/myfavorites}">My favorites</a>
+        <span class="button" th:if="${session.currentUser != null}"> |  </span>
+        <a class="button" th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Log out</a>
+    </div>
 </div>
+
 </body>
 </html>
