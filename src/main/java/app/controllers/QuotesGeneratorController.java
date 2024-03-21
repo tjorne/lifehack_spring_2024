@@ -26,8 +26,8 @@ public class QuotesGeneratorController {
 
     public static void index(Context ctx, ConnectionPool connectionPool) {
         try {
-            String quote = QuotesMapper.getRandomQuote(QuotesMapper.loadQuotes(connectionPool));
-            ctx.attribute("quote", quote);
+            String newRandomQuote = QuotesMapper.getRandomQuote(QuotesMapper.loadQuotes(connectionPool));
+            ctx.attribute("newRandomQuote", newRandomQuote);
             ctx.render("/QuotesGenerator/index.html");
         } catch (DatabaseException e) {
             ctx.attribute("message", e.getMessage());
