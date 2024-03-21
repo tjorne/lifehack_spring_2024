@@ -4,7 +4,7 @@
 <title>Frontpage</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../public/css/drinkstyles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -17,32 +17,38 @@
     </header>
     <h1>Lifehack team B</h1>
 
-    <p><a href="drink/index.html" th:href="@{/drink}">Link to Gruppe5</a></p>
 
     <div class="projects">
         <h2>Projects to check out</h2>
         <div class="cards">
-                <div class="card">
-                    <img class="card-image" alt="timezones" src="../public/images/timezones/timezone_icon.jpg" th:src="@{/images/timezones/timezone_icon.jpg}"/>
-                    <div class="card-copy">Check the clock, everywhere</div>
-                    <a class="card-link" href="drink/index.html" th:href="@{/drink/}"/>drink</a>
-                </div>
+            <div class="card">
+                <img class="card-image" alt="timezones" src="../public/images/timezones/timezone_icon.jpg" th:src="@{/images/timezones/timezone_icon.jpg}"/>
+                <div class="card-copy">Check the clock, everywhere</div>
+                <a class="card-link" href="timezones/index.html" th:href="@{/timezones/}"/>Timezones</a>
+            </div>
+        </div>
+        <!-- gruppe5 -->
+        <div class="card">
+            <img class="card-image" alt="drinks" src="../public/images/drinks/drink_icon.png" th:src="@{/images/drinks/drink_icon.jpg}"/>
+            <div class="card-copy">Discover your favorite drinks</div>
+            <a class="card-link" href="drink/index.html" th:href="@{/drink/}">Drink</a>
         </div>
     </div>
+</div>
+</div>
+<h3>If you need to log in - do it here</h3>
+<form class="generic-form" method="post">
+    <input type="text" name="username" placeholder="Enter your username"/>
+    <input type="password" name="password" placeholder="Enter your password"/>
+    <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
+    <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+</form>
 
-    <h3>If you need to log in - do it here</h3>
-    <form class="generic-form" method="post">
-        <input type="text" name="username" placeholder="Enter your username"/>
-        <input type="password" name="password" placeholder="Enter your password"/>
-        <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
-        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
-    </form>
-
-    <div>
-        <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
-        <span  th:if="${session.currentUser != null}"> | </span>
-        <a href="createuser.html" th:href="@{/createuser}">Create user</a>
-    </div>
+<div>
+    <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
+    <span  th:if="${session.currentUser != null}"> | </span>
+    <a href="createuser.html" th:href="@{/createuser}">Create user</a>
+</div>
 </div>
 </body>
 </html>
