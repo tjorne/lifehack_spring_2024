@@ -6,20 +6,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 <link href="../../public/css/timezones.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../../public/css/QuotesGenerator.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 
-<body>
+<body class="backgrund">
 
-<div class="page">
-    <header>
-        <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-        </a>
-    </header>
+<h1> Welcome "name"</h1>
+<p> Hop your having a good day</p>
 
-    <h1>Timezones</h1>
+<p></p> Today's quotes:</p>
 
-    <p>Make your splash page here</p>
+
+<textarea id="quotebox" name="quotebox" rows="6" cols="50">
+    Yesterday is history
+    Tomorrow is a mystery, but
+    today is a gift
+    that is why it is called the present
+</textarea>
+
+<p> Need something different?</p>
+
+
+<div class="options">
+<button class="button button1">Motivation</button>
+    <button class="button button2">Movies</button>
+    <button class="button button3">Advice</button>
+    <button class="button button4">My quotes</button>
 </div>
+
+<br>
+<br>
+<p> Wanna make your own quotes, share with others?</p>
+
+
+<form action="../QuotesGenerator/index.html">
+<button class="button button5">My quotes</button>
+</form>
+
+
+
+
+
+
 </body>
 </html>
