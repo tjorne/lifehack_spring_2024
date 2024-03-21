@@ -13,15 +13,18 @@
 <div class="page">
     <div class="top-buttons">
         <a class="left" th:href="@{/myevents}">Back to frontpage</a>
-        <a class="right" href="index.html">Log out</a>
+        <a class="right" href="index.html" th:href="@{/logout}">Log out</a>
     </div>
 
     <h1>Your favorite events:</h1>
 
     <form method="post">
-        <table>
+        <div th:if="${favorites.size() == 0}">
+            <p>You have no favorited events.</p>
+        </div>
+        <table th:unless="${favorites.size() == 0}">
             <tbody>
-            <tr class ="item-preview" th:each="item: ${favorites}" >
+            <tr class="item-preview" th:each="item: ${favorites}">
                 <td>
                     <img class="item-img" th:src="${item.getLink()}">
                 </td>
@@ -30,8 +33,10 @@
                     <h2 th:text="${#temporals.format(item.getDate(), 'dd-MM-yyyy HH:mm')}">Date</h2>
                     <p><span th:text="${item.getResume()}">Resume</span></p>
                     <div>
-                        <div class="read-btn" >
-                            <button type="submit" name="id" th:value="${item.getId}" formaction="/myevents"><span>Read more</span></button>
+                        <div class="read-btn">
+                            <button type="submit" name="id" th:value="${item.getId}" formaction="/event">
+                                <span>Read more</span>
+                            </button>
                         </div>
                     </div>
                 </td>

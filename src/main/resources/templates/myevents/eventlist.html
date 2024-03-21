@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Eventlist</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../public/css/myevent_eventlist.css" th:href="@{/css/myevent_eventlist.css}" rel="stylesheet"/>
+    <title>Eventlist</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/myevent_eventlist.css" th:href="@{/css/myevent_eventlist.css}" rel="stylesheet"/>
 </head>
 
 
@@ -15,15 +15,18 @@
 <div class="page">
     <div class="top-buttons">
         <a class="left" th:href="@{/myevents/favorites}">Go to favorites</a>
-        <a class="right" href="index.html" th:href="@{/}">Log out</a>
+        <a class="right" href="index.html" th:href="@{/logout}">Log out</a>
     </div>
 
     <h1>Future events:</h1>
 
     <form method="post">
-        <table>
+        <div th:if="${events.size() == 0}">
+            <p>No results found.</p>
+        </div>
+        <table th:unless="${events.size() == 0}">
             <tbody>
-            <tr class ="item-preview" th:each="item: ${events} " >
+            <tr class="item-preview" th:each="item: ${events} ">
                 <td>
                     <img class="item-img" th:src="${item.getLink()}">
                 </td>
@@ -32,8 +35,9 @@
                     <h2 th:text="${#temporals.format(item.getDate(), 'dd-MM-yyyy HH:mm')}">Date</h2>
                     <p><span th:text="${item.getResume()}">Resume</span></p>
                     <div>
-                        <div class="read-btn" >
-                            <button type="submit" name="id" th:value="${item.getId}" formaction="/event"><span>Read more</span></button>
+                        <div class="read-btn">
+                            <button type="submit" name="id" th:value="${item.getId}" formaction="/event">
+                                <span>Read more</span></button>
                         </div>
                         <div class="heart-btn">
                             <input type="checkbox">

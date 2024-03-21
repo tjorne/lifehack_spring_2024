@@ -26,16 +26,10 @@
         </div>
         <div class="category-box">
             <p>Choose category: <br><br>
-                <input type="checkbox" id="cat1" name="category" value="Festival">
-                <label for="cat1"> Festival</label><br>
-                <input type="checkbox" id="cat2" name="category" value="Networking">
-                <label for="cat2"> Networking</label><br>
-                <input type="checkbox" id="cat3" name="category" value="Fundraising">
-                <label for="cat3"> Fundraising</label><br>
-                <input type="checkbox" id="cat4" name="category" value="Art & Culture">
-                <label for="cat4"> Art & Culture</label><br>
-                <input type="checkbox" id="cat5" name="category" value="Sport">
-                <label for="cat5"> Sport</label><br><br>
+                <div  th:each="category: ${categories}">
+                    <input type="checkbox" th:id="${category.getId()}" id="category_id" name="category" th:value="${category.getName()}" value="category_name">
+                    <label th:for="${category.getId()}" for="category_id" th:text="${category.getName()}"></label><br>
+                </div>
             </p>
         </div>
     </form>
