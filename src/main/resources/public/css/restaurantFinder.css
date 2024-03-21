@@ -280,4 +280,11 @@
     background-color: #03B5AA;
 }
 
+.subheading {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-top: revert;
+}
+
 
