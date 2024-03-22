@@ -1,20 +1,23 @@
 package app.controllers;
 
-import app.entities.unitconverter.*;
+import app.entities.unitconverter.WeightConverter;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-public class UnitConverterController {
+public class UnitConverterController
+{
 
-    public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
+    public static void addRoutes(Javalin app, ConnectionPool connectionPool)
+    {
         app.get("/Gruppe-B8-unit-converter", ctx -> index(ctx, connectionPool));
         app.post("/convert", ctx -> convert(ctx));
 
 
     }
 
-    private static void convert(Context ctx) {
+    private static void convert(Context ctx)
+    {
         double result = 0.0;
         String unitType = ctx.formParam("unit");
         String fromUnit = ctx.formParam("fromUnit");
@@ -22,14 +25,17 @@ public class UnitConverterController {
         double value = Double.parseDouble(ctx.formParam("value"));
 
 
-        switch (unitType) {
+        switch (unitType)
+        {
             case "weight":
                 WeightConverter weightConverter = new WeightConverter();
 
-                switch (fromUnit) {
+                switch (fromUnit)
+                {
                     case "kilogram":
                         result = weightConverter.kgToPounds(value);
-                        switch (toUnit) {
+                        switch (toUnit)
+                        {
                             case "metricton":
                                 result = weightConverter.kgToTon(value);
                         }
@@ -68,7 +74,8 @@ public class UnitConverterController {
         ctx.render("/Gruppe-B8-unit-converter/index.html");
     }
 
-    private static void index(Context ctx, ConnectionPool connectionPool) {
+    private static void index(Context ctx, ConnectionPool connectionPool)
+    {
         ctx.render("/Gruppe-B8-unit-converter/index.html");
     }
 
