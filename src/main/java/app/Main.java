@@ -8,10 +8,7 @@ import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 
-public class Main
-{
-
-
+public class Main {
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
     private static final String URL = "jdbc:postgresql://localhost:5432/%s?currentSchema=public";
@@ -19,8 +16,7 @@ public class Main
 
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance(USER, PASSWORD, URL, DB);
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // Initializing Javalin and Jetty webserver
 
         Javalin app = Javalin.create(config -> {
@@ -31,14 +27,8 @@ public class Main
 
         // Routing
         app.get("/", ctx -> ctx.render("index.html"));
-        app.get("/join", ctx -> ctx.render("jeopardy/join.html"));
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
         JeopardyController.addRoutes(app, connectionPool);
-
-
-
-
-
     }
 }

@@ -9,6 +9,7 @@ public class JeopardyController {
         app.get("/jeopardy", ctx -> index(ctx, connectionPool));
         app.post("/jeopardy/create", ctx -> create(ctx, connectionPool));
         app.post("/jeopardy/join", ctx -> join(ctx, connectionPool));
+        app.get("/join", ctx -> ctx.render("jeopardy/join.html"));
     }
 
     private static void join(Context ctx, ConnectionPool connectionPool) {

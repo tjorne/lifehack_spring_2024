@@ -1,6 +1,7 @@
 body {
     background-color: #097a9d;
 }
+
 .page2 {
     display: flex;
     flex-direction: column;
@@ -11,7 +12,6 @@ body {
 }
 
 .task-table {
-
     font-family: "Helvetica Neue";
     border-collapse: collapse;
     font-size: 1.2rem;
@@ -24,13 +24,10 @@ body {
     padding: 40px;
     text-align: center;
 }
-.task-table th{
+
+.task-table th {
     background-color: #efd69d;
 }
-
-/*.task-table tr:nth-child(even) {
-    background-color: silver;
-}*/
 
 td:hover {
     background-color: #dae5e5;
@@ -41,7 +38,7 @@ td:hover {
     display: none;
 }
 
-.toggle:hover{
+.toggle:hover {
     background-color: darkgreen;
 }
 
@@ -58,7 +55,7 @@ td:hover {
     display: none;
 }
 
-.checkbox:hover{
+.checkbox:hover {
     background-color: #94a294;
 }
 
