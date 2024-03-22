@@ -63,7 +63,6 @@ public class UnitConverterController
                 result = areaConverter.squareMetersToSquareKilometers(value);
                 break;
             default:
-
                 throw new IllegalArgumentException("Unsupported unit type");
         }
 
