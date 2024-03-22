@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.entities.unitconverter.WeightConverter;
+import app.entities.unitconverter.*;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
@@ -12,8 +12,6 @@ public class UnitConverterController
     {
         app.get("/Gruppe-B8-unit-converter", ctx -> index(ctx, connectionPool));
         app.post("/convert", ctx -> convert(ctx));
-
-
     }
 
     private static void convert(Context ctx)
@@ -24,7 +22,6 @@ public class UnitConverterController
         String toUnit = ctx.formParam("toUnit");
         double value = Double.parseDouble(ctx.formParam("value"));
 
-
         switch (unitType)
         {
             case "weight":
@@ -33,15 +30,18 @@ public class UnitConverterController
                 switch (fromUnit)
                 {
                     case "kilogram":
-                        result = weightConverter.kgToPounds(value);
                         switch (toUnit)
                         {
+                            case "pound":
+                                result = weightConverter.kgToPounds(value);
+                                break;
                             case "metricton":
                                 result = weightConverter.kgToTon(value);
+                                break;
                         }
                 }
                 break;
-/*
+
             case "volume":
                 VolumeConverter volumeConverter = new VolumeConverter();
                 result = volumeConverter.milliliterToLiter(value);
@@ -62,12 +62,10 @@ public class UnitConverterController
                 AreaConverter areaConverter = new AreaConverter();
                 result = areaConverter.squareMetersToSquareKilometers(value);
                 break;
-            // Add additional cases as necessary*/
             default:
-                System.out.println("noget galt");
-                // throw new IllegalArgumentException("Unsupported unit type");
-        }
 
+                throw new IllegalArgumentException("Unsupported unit type");
+        }
 
         ctx.attribute("selectedUnit", unitType);
         ctx.attribute("result", result);
@@ -78,7 +76,6 @@ public class UnitConverterController
     {
         ctx.render("/Gruppe-B8-unit-converter/index.html");
     }
-
 }
 
 
