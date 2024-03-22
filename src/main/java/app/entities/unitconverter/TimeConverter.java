@@ -101,6 +101,4 @@ public class TimeConverter
     {
         return weeks * 7;
     }
-
-
 }

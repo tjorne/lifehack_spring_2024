@@ -18,7 +18,6 @@ public class AreaConverter
         return squareMeters / 2589988;
     }
 
-
     public double squareKilometersToSquareMeters(double squareKilometers)
     {
         return squareKilometers * 1000000;
@@ -33,7 +32,6 @@ public class AreaConverter
     {
         return squareKilometers * 0.386102;
     }
-
 
     public double squareYardsToSquareMeters(double squareYards)
     {
@@ -50,7 +48,6 @@ public class AreaConverter
         return squareYards * 3.2283e-7;
     }
 
-
     public double squareMilesToSquareMeters(double squareMiles)
     {
         return squareMiles * 2589988.11;
@@ -65,6 +62,4 @@ public class AreaConverter
     {
         return squareMiles * 3097600;
     }
-
-
 }

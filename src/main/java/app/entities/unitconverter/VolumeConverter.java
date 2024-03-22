@@ -2,7 +2,6 @@ package app.entities.unitconverter;
 
 public class VolumeConverter
 {
-
     public double cubicMeterToLiter(double cubicMeters)
     {
         return cubicMeters * 1000;
@@ -32,5 +31,4 @@ public class VolumeConverter
     {
         return milliliters / 1000;
     }
-
 }

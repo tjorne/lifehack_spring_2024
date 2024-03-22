@@ -31,6 +31,4 @@ public class LengthConverter
     {
         return miles / 0.621371;
     }
-
-
 }

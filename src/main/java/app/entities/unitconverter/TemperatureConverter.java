@@ -2,7 +2,6 @@ package app.entities.unitconverter;
 
 public class TemperatureConverter
 {
-
     public double celsiusToFahrenheit(double celsius)
     {
         return (celsius * 9 / 5) + 32;
@@ -12,7 +11,6 @@ public class TemperatureConverter
     {
         return celsius + 273.15;
     }
-
 
     public double fahrenheitToCelsius(double fahrenheit)
     {
@@ -24,7 +22,6 @@ public class TemperatureConverter
         return (fahrenheit + 459.67) * 5 / 9;
     }
 
-
     public double kelvinToCelsius(double kelvin)
     {
         return kelvin - 273.15;
@@ -34,6 +31,4 @@ public class TemperatureConverter
     {
         return (kelvin * 9 / 5) - 459.67;
     }
-
-
 }
