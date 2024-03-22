@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 800px;
-    padding:8px;
+    padding: 8px;
     border: 1px solid silver;
     min-height: 600px;
 }
@@ -40,7 +40,7 @@ h1 {
 }
 
 h2 {
-   font-size: 1.875rem;
+    font-size: 1.875rem;
 }
 
 h3 {
@@ -72,23 +72,6 @@ h3 {
     background-color: darkgray;
 }
 
-.generic-form select{
-    padding: 7px;
-    border-radius: 5px;
-    border: 1px solid silver;
-    color: white;
-    background-color: darkgreen;
-}
-
-.margin {
-    margin-left: 200px;
-    margin-right: 200px;
-}
-
-.padding {
-    padding-top: 100px;
-}
-
 .projects {
     display: flex;
     flex-direction: column;
@@ -106,8 +89,8 @@ h3 {
 .card {
     display: flex;
     flex-direction: column;
-    min-width:100px;
-    max-width:200px;
+    min-width: 100px;
+    max-width: 200px;
     align-items: center;
     gap: 10px;
     border: 1px solid silver;
