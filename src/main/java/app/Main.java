@@ -39,15 +39,5 @@ public class Main
         TimeZonesController.addRoutes(app, connectionPool);
         DrinkController.addRoutes(app, connectionPool);
 
-        // Route for handling search functionality
-        app.post("/search", ctx -> {
-            String ingredients = ctx.formParam("ingredients");
-            try {
-                List<Drink> matchingDrinks = DrinksMapper.searchDrinks(ingredients, connectionPool);
-                ctx.render("/drink/index.html", Map.of("matchingDrinks", matchingDrinks));
-            } catch (DatabaseException e) {
-                ctx.status(500).result("Error searching for drinks: " + e.getMessage());
-            }
-        });
     }
 }
