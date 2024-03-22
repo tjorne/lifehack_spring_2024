@@ -13,6 +13,6 @@ public class TimeZonesController
 
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
-        ctx.render("/timezones/startPage.html");
+        ctx.render("/timezones/index.html");
     }
 }

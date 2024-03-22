@@ -4,16 +4,9 @@ import app.config.ThymeleafConfig;
 import app.controllers.RestaurantFinderController;
 import app.controllers.TimeZonesController;
 import app.controllers.UserController;
-import app.entities.Restaurant;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
-// nye import
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 
 public class Main
 {

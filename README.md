@@ -63,7 +63,7 @@
     
         private static void index(Context ctx, ConnectionPool connectionPool)
         {
-            ctx.render("/projectname/startPage.html");
+            ctx.render("/projectname/index.html");
         }
     }
     ```

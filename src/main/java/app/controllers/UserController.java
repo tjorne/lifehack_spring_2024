@@ -34,7 +34,7 @@ public class UserController
                 UserMapper.createuser(username, password1, connectionPool);
                 ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + username +
                         ". Nu skal du logge på.");
-                ctx.render("startPage.html");
+                ctx.render("index.html");
             }
 
             catch (DatabaseException e)
@@ -70,13 +70,13 @@ public class UserController
             ctx.sessionAttribute("currentUser", user);
             // Hvis ja, send videre til forsiden med login besked
             ctx.attribute("message", "Du er nu logget ind");
-            ctx.render("startPage.html");
+            ctx.render("index.html");
         }
         catch (DatabaseException e)
         {
             // Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage() );
-            ctx.render("startPage.html");
+            ctx.render("index.html");
         }
 
     }
