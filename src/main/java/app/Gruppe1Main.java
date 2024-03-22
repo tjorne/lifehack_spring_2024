@@ -19,22 +19,18 @@ public class Gruppe1Main
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
         }).start(7070);
 
-        /*
-        Gruppe1CalculateWater calculateWater = new Gruppe1CalculateWater();
-        Scanner UserInput = new Scanner(System.in);
-
-        System.out.println("Enter the amount of water you have been drinking.");
-
-        float waterConsumed = UserInput.nextFloat();
-
-        calculateWater.setWaterConsumed(waterConsumed);
-        calculateWater.calculateRemainingWater();
-        System.out.println(calculateWater.toString());
-
-         */
 
         app.get("/", ctx -> ctx.render("gruppe1Templates/index.html"));
-        app.post("/waterIntakeMessage", ctx -> ctx.render("gruppe1Templates/waterIntakeMessage.html"));
+        app.post("/waterIntakeMessage", ctx -> {
+            float waterConsumed = Float.parseFloat(ctx.formParam("water"));
+            Gruppe1CalculateWater calculateWater = new Gruppe1CalculateWater();
+            calculateWater.setWaterConsumed(waterConsumed);
 
+            // Beregn resterende vandbehov og gem resultatet i sessionen
+            ctx.sessionAttribute("waterIntake", calculateWater.toString());
+
+            // Send brugeren tilbage til startsiden
+            ctx.redirect("/");
+        });
     }
 }

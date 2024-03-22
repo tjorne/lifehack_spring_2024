@@ -14,28 +14,26 @@
 <div class="page">
     <header>
         <div class="flex-container">
-        <a href="../index.html" th:href="@{/public}">
-            <img alt="logo" src="../../public/gruppe1Public/gruppe1Images/DropOfWater.jpg" th:src="@{/gruppe1Public/gruppe1Images/DropOfWater.jpg}"/>
-        </a>
+            <a href="../index.html" th:href="@{/public}">
+                <img alt="logo" src="../../public/gruppe1Public/gruppe1Images/DropOfWater.jpg"
+                     th:src="@{/gruppe1Public/gruppe1Images/DropOfWater.jpg}"/>
+            </a>
         </div>
     </header>
 
     <h1>Drink Water</h1>
 
     <p class="bodytext">Enter your water intake for today</p>
-<div class = "flex-container">
+    <div class="flex-container">
 
-    <input class="bodytext" type="text" name="water" placeholder="Enter water intake"/>
+        <form method="post" action="/waterIntakeMessage">
+            <input class="bodytext" type="text" name="water" placeholder="Enter water intake"/>
+            <button formaction="/waterIntakeMessage">Are you on track?</button>
 
-<br/>
+        </form>
+        <p th:text="${session.waterIntake}"></p>
 
-    <form method="post">
-    <button formaction="/waterIntakeMessage">Are you on track?</button>
-
-    </form>
-<p th:text="${session.waterIntake}"></p>
-
-</div>
+    </div>
 </div>
 
 </body>
