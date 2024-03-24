@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>DitBookingSite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/bookiBois.css" th:href="@{/css/bookiBois.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <h2>www.DitBookingSite.com</h2>
+
+        <section>
+            <h1>Vælg Titel</h1>
+            <button class="edit-button-title" >⚙️</button>
+        </section>
+
+        <div class="admin-login">
+            <a href="#" th:href="@{/admin/login}">Admin login</a>
+        </div>
+        <section>
+            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+            <button class="edit-button-img" >⚙️</button>
+        </section>
+    </header>
+
+    <section class="hero">
+        <a th:href="@{/bookingsite}">
+            <button class="book-button">Book</button>
+        </a>
+        <button class="edit-button" >⚙️</button>
+    </section>
+
+    <section class="description">
+        <h2>Beskrivelse</h2>
+        <p>
+            Her er beskrivelsen
+        </p>
+        <button class="edit-button" >⚙️</button>
+    </section>
+</div>
+
+</body>
+</html>
