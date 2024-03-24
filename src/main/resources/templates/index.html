@@ -25,9 +25,11 @@
                     <div class="card-copy">Check the clock, everywhere</div>
                     <a class="card-link" href="timezones/index.html" th:href="@{/timezones/}"/>Timezones</a>
                 </div>
-            </div>
-
-            <div class="cards">
+                <div class="card">
+                    <img class="card-image" alt="timezones" src="../public/images/myevents/myevents_icon.jpg" th:src="@{/images/myevents/myevents_icon.jpg}"/>
+                    <div class="card-copy">Check current events in your area</div>
+                    <a class="card-link" href="myevents/index.html" th:href="@{/myevents/}"/>My Events</a>
+                </div>
                 <div class="card">
                     <img class="card-image" alt="Quote Generator" src="../public/images/QuoteGenerator/Logo.png" th:src="@{/images/QuoteGenerator/Logo.png}"/>
                     <div class="card-copy">Get your daily quotes, gang gang</div>
@@ -35,7 +37,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <h3>If you need to log in - do it here</h3>
     <form class="generic-form" method="post">
         <input type="text" name="username" placeholder="Enter your username"/>
