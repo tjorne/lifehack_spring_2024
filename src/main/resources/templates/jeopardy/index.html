@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Jeopardy.com</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../../public/css/jeopardy.css" th:href="@{/css/jeopardy.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+
+
+<div class="page">
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../../public/images/Jeopardy/steveharvey.jpg" th:src="@{/images/Jeopardy/steveharvey.jpg}"/>
+        </a>
+    </header>
+
+    <h1>Velkommen til Jeopardy!</h1>
+
+    <tr>
+        <td>
+
+            <a class = "card-link" href="/templates/jeopardy/create.html" th:href="@{/create}">
+               Create your own Jeopardy.
+            </a>
+            <a class = "card-link" href="/templates/jeopardy/join.html" th:href="@{/join}">
+                Play Jeopardy!
+            </a>
+        </td>
+    </tr>
+
+
+</div>
+</body>
+</html>
