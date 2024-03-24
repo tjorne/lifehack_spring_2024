@@ -2,7 +2,10 @@ package app;
 
 import app.config.ThymeleafConfig;
 import app.controllers.RestaurantFinderController;
+import app.controllers.MyEventsController;
+import app.controllers.QuotesGeneratorController;
 import app.controllers.TimeZonesController;
+import app.controllers.UnitConverterController;
 import app.controllers.UserController;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
@@ -31,7 +34,9 @@ public class Main
         app.get("/", ctx -> ctx.render("index.html"));
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
-
         RestaurantFinderController.addRoutes(app, connectionPool);
+        UnitConverterController.addRoutes(app, connectionPool);
+        MyEventsController.addRoutes(app, connectionPool);
+        QuotesGeneratorController.addRoutes(app, connectionPool);
     }
 }
