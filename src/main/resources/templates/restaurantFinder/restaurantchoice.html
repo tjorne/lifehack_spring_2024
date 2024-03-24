@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/css/restaurantFinder.css" th:href="@{/css/restaurantFinder.css}" rel="stylesheet"/>
+</head>
+<body>
+<th:block th:object="${chosenRestaurant}">
+    <div class="flexbox-header-choice">
+        <img class="background-image"
+             th:src="@{/images/restaurantFinder/madbilleder/{name}.png(name=${chosenRestaurant.getPicName()})}"
+             th:alt="${chosenRestaurant.getName()}">
+    </div>
+
+    <div class="flexbox-body-choice">
+        <div class="box-size">
+            <h1 class="flex-header-text" th:text="${chosenRestaurant.getName()}"></h1>
+            <div id="flex1-choice-description">
+                <p class="subheading">Om restauranten</p>
+                <p th:text="${chosenRestaurant.getDescription()}"></p>
+            </div>
+
+            <div id="flex2-choice-address">
+                <p class="subheading">Addresse</p>
+                <p th:text="${chosenRestaurant.getAddress()}"></p>
+            </div>
+
+            <div id="flex3-choice-openinghours">
+                <p class="subheading">Åbningstider</p>
+                <p th:text="${chosenRestaurant.getOpeningHours()}"></p>
+            </div>
+
+            <a th:href="${chosenRestaurant.getWebsiteLink()}">
+                <button class="button button1" formaction="restaurantfinder/restaurantwebsite"> Gå til restaurantens
+                    hjemmeside
+                </button>
+            </a>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
