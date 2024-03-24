@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="da" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../public/css/drinkstyles.css" th:href="@{/css/drinkstyles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="page">
+    <header>
+        <form class="search-container" action="/search" method="post">
+            <input type="text" name="ingredients" placeholder="Type ingredients...">
+            <button type="submit">Search</button>
+        </form>
+
+        <main id="results">
+            <ul>
+                <li th:each="drink, drinkIndex : ${matchingDrinks}" class="drink-item">
+                    <div>
+                        <span th:text="${drink.drinkname}"></span>
+
+                        <label th:for="'toggle-instructions-' + ${drinkIndex.index}" class="show-more">Show more</label>
+
+                        <input th:id="'toggle-instructions-' + ${drinkIndex.index}" type="checkbox">
+
+                        <div class="instructions">
+                            <span th:text="${drink.instructions}"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </main>
+
+    </header>
+    <div>
+        <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+</body>
+</html>
