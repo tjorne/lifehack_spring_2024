@@ -1,6 +1,8 @@
 package app;
 
 import app.config.ThymeleafConfig;
+import app.controllers.MyEventsController;
+import app.controllers.QuotesGeneratorController;
 import app.controllers.TimeZonesController;
 import app.controllers.UnitConverterController;
 import app.controllers.UserController;
@@ -32,5 +34,7 @@ public class Main
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
         UnitConverterController.addRoutes(app, connectionPool);
+        MyEventsController.addRoutes(app, connectionPool);
+        QuotesGeneratorController.addRoutes(app, connectionPool);
     }
 }
