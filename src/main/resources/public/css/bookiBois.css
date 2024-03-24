@@ -1,0 +1,212 @@
+html * {
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 0;
+    background-color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+    padding-bottom: 30px;
+
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    border: 1px solid black;
+    min-height: 600px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 5px rgba(0.5, 0.5, 0.5, 0.5);
+    border-radius: 5px;
+    background-color: white;
+    margin: 40px 20px 20px 20px;
+}
+
+form {
+    margin: 30px 30px 75px 30px;
+    padding: 20px;
+    width: 85%;
+    max-width: 85%;
+    max-height: 80%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+header {
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+header a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header a img {
+    width: 70%;
+}
+
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+}
+
+.book-button {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+    background-color: #555;
+}
+
+/* Style for labels */
+label {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="date"],
+select {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for checkboxes */
+input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+    background-color: #f9f9f9;
+}
+
+
+/* Style for buttons */
+button.edit-buttons {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Hover effect for buttons */
+button.edit-buttons:hover {
+    background-color: #45a049;
+}
+
+/* Style for submit button */
+input[type="submit"] {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+    background-color: #0077A3;
+}
+
+/* Style for messages */
+div p {
+    margin-top: 10px;
+    color: red;
+}
+
+div {
+    margin-top: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Clearfix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+img {
+    max-width: 95%;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Adjust the padding and text size for smaller screens like iPhones */
+    .page {
+        /* padding: 10px; */
+    }
+
+    h1 {
+        font-size: 2rem; /* Smaller font size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Smaller font size for smaller screens */
+    }
+
+    .book-button, .edit-button {
+        padding: 10px 20px; /* Smaller padding for smaller screens */
+        font-size: 1rem; /* Smaller font size for smaller screens */
+    }
+
+    .edit-button {
+        font-size: 20px; /* Smaller edit button for smaller screens */
+    }
+
+    /* Make sure images don't exceed the width of the screen */
+    img {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens like older iPhones */
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .book-button, .edit-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .edit-button {
+        top: 5px; /* Position even closer on small screens */
+        right: 5px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Jeopardy.com</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/jeopardy.css" th:href="@{/css/jeopardy.css}" rel="stylesheet"/>
+<link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jeopardy</title>
+    <h1 class="body">Jeopardy!</h1>
+</head>
+<body>
+
+<div class="page2">
+    <table class="task-table">
+        <thead>
+        <tr>
+            <th>Movies</th>
+            <th>Music</th>
+            <th>Brands</th>
+            <th>Celebrities</th>
+            <th>Food</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>
+                <input type="checkbox" id="question1" class="toggle"/>
+                <label for="question1">100</label>
+                <div class="question">
+                    <input type="checkbox" id="answer1" class="toggle"/>
+                    <label for="answer1">The most noninated actress with 21 Oscar-nominations & 3 wins</label>
+                    <div class="answer">
+                        Meryl Streep
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <input type="checkbox" id="question2" class="toggle"/>
+                <label for="question2">100</label>
+                <div class="question">
+                    <input type="checkbox" id="answer2" class="toggle"/>
+                    <label for="answer2">In 1994 the rapper Nas dropped his debutalbum known as a masterpiece in the
+                        hip-hop genre. Whats the name of the album?</label>
+                    <div class="answer">
+                        Illmatic
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <input type="checkbox" id="question3" class="toggle"/>
+                <label for="question3">100</label>
+                <div class="question">
+                    <input type="checkbox" id="answer3" class="toggle"/>
+                    <label for="answer3">What is this logo: <br> <img alt="logo"
+                                                                      src="../../public/images/Jeopardy/adidasLogo.svg"
+                                                                      th:src="@{/images/Jeopardy/adidasLogo.svg}"
+                                                                      style="width: 50px"/>
+                    </label>
+                    <div class="answer">
+                        Adidas
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <input type="checkbox" id="question4" class="toggle"/>
+                <label for="question4">100</label>
+                <div class="question">
+                    <input type="checkbox" id="answer4" class="toggle"/>
+                    <label for="answer4">Which actor played Tony Stark/Iron Man</label>
+                    <div class="answer">
+                        Robert Downey Jr.
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <input type="checkbox" id="question5" class="toggle"/>
+                <label for="question5">100</label>
+                <div class="question">
+                    <input type="checkbox" id="answer5" class="toggle"/>
+                    <label for="answer5">What's the famous dish called that a rat makes</label>
+                    <div class="answer">
+                        Ratatouille!
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="checkbox" id="question6" class="toggle"/>
+                <label for="question6">200</label>
+                <div class="question">
+                    <input type="checkbox" id="answer6" class="toggle"/>
+                    <label for="answer6">Which actor played the music-icon Freddie Mercury in the movie Bohemian
+                        Rhapsody</label>
+                    <div class="answer">
+                        Rami Malek
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question7" class="toggle"/>
+                <label for="question7">200</label>
+                <div class="question">
+                    <input type="checkbox" id="answer7" class="toggle"/>
+                    <label for="answer7">Alicia Keys most streamed song on spotify with 998 million streams</label>
+                    <div class="answer">
+                        If I Ain't Got You
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question8" class="toggle"/>
+                <label for="question8">200</label>
+                <div class="question">
+                    <input type="checkbox" id="answer8" class="toggle"/>
+                    <label for="answer8">What is this logo: <br> <img alt="logo"
+                                                                      src="../../public/images/Jeopardy/levis.png"
+                                                                      th:src="@{/images/Jeopardy/levis.png}"
+                                                                      style="width: 50px"/>
+                    </label>
+                    <div class="answer">
+                        Levi's
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question9" class="toggle"/>
+                <label for="question9">200</label>
+                <div class="question">
+                    <input type="checkbox" id="answer9" class="toggle"/>
+                    <label for="answer9">Canandian singer who sang "Baby"</label>
+                    <div class="answer">
+                        Bustin Bieber<3<3<3 XOXO
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question10" class="toggle"/>
+                <label for="question10">200</label>
+                <div class="question">
+                    <input type="checkbox" id="answer10" class="toggle"/>
+                    <label for="answer10">What's green pesto made of?</label>
+                    <div class="answer">
+                        basil,garlic,nuts,evoo, and parmesan
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="checkbox" id="question11" class="toggle"/>
+                <label for="question11">300</label>
+                <div class="question">
+                    <input type="checkbox" id="answer11" class="toggle"/>
+                    <label for="answer11">What was the name of the character Mads Mikkelsen played in the Bond thriller
+                        Casino Royale?</label>
+                    <div class="answer">
+                        Le Chiffre
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question12" class="toggle"/>
+                <label for="question12">300</label>
+                <div class="question">
+                    <input type="checkbox" id="answer12" class="toggle"/>
+                    <label for="answer12">The name of Kanye Wests collaborative album with Kid Cudi</label>
+                    <div class="answer">
+                        Kids See Ghosts
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question13" class="toggle"/>
+                <label for="question13">300</label>
+                <div class="question">
+                    <input type="checkbox" id="answer13" class="toggle"/>
+                    <label for="answer13">What is this logo: <br> <img alt="logo"
+                                                                       src="../../public/images/Jeopardy/mazda.png"
+                                                                       th:src="@{/images/Jeopardy/mazda.png}"
+                                                                       style="width: 50px"/>
+                    </label>
+                    <div class="answer">
+                        Mazda
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question14" class="toggle"/>
+                <label for="question14">300</label>
+                <div class="question">
+                    <input type="checkbox" id="answer14" class="toggle"/>
+                    <label for="answer14">Who plays Katnipp Evergreen</label>
+                    <div class="answer">
+                        Bennyfer Brawlence
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question15" class="toggle"/>
+                <label for="question15">300</label>
+                <div class="question">
+                    <input type="checkbox" id="answer15" class="toggle"/>
+                    <label for="answer15">How many calories is a baby made of?</label>
+                    <div class="answer">
+                        12,823cals!
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="checkbox" id="question16" class="toggle"/>
+                <label for="question16">400</label>
+                <div class="question">
+                    <input type="checkbox" id="answer16" class="toggle"/>
+                    <label for="answer16">The most appreciated and greatest actor of our time</label>
+                    <div class="answer">
+                        Nicholas Cage
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question17" class="toggle"/>
+                <label for="question17">400</label>
+                <div class="question">
+                    <input type="checkbox" id="answer17" class="toggle"/>
+                    <label for="answer17">Ukendt Kunstner released their two first ep's in 2012, what was the name of
+                        these ep's?</label>
+                    <div class="answer">
+                        Hælervarer, Side A & Hælervarer, Side B
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question18" class="toggle"/>
+                <label for="question18">400</label>
+                <div class="question">
+                    <input type="checkbox" id="answer18" class="toggle"/>
+                    <label for="answer18">What is this logo: <br> <img alt="logo"
+                                                                       src="../../public/images/Jeopardy/beats.png"
+                                                                       th:src="@{/images/Jeopardy/beats.png}"
+                                                                       style="width: 50px"/>
+                    </label>
+                    <div class="answer">
+                        Beats (by Dre.)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question19" class="toggle"/>
+                <label for="question19">400</label>
+                <div class="question">
+                    <input type="checkbox" id="answer19" class="toggle"/>
+                    <label for="answer19">Who voice acts Shrek</label>
+                    <div class="answer">
+                        Bike Byers
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question20" class="toggle"/>
+                <label for="question20">400</label>
+                <div class="question">
+                    <input type="checkbox" id="answer20" class="toggle"/>
+                    <label for="answer20">Who in greek mythology is the god of wine</label>
+                    <div class="answer">
+                        Dionysus
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="checkbox" id="question21" class="toggle"/>
+                <label for="question21">500</label>
+                <div class="question">
+                    <input type="checkbox" id="answer21" class="toggle"/>
+                    <label for="answer21">The greatest movie trilogy ever</label>
+                    <div class="answer">
+                        The Lord of The Rings
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question22" class="toggle"/>
+                <label for="question22">500</label>
+                <div class="question">
+                    <input type="checkbox" id="answer22" class="toggle"/>
+                    <label for="answer22">Finish the lyric: My neck, my back...</label>
+                    <div class="answer">
+                        Lick my pussy and my crack!
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question23" class="toggle"/>
+                <label for="question23">500</label>
+                <div class="question">
+                    <input type="checkbox" id="answer23" class="toggle"/>
+                    <label for="answer23">What is this logo: <br> <img alt="logo"
+                                                                       src="../../public/images/Jeopardy/converse.png"
+                                                                       th:src="@{/images/Jeopardy/converse.png}"
+                                                                       style="width: 50px"/>
+                    </label>
+                    <div class="answer">
+                        Converse
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question24" class="toggle"/>
+                <label for="question24">500</label>
+                <div class="question">
+                    <input type="checkbox" id="answer24" class="toggle"/>
+                    <label for="answer24">Who is the lead singer of Tenacious D </label>
+                    <div class="answer">
+                        Jack Black
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="checkbox" id="question25" class="toggle"/>
+                <label for="question25">500</label>
+                <div class="question">
+                    <input type="checkbox" id="answer25" class="toggle"/>
+                    <label for="answer25">Hvad spiste Bekhan til morgenmad</label>
+                    <div class="answer">
+                        Protz
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="team-container">
+        <div class="team">
+            <input type="text" placeholder="Team 1 Name">
+            <input type="number" placeholder="Points" step="100">
+        </div>
+        <div class="team">
+            <input type="text" placeholder="Team 2 Name">
+            <input type="number" placeholder="Points" step="100">
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>
+

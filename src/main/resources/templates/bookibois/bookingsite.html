@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>BookingBois</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/bookiBois.css" th:href="@{/css/bookiBois.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+
+
+<div class="page">
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
+
+
+    <form id="myForm" action="" method="post">
+        <label for="behandling">Vælg en behandling:</label>
+        <br>
+        <select name="behandling" id="behandling" required>
+            <option th:text="${behandling}" th:value="${behandling}">Behandling</option>
+            <option value="Psykolog" >Psykolog</option>
+            <option value="Kiropraktor">Kiropraktor</option>
+            <option value="Fysioterapeut">Fysioterapeut</option>
+            <option value="Life Coach">Life Coach</option>
+            <option value="En til en yoga">En Til En Yoga</option>
+            <option value="Osteopat">Osteopat</option>
+            <option value="Massør">Massør</option>
+            <option value="Ganja Meditation">Ganja Meditation</option>
+        </select>
+        <br><br>
+
+
+        <label for="dato">Dato:</label>
+        <input type="date" id="dato" name="dato" th:value="${dato}" formaction="/gettimeslots" required>
+            --><br>
+            <br><br>
+
+        <div th:each="timeslot : ${taskList}" th:if="${!timeslot.booked}">
+            <input type="radio" th:name="timeslot" th:value="${timeslot.time}" th:id="${timeslot.time}" required/>
+            <label th:for="${timeslot.time}" th:text="${timeslot.time}">Time</label>
+        </div>
+
+        <br><br>
+        <label for="name">Navn:</label>
+        <br>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="tlf">Telefon nummer:</label>
+        <br>
+        <input type="text" id="tlf" name="tlf" required>
+        <br><br>
+        <input type="submit" value="Book" formaction="/createbooking"><br><br>
+        <div><p th:text="${message}"></p></div>
+
+    </form>
+
+</div>
+
+<script>
+    var today = new Date();
+    var dd = today.getDate() +1;
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+    var dateInput = document.getElementById('dato');
+
+    dateInput.setAttribute("min", today);
+
+    // Get reference to the date input field
+
+    var form = document.getElementById('myForm');
+
+    // Add event listener for change event
+    dateInput.addEventListener('change', function () {
+        // Set the form action dynamically
+        form.action = "/gettimeslots";
+        // Submit the form
+        form.submit();
+    });
+
+</script>
+</body>
+
+</html>
