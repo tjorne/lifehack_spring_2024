@@ -1,0 +1,299 @@
+.welcomeText {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Verdana, sans-serif;
+    text-transform: uppercase;
+    justify-content: center;
+    height: 200px;
+    background-color: #B3D0C4;
+    text-align: center;
+    color: black;
+    width: 50%;
+    margin: 10px auto;
+    font-size: 17px;
+    font-weight: bold;
+    border: 2vh double #4C4C9D;
+    border-radius: 10vh;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 5vh 15vh;
+    padding: 2vh;
+}
+
+.direct-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.direct-buttons1 {
+    margin: 20px 125px
+}
+
+.direct-buttons2 {
+    margin: 10px 175px;
+}
+
+.tags-content {
+    flex-grow: 2;
+}
+
+.background-image{
+    width: 99.4%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+/* ********************************** SEARCH RESULTS PAGE ****************************************/
+
+.page-body {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    }
+
+.page-content {
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
+/*Header*/
+.page-header {
+    background-color: #AF8FBD;
+    width: 100%;
+    height: 15vh;
+    max-height: 15vh;
+    min-height: 200px;
+    text-align: center !important;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2vh 5vh -1vh, rgba(0, 0, 0, 0.3) 0 1vh 3vh -1vh;
+}
+
+.logo-placement {
+    background-color: inherit;
+    width: 27vh;
+    height: auto; /* or 100% */
+    max-width: 27vh;
+    min-width: 350px;
+    max-height: 100%;
+    margin: 0 auto;
+}
+
+.logo-image {
+    width: 100%;
+}
+
+/*Content*/
+.display-all {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 100%;
+    height: 100%;
+    flex-grow: 3;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.display-single {
+    background-color: #B3D0C4;
+    width: 60%;
+    height: 40vh;
+    min-height: 400px;
+    max-height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border: 2vh double #4C4C9D;
+    border-radius: 10vh;
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 5vh 15vh;
+}
+
+.display-no-restaurants {
+    background-color: white;
+    padding: 7vh;
+    text-align: center;
+    font-size: 10vh;
+    border-radius: 5vh;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 5vh 10vh;
+}
+
+.display-img {
+    background-color: white;
+    width: 80vh;
+    height: 20vh;
+    max-width: 80%;
+    max-height: 60%;
+    min-height: 200px;
+    min-width: 400px;
+    margin-top: 50px;
+    border-radius: 5vh;
+}
+
+.restaurant-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5vh;
+}
+
+.restaurant-name {
+    font-family: Helvetica Neue, sans-serif;
+    font-size: max(7vh, 50px);
+    margin: auto;
+    color: black;
+    font-weight: bold;
+}
+
+.display-single:hover {
+    background-color: #5D987E;
+}
+
+
+/*Footer*/
+.page-footer {
+    flex-grow: 1;
+    height: 5vh;
+    max-height: 5vh;
+    min-height: 60px;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+@media screen and (max-width: 1000px) {
+    .welcomeText {
+        font-size: 11px;
+    }
+    .display-single {
+        width: 100%;
+    }
+}
+
+/* ********************************** RESTAURANT CHOICE PAGE ****************************************/
+
+.flexbox-header-choice {
+    height: 10vh;
+    width: 100%;
+}
+
+.flexbox-body-choice {
+    font-size: 2vh;
+    font-family: Verdana, sans-serif;
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.flex-header-text {
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    margin-inline: auto;
+    flex-direction: column;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
+}
+
+#flex1-choice-description {
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    height: 20vh;
+    width: 100%;
+    margin-inline: auto;
+    flex-direction: column;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
+}
+
+#flex2-choice-address {
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    height: 15vh;
+    width: 100%;
+    flex-direction: column;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
+}
+
+#flex3-choice-openinghours {
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    height: 15vh;
+    width: 100%;
+    flex-direction: column;
+    border: 4px solid #D78C47;
+    background-color: #E2AC79;
+}
+
+.box-size {
+    width: 100vh;
+}
+
+#rcorners1 {
+    border-radius: 25px;
+    background: #538D89;
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    border: none;
+}
+
+/************************** Button styles *************************************/
+
+.button {
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    border-radius: 25px;
+    background-color: #4B817D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: #0072BB;
+    color: white;
+    border: 10px double #03B5AA;
+}
+
+.button1:hover {
+    background-color: #03B5AA;
+}
+
+
+.button2:hover {
+    background-color: #03B5AA;
+}
+
+.subheading {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-top: revert;
+}
+
+

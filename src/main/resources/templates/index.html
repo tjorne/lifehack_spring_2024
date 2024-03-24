@@ -16,7 +16,6 @@
         </a>
     </header>
     <h1>Lifehack team B</h1>
-
         <div class="projects">
             <h2>Projects to check out</h2>
             <div class="cards">
@@ -40,6 +39,11 @@
                     <div class="card-copy">Get your daily quotes, gang gang</div>
                     <a class="card-link" href="QuotesGenerator/index.html" th:href="@{/QuotesGenerator/}"/>Quotes</a>
                 </div>
+                <div class="card">
+                    <img class="card-image" alt="restaurantFinder" src="/public/images/restaurantFinder/restaurantFinderLogo.png" th:src="@{/images/restaurantFinder/restaurantFinderLogo.png}"/>
+                    <div class="card-copy">Find your Restaurant</div>
+                    <a class="card-link" href="restaurantFinder/startPage.html" th:href="@{/restaurantFinder}"/>Restaurant Finder</a>
+                </div>
             </div>
         </div>
     <h3>If you need to log in - do it here</h3>
@@ -52,7 +56,7 @@
 
     <div>
         <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
-        <span  th:if="${session.currentUser != null}"> | </span>
+        <span th:if="${session.currentUser != null}"> | </span>
         <a href="createuser.html" th:href="@{/createuser}">Create user</a>
     </div>
 </div>
