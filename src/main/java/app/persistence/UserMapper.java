@@ -13,7 +13,7 @@ public class UserMapper
 
     public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "select * from users where username=? and password=?";
+        String sql = "select * from public.\"users\" where username=? and password=?";
 
         try (
                 Connection connection = connectionPool.getConnection();
