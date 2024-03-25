@@ -1,12 +1,9 @@
 package app;
 
 import app.config.ThymeleafConfig;
-import app.gruppe1Controller.Gruppe1Controller;
-import app.gruppe1Entities.Gruppe1CalculateWater;
+import app.entities.gruppe1.Gruppe1CalculateWater;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
-
-import java.util.Scanner;
 
 
 public class Gruppe1Main

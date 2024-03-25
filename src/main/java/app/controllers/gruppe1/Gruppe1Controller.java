@@ -1,4 +1,4 @@
-package app.gruppe1Controller;
+package app.controllers.gruppe1;
 
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
