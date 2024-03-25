@@ -9,7 +9,7 @@ public class Gruppe1Controller
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
-        app.get("/", ctx -> ctx.render("gruppe1Templates/index.html"));
+        app.get("/gruppe1Templates/index", ctx -> ctx.render("gruppe1Templates/index.html"));
         app.post("/waterIntakeMessage", ctx -> {
             float waterConsumed = Float.parseFloat(ctx.formParam("water"));
             Gruppe1CalculateWater calculateWater = new Gruppe1CalculateWater();
