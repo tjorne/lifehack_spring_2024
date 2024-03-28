@@ -9,7 +9,7 @@ public class Gruppe1Controller
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
-        app.get("/gruppe1Templates/index", ctx -> index(ctx, connectionPool));
+        app.get("/gruppe1Templates/", ctx -> index(ctx, connectionPool));
         app.post("/waterIntakeMessage", ctx -> {
             float waterConsumed = Float.parseFloat(ctx.formParam("water"));
             Gruppe1CalculateWater calculateWater = new Gruppe1CalculateWater();
@@ -19,11 +19,11 @@ public class Gruppe1Controller
             ctx.sessionAttribute("waterIntake", calculateWater.toString());
 
             // Send brugeren tilbage til startsiden
-            ctx.redirect("/");
+            ctx.redirect("/gruppe1Templates/");
         });
     }
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
-        ctx.render("/templates/gruppe1Templates/index.html");
+        ctx.render("/gruppe1Templates/index.html");
     }
 }
