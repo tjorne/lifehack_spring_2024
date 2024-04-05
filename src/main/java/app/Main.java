@@ -10,6 +10,7 @@ import app.controllers.QuotesGeneratorController;
 import app.controllers.TimeZonesController;
 import app.controllers.UnitConverterController;
 import app.controllers.UserController;
+import app.controllers.gruppe1.Gruppe1Controller;
 import app.entities.Drink;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
@@ -42,6 +43,7 @@ public class Main
         app.get("/", ctx -> ctx.render("index.html"));
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app, connectionPool);
+        Gruppe1Controller.addRoutes(app, connectionPool);
         DrinkController.addRoutes(app, connectionPool);
         JeopardyController.addRoutes(app, connectionPool);
         BookiBoisController.addRoutes(app, connectionPool);

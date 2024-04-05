@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Drink water</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/Gruppe1Styles.css" th:href="@{/css/Gruppe1Styles.css}" rel="stylesheet"/>
+<link rel="Stylesheet" href="../../public/css/Gruppe1Styles.css">
+
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <div class="flex-container">
+            <a href="../index.html" th:href="@{/public}">
+                <img alt="logo" src="../../public/images/gruppe1Images/DropOfWater.jpg"
+                     th:src="@{/images/gruppe1Images/DropOfWater.jpg}"/>
+            </a>
+        </div>
+    </header>
+
+    <h1>Drink Water</h1>
+
+    <p class="bodytext">Enter your water intake for today</p>
+    <div class="flex-container">
+
+        <form method="post" action="/waterIntakeMessage">
+            <input class="bodytext" type="text" name="water" placeholder="Enter water intake"/>
+            <button formaction="/waterIntakeMessage">Are you on track?</button>
+
+        </form>
+        <p th:text="${session.waterIntake}"></p>
+
+    </div>
+</div>
+
+</body>
+</html>
