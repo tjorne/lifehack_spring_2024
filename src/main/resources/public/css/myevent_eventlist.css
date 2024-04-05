@@ -1,0 +1,205 @@
+html * {
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: "Monaco", monospace;
+    font-weight: normal;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:8px;
+    margin-top: -4%;
+}
+
+.headerimage {
+    max-width: 100%;
+    clip-path: inset(0% 0% 20% 0%);
+}
+
+table {
+
+    border: 14px solid rgba(255, 180, 45, 0.5);
+    margin-bottom: 20px;
+}
+
+tbody {
+    margin-bottom: 20px;
+    border:30px solid white;
+}
+
+.top-buttons {
+    margin-top: 10px;
+    display: inline;
+    font-family: Arial, sans-serif;
+
+}
+
+.left {
+    padding-right: 50px;
+}
+
+.right {
+    padding-left: 50px;
+}
+
+.item-info-img {
+    width: 100%;
+    height: 300px;
+}
+
+.item-preview {
+    background-color: #FBCA6A80;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    height: 180px;
+    max-height: 600px;
+    font-family: Arial, sans-serif;
+}
+
+.item-img {
+    max-height: 100%;
+    max-width: 100%;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.item-info {
+    padding-left: 2%;
+    width: 600px;
+}
+
+.item-info h4 {
+    margin-top: -3%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.item-info h2 {
+
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+
+.item-info p {
+    font-size: 1rem;
+    font-weight: lighter;
+
+}
+
+.small-info {
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+
+.item-preview:hover {
+    background-color: rgba(255, 224, 175, 0.5);
+}
+
+
+/* ============== Heart button ================ */
+
+.heart-btn {
+    width: 8em;
+    height: 2.5em;
+    position: relative;
+    font-size: 0.7em;
+    float: right;
+    margin-right: 3%;
+}
+
+.read-btn {
+    width: 8em;
+    height: 2.5em;
+    position: relative;
+    font-size: 0.7em;
+    float: right;
+    margin-right: 3%;
+}
+
+.read-btn button {
+    background: white;
+    outline: none;
+    color: #e55858;
+    letter-spacing: 1px;
+    font-size: 1em;
+    left: 0;
+    right: 0;
+    border: none;
+    border-radius: 2em 2em 2em 2em;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.heart-btn button {
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #e55858;
+    letter-spacing: 1px;
+    font-size: 1em;
+}
+
+.heart-btn button::before, .heart-btn button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 0;
+    transition: 0.4s;
+}
+
+.heart-btn button::before {
+    left: 0;
+    border-radius: 2em 0 0 2em;
+}
+
+.heart-btn button::after {
+    right: 0;
+    border-radius: 0 2em 2em 0;
+}
+
+.heart-btn span {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+}
+
+input[type="checkbox"]:checked + button::before {
+    transform: rotate(45deg) translate(1em , -1.05em);
+    animation: glow 0.6s ease-in 0.4s forwards;
+    background: #e55858;
+}
+
+input[type="checkbox"]:checked + button::after {
+    transform: rotate(-45deg) translate(-1em , -1.05em);
+    animation: glow 0.6s ease-in 0.4s forwards;
+    background: #e55858;
+}

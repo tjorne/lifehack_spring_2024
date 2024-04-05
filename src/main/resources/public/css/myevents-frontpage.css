@@ -1,0 +1,56 @@
+html *{
+    box-sizing: border-box;
+}
+
+.logo{
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+}
+
+body {
+    background-image: url("../images/myevents/frontpage.jpeg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    background: white;
+    padding: 8px;
+    height: 98vh;
+}
+
+.button {
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    height: 100%;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.search-button {
+    content: url("../images/myevents/searchicon.png");
+    width: 20px;
+    height: 20px;
+}
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>QuotesGenerator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../../public/css/QuotesGenerator.styles.css" th:href="@{/css/QuotesGenerator.styles.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="page">
+  <header>
+    <a href="../index.html" th:href="@{/}">
+      <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+    </a>
+  </header>
+
+  <h1>QuotesGenerator</h1>
+
+  <section>
+
+    <h5 th:text="${quote}"></h5>
+
+    <h1 class="quoteGenerator" th:text="${newRandomQuote}"></h1>
+
+    <form method="post">
+        <div class="btn_container">
+            <button class="buttons" type="submit" formaction="/displayHappyQuotes">Happy Quotes 🤩</button>
+            <button class="buttons" type="submit" formaction="/displaySadQuotes">Sad Quotes 😔</button>
+            <button class="buttons" type="submit" formaction="/displaySillyQuotes">Silly Quotes 🤪</button>
+            <button class="buttons" type="submit" formaction="/displayMotivationalQuotes">Motivational Quotes 🤫🧏</button>
+            <button class="buttons" type="submit" formaction="/displayLeagueQuotes">League 👹</button>
+            <button class="buttons" type="submit" formaction="/displayUserGeneratedQuotes">User Generated 🌝</button>
+        </div>
+
+        <button class="buttons" type="submit" formaction="/newQuote">Random quote 🗿</button>
+    </form>
+
+
+    <div class="create_container">
+        <p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p>
+        <br>
+        <p>Wanna make your own, share with others?</p>
+        <button class="buttons">
+            <a href="createQuote.html" th:href="@{/createQuote}">Create your own quote</a>
+        </button>
+    </div>
+
+
+    </section>
+
+    </div>
+</body>
+</html>

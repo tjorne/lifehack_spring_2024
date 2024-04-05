@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Unit Conversion</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../../public/css/unitconverter.css" th:href="@{/css/unitconverter.css}" rel="stylesheet"/>
+<style>
+    .unit-group {
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
+
+    <h1><u>Unit Conversion</u></h1>
+
+    Select a unit to convert
+
+    <form class="select-forms" method="post">
+        <select id="masterUnit" name="unit">
+            <option value="" disabled selected>Select a unit</option>
+            <option value="time" th:selected="${selectedUnit == 'time'}">Time</option>
+            <option value="volume" th:selected="${selectedUnit == 'volume'}">Volume</option>
+            <option value="weight" th:selected="${selectedUnit == 'weight'}">Weight</option>
+            <option value="length" th:selected="${selectedUnit == 'length'}">Length</option>
+            <option value="area" th:selected="${selectedUnit == 'area'}">Area</option>
+            <option value="temperature" th:selected="${selectedUnit == 'temperature'}">Temperature</option>
+        </select>
+    </form>
+
+    <form id="conversionForm" method="post" action="/convert">
+        <input type="hidden" name="unit" id="unitType">
+        <input type="hidden" name="fromUnit" id="fromUnit">
+        <input type="hidden" name="toUnit" id="toUnit">
+
+
+        <div class="unit-types">
+            <div class="unit-group" id="areaFrom">
+                <p>Convert from:</p>
+                <select name="area">
+                    <option value="squaremeter">square meter</option>
+                    <option value="squarekilometer">Square kilometer</option>
+                    <option value="squareyard">Square yard</option>
+                    <option value="squaremile">Square mile</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="areaTo">
+                <p>convert to:</p>
+                <select name="area">
+                    <option value="squaremeter">square meter</option>
+                    <option value="squarekilometer">Square kilometer</option>
+                    <option value="squareyard">Square yard</option>
+                    <option value="squaremile">Square mile</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="lengthFrom">
+                <p>Convert from:</p>
+                <select name="length">
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="miles">Miles</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="lengthTo">
+                <p>convert to:</p>
+                <select name="length">
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="miles">Miles</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="temperatureFrom">
+                <p>Convert from:</p>
+                <select name="temperature">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="temperatureTo">
+                <p>convert to:</p>
+                <select name="temperature">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="timeFrom">
+                <p>Convert from:</p>
+                <select id="fromTimeSelect">
+                    <option value="second">Second</option>
+                    <option value="minute">Minute</option>
+                    <option value="hour">Hour</option>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="timeTo">
+                <p>convert to:</p>
+                <select name="time">
+                    <option value="second">Second</option>
+                    <option value="minute">Minute</option>
+                    <option value="hour">Hour</option>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="volumeFrom">
+                <p>Convert from:</p>
+                <select name="volume">
+                    <option value="cubicmeter">Cubic meter</option>
+                    <option value="liter">Liter</option>
+                    <option value="milliliter">Milliliter</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="volumeTo">
+                <p>convert to:</p>
+                <select name="volume">
+                    <option value="cubicmeter">Cubic meter</option>
+                    <option value="liter">Liter</option>
+                    <option value="milliliter">Milliliter</option>
+                </select>
+            </div>
+
+            <div class="unit-group" id="weightFrom">
+                <p>Convert from:</p>
+                <select name="weight">
+                    <option value="kilogram">Kilogram</option>
+                    <option value="pound">Pound</option>
+                    <option value="metricton">Metric ton</option>
+                </select>
+
+            </div>
+            <div class="unit-group" id="weightTo">
+                <p>convert to:</p>
+                <select name="weight" id="weightToSelect">
+                    <option value="kilogram">Kilogram</option>
+                    <option value="pound">Pound</option>
+                    <option value="metricton">Metric ton</option>
+                </select>
+
+            </div>
+            <input type="number" name="value" id="conversionValue" placeholder="Enter value">
+            <input type="number" name="result" readonly th:value="${result}">
+            <button type="submit" formaction="/convert">execute</button>
+        </div>
+
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var masterUnitSelect = document.getElementById('masterUnit');
+            var inputs = document.querySelectorAll('.unit-group input[type="number"]');
+
+
+            function updateToUnit(selectedUnit) {
+                if (selectedUnit === 'weight') {
+                    var weightToSelect = document.getElementById('weightToSelect');
+                    document.getElementById('toUnit').value = weightToSelect.value;
+
+                    weightToSelect.addEventListener('change', function () {
+                        document.getElementById('toUnit').value = this.value;
+                    });
+                }
+
+            }
+
+            function displayUnitGroup(selectedUnit) {
+                var unitGroups = document.getElementsByClassName('unit-group');
+                Array.from(unitGroups).forEach(group => group.style.display = 'none');
+
+                var selectedGroupFrom = document.getElementById(selectedUnit + 'From');
+                var selectedGroupTo = document.getElementById(selectedUnit + 'To');
+                if (selectedGroupFrom) selectedGroupFrom.style.display = 'block';
+                if (selectedGroupTo) selectedGroupTo.style.display = 'block';
+
+                document.getElementById('unitType').value = selectedUnit;
+
+
+                if (selectedUnit === 'weight') {
+                    document.getElementById('fromUnit').value = 'kilogram';
+                }
+
+                updateToUnit(selectedUnit);
+            }
+
+            displayUnitGroup(masterUnitSelect.value);
+
+            masterUnitSelect.addEventListener('change', function () {
+                displayUnitGroup(this.value);
+            });
+
+            inputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    document.getElementById('conversionValue').value = this.value;
+                });
+            });
+        });
+    </script>
+
+</div>
+
+</body>
+</html>
